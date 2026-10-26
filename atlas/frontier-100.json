@@ -1,0 +1,707 @@
+{
+  "schema": "glass.frontier.100/0.1",
+  "selection": "curated 10 research domains x 10 candidates; not known to be absent from any model training corpus",
+  "admission_guard": "API-verified identity, license, pinned commit and two observed cycles required",
+  "repositories": [
+    {
+      "repository": "gnuradio/gnuradio",
+      "category": "signal",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "jgaeddert/liquid-dsp",
+      "category": "signal",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "scipy/scipy",
+      "category": "signal",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "numpy/numpy",
+      "category": "signal",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "scikit-image/scikit-image",
+      "category": "signal",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "pyfar/pyfar",
+      "category": "signal",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "librosa/librosa",
+      "category": "signal",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "xiph/opus",
+      "category": "signal",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "FFTW/fftw3",
+      "category": "signal",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "mne-tools/mne-python",
+      "category": "signal",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "llvm/llvm-project",
+      "category": "compiler",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "gcc-mirror/gcc",
+      "category": "compiler",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "rust-lang/rust",
+      "category": "compiler",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "ziglang/zig",
+      "category": "compiler",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "apache/tvm",
+      "category": "compiler",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "iree-org/iree",
+      "category": "compiler",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "triton-lang/triton",
+      "category": "compiler",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "halide/Halide",
+      "category": "compiler",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "google/XNNPACK",
+      "category": "compiler",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "pytorch/pytorch",
+      "category": "compiler",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "Z3Prover/z3",
+      "category": "formal",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "leanprover/lean4",
+      "category": "formal",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "Coq/coq",
+      "category": "formal",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "isabelle-prover/mirror-isabelle",
+      "category": "formal",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "agda/agda",
+      "category": "formal",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "cvc5/cvc5",
+      "category": "formal",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "microsoft/Boogie",
+      "category": "formal",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "KFramework/k",
+      "category": "formal",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "dafny-lang/dafny",
+      "category": "formal",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "facebook/hermes",
+      "category": "formal",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "qemu/qemu",
+      "category": "binary",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "radareorg/radare2",
+      "category": "binary",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "NationalSecurityAgency/ghidra",
+      "category": "binary",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "angr/angr",
+      "category": "binary",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "revng/revng",
+      "category": "binary",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "capstone-engine/capstone",
+      "category": "binary",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "keystone-engine/keystone",
+      "category": "binary",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "unicorn-engine/unicorn",
+      "category": "binary",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "lief-project/LIEF",
+      "category": "binary",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "trailofbits/manticore",
+      "category": "binary",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "servo/servo",
+      "category": "graphics",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "servo/webrender",
+      "category": "graphics",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "google/skia",
+      "category": "graphics",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "gfx-rs/wgpu",
+      "category": "graphics",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "linebender/vello",
+      "category": "graphics",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "bevyengine/bevy",
+      "category": "graphics",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "godotengine/godot",
+      "category": "graphics",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "mrdoob/three.js",
+      "category": "graphics",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "BabylonJS/Babylon.js",
+      "category": "graphics",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "bkaradzic/bgfx",
+      "category": "graphics",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "BulletPhysics/bullet3",
+      "category": "physics",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "projectchrono/chrono",
+      "category": "physics",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "google/brax",
+      "category": "physics",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "google-deepmind/mujoco",
+      "category": "physics",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "NVIDIA/warp",
+      "category": "physics",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "taichi-dev/taichi",
+      "category": "physics",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "SOFA-framework/sofa",
+      "category": "physics",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "pymunk/pymunk",
+      "category": "physics",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "simbody/simbody",
+      "category": "physics",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "OpenFOAM/OpenFOAM-dev",
+      "category": "physics",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "astropy/astropy",
+      "category": "astronomy",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "sunpy/sunpy",
+      "category": "astronomy",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "poliastro/poliastro",
+      "category": "astronomy",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "spacetelescope/stcal",
+      "category": "astronomy",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "spacetelescope/jwst",
+      "category": "astronomy",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "skyfielders/python-skyfield",
+      "category": "astronomy",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "liberfa/erfa",
+      "category": "astronomy",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "scipy/scipy-cookbook",
+      "category": "astronomy",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "jupyter/notebook",
+      "category": "astronomy",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "yt-project/yt",
+      "category": "astronomy",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "tree-sitter/tree-sitter",
+      "category": "language",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "unicode-org/icu",
+      "category": "language",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "unicode-org/cldr",
+      "category": "language",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "google/sentencepiece",
+      "category": "language",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "huggingface/tokenizers",
+      "category": "language",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "openfst/openfst",
+      "category": "language",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "apache/lucene",
+      "category": "language",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "elastic/elasticsearch",
+      "category": "language",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "opensearch-project/OpenSearch",
+      "category": "language",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "antirez/redis",
+      "category": "language",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "curl/curl",
+      "category": "network",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "nghttp2/nghttp2",
+      "category": "network",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "cloudflare/quiche",
+      "category": "network",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "facebook/mvfst",
+      "category": "network",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "envoyproxy/envoy",
+      "category": "network",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "haproxy/haproxy",
+      "category": "network",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "caddyserver/caddy",
+      "category": "network",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "traefik/traefik",
+      "category": "network",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "nats-io/nats-server",
+      "category": "network",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "grpc/grpc",
+      "category": "network",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "torvalds/linux",
+      "category": "operating",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "FreeBSD/freebsd-src",
+      "category": "operating",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "systemd/systemd",
+      "category": "operating",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "moby/moby",
+      "category": "operating",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "containerd/containerd",
+      "category": "operating",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "firecracker-microvm/firecracker",
+      "category": "operating",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "kubernetes/kubernetes",
+      "category": "operating",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "wasmtime/wasmtime",
+      "category": "operating",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "bytecodealliance/wasm-tools",
+      "category": "operating",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    },
+    {
+      "repository": "WebAssembly/wabt",
+      "category": "operating",
+      "admission": "pending",
+      "source_pin": null,
+      "cycles": 0
+    }
+  ]
+}
