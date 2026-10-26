@@ -2,11 +2,5 @@
   "version": 2,
   "framework": null,
   "buildCommand": null,
-  "outputDirectory": ".",
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/apps/unison-live/index.html"
-    }
-  ]
+  "outputDirectory": "apps/unison-live"
 }
