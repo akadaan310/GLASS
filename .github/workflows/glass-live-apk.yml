@@ -1,0 +1,54 @@
+name: GLASS UNISON Live APK
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/glass-listener-android/**'
+      - '.github/workflows/glass-live-apk.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 22
+    steps:
+      - name: Checkout exact GLASS source
+        uses: actions/checkout@v4
+
+      - name: Java compiler
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Official Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install explicit build tools
+        run: |
+          sdkmanager "platforms;android-35" "build-tools;35.0.0"
+
+      - name: Pure numerical smoke
+        shell: bash
+        run: |
+          mkdir -p /tmp/glass-dsp-classes
+          javac --release 11 -d /tmp/glass-dsp-classes             apps/glass-listener-android/src/org/glass/unison/TraceMath.java             apps/glass-listener-android/src/org/glass/unison/LanguageClock.java             apps/glass-listener-android/tests/TraceMathSmoke.java
+          java -cp /tmp/glass-dsp-classes org.glass.unison.TraceMathSmoke
+
+      - name: Produce independently signed universal Glass APK
+        run: |
+          python3 apps/glass-listener-android/tools/build_apk.py --sdk-root "$ANDROID_HOME"
+
+      - name: Publish only APK and SHA-256 receipt
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: GLASS-UNISON-Live-APK
+          path: |
+            apps/glass-listener-android/build/Glass-UNISON-Live.apk
+            apps/glass-listener-android/build/GLASS_APK_RECEIPT.json
+          if-no-files-found: error
+          retention-days: 30
