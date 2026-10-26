@@ -1,0 +1,6 @@
+export const SIGMA=Object.freeze({null:"∅",bit:"⊕",mask:"∧",merge:"∨",rotate:"↻",clock:"τ",alphabet:"Λ",oracle:"Ω",generator:"Γ",provenance:"Π",glass:"۞"});
+export function bitGate(pixel,mask,op="xor"){const p=pixel>>>0,m=mask>>>0;switch(op){case "xor":return(p^m)>>>0;case "and":return(p&m)>>>0;case "or":return(p|m)>>>0;case "rotate":return((p<<1)|(p>>>31))>>>0;default:throw new Error("unknown gate")}}
+export function hash(text){let h=2166136261;for(const c of text)h=Math.imul(h^c.codePointAt(0),16777619)>>>0;return h.toString(16).padStart(8,"0")}
+export function tape(text){const chars=typeof Intl.Segmenter==="function"?[...new Intl.Segmenter("und",{granularity:"grapheme"}).segment(text)].map(x=>x.segment):Array.from(text);return chars.map((g,i)=>({i,g,oracle:"Ω:"+hash(g),bits:[...new TextEncoder().encode(g)].map(b=>b.toString(2).padStart(8,"0"))}))}
+export function youtubeId(input){try{const u=new URL(input),h=u.hostname.replace(/^www\./,"");let v=h==="youtu.be"?u.pathname.slice(1):["youtube.com","m.youtube.com","youtube-nocookie.com"].includes(h)?u.searchParams.get("v")||u.pathname.match(/^\/(?:shorts|embed)\/([^/]+)/)?.[1]:null;return /^[\w-]{11}$/.test(v||"")?v:null}catch{return null}}
+export function admitted(r){return r?.verification==="verified-api"&&!!r.pin&&!!r.license&&r.cycles>=2}
