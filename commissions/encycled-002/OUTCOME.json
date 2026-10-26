@@ -1,0 +1,98 @@
+{
+  "schema": "glass.commission.outcome.v1",
+  "id": "glass.encycled-002",
+  "intent": "commissions/encycled-002/INTENT.json",
+  "scientific_formation": {
+    "name": "Encycled Calculus",
+    "operator": "cycle difference, event-step derivative, lifetime integral",
+    "symbol": "Four-Tilde Mechanics / M̃⁴",
+    "layers": [
+      "value",
+      "lifetime",
+      "clock",
+      "observation"
+    ],
+    "epistemic_label": "project formalism, not independently confirmed scientific novelty"
+  },
+  "actual_artifacts": [
+    {
+      "path": "docs/ENCYCLED_CALCULUS.md",
+      "status": "formal treatise authored and published",
+      "commit": "eea72fd6aec31796b84fbc6aa8340e51a75f0028"
+    },
+    {
+      "path": "atlas/encycled-calculus-v0.1.json",
+      "status": "23-domain atlas and synthetic cohort formal metadata",
+      "commit": "3228d22e738928bc7ba64fb30a4a95fa987f22cc"
+    },
+    {
+      "path": "runtime/encycled.hpp",
+      "status": "native pure bounded mechanics source published",
+      "commit": "51febc0e8468a974d1116804809136cdb24bcce1"
+    },
+    {
+      "path": "runtime/encycled_cli.cpp",
+      "status": "native JSON trace demo source published",
+      "commit": "6e7cfdfe747d61f73419352de0f48c16152f368e"
+    },
+    {
+      "path": "tests/encycled_test.cpp",
+      "status": "bounded native fixture source published",
+      "commit": "c7e5c77e571b20eb2afe9a3b211450f2a7fb5a51"
+    },
+    {
+      "path": "apps/clockworld/index.html",
+      "status": "full-screen responsive browser simulation source published",
+      "commit": "7695b03f7d0e2835c9ed313a8b0e52b684595f4a"
+    },
+    {
+      "path": "apps/clockworld/README.md",
+      "status": "screen instructions and limits published",
+      "commit": "8abf61bc79b1c13149cd49cfa831930a8caa459b"
+    },
+    {
+      "path": "evidence/encycled-002/native-fixtures.json",
+      "status": "local check evidence published",
+      "commit": "b420d913aac08deb08ab7f3541d84fc2fbf80cdf"
+    },
+    {
+      "path": "README.md",
+      "status": "root GLASS index updated",
+      "commit": "84630100c2c3bebee6eb64a0352a9a7b7dce6048"
+    }
+  ],
+  "observed_checks": {
+    "gcc_cpp20_compile": "PASS Linux g++14.2",
+    "native_suite": "PASS event replay, 5 per-bit events/4 transactions, lifetimes, bounds, integrate step, elapsed cycles",
+    "native_cli": "PASS JSON trace (tick 4, final word 8, 5 per-bit events, replay true)",
+    "browser_js_syntax": "PASS Node v22 --check",
+    "browser_runtime_screenshot": "NOT_VERIFIED: headless Chromium timed out even on minimal HTML",
+    "android_or_unity": "NOT_RUN",
+    "actual_physical_bit_capture": "NOT_RUN",
+    "research_novelty_theorem": "NOT_ATTEMPTED",
+    "external_google_web_theory_check": "NOT_USED per owner"
+  },
+  "effective_states": {
+    "mathematics": "specified",
+    "mechanics": "implemented-tested-local",
+    "visualization": "implemented-source-only",
+    "harness": "finite-local-command-proposal-gate",
+    "game_model": "seeded-synthetic-demo",
+    "publication": "main-committed-awaiting-independent-head-readback"
+  },
+  "source_provenance": "selected direct user-owned GitHub files read; user source narrative in this chat",
+  "authority": {
+    "home_base": "GLASS main",
+    "home_game": "HOMELESS main remains authoritative for Unity/Dark",
+    "reference_imports": "no upstream source modified",
+    "personal_data": "none"
+  },
+  "next_commissions": [
+    "persistent time/causality journal and process supervision",
+    "browser-native parity test and actual browser/game visual acceptance",
+    "authenticated optional LLM proposals with independent finite admission",
+    "versioned, authorized HOMELESS Unity adapter",
+    "external calibrated hardware capture to study physical transitions"
+  ],
+  "note": "Do not claim a deployed LLM, a physical time microscope, or completed HOMELESS game."
+}
