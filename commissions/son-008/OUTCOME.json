@@ -1,0 +1,44 @@
+{
+  "schema": "glass.commission.outcome/0.1",
+  "id": "son-008",
+  "date": "2026-10-26",
+  "scope": "SON/0.1 typed four-lane URL, extensible operator alphabet, source-tape-matrix traces, search projection, classical ideal-quantum simulation and immutable self-revision",
+  "publication": {
+    "verified_main_paths": [
+      "commissions/son-008/INTENT.json",
+      "apps/glass-oracle/son.html",
+      "apps/glass-oracle/index.html",
+      "apps/son/README.md",
+      "apps/son/examples.txt",
+      "docs/SON_UNISON_PROTOCOL.md",
+      "README.md"
+    ],
+    "source_package": "GLASS_SON_008_Four_Programmable_URLs.zip (current conversation artifact)",
+    "remaining_compiler_test_paths": "Complete Python compiler, tests, atlas and detailed trace evidence are in the ZIP, not all synchronized to GitHub"
+  },
+  "execution": {
+    "local_python_tests_passed": 31,
+    "js_parser_cross_language_parity": "PASS",
+    "four_batch_scheduled_local_events": 39,
+    "executed_google_searches": 0,
+    "remote_llm_calls": 0,
+    "physical_quantum_events": 0
+  },
+  "nonclaims": [
+    "GLASS.com is not a verified running deployment",
+    "Matrix is a lossy 4x4 projection; original bytes must persist",
+    "Google syntax is a lossy best-effort projection, not external causal control",
+    "Infinite alphabet means versioned address extension; not unlimited active memory",
+    "Browser visual acceptance blocked by test container navigation policy"
+  ],
+  "states": {
+    "formal_language": "specified",
+    "python_compiler": "built_and_tested_locally",
+    "single_file_web": "published_to_GitHub",
+    "homepage_route": "published_to_GitHub",
+    "source_tests": "local_package_only",
+    "public_deployment": "not_verified",
+    "evidence": "source_and_scope_recorded"
+  },
+  "next": "Publish remaining compiler/test package to GLASS main, deploy authorized source to glass.com, independently verify URL acceptance and browser visuals, commission authenticated source-indexed storage for long programs."
+}
