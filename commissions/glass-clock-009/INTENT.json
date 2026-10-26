@@ -1,0 +1,60 @@
+{
+  "schema": "glass.commission.intent.v1",
+  "id": "glass-clock-009",
+  "date": "2026-10-26",
+  "directive": "Build GLASS Clock Oracle: symbol-only grammar for device/server/UTC/monotonic/IANA zone clocks and mean/apparent solar time via latitude/longitude, plus safe shell script teaching and a typing-only, tap-only GLASS interface hosted in owner's terminal.",
+  "origin": [
+    "User clock/time-zone/unison symbolic terminal instruction",
+    "GLASS main AGENTS.md; GLASS_COMMISSION.md; CONTINUE.md; QITT and ENCYCLED sources"
+  ],
+  "region_state": {
+    "grammar": "planned",
+    "clocks": "planned",
+    "spherical_calculus": "planned",
+    "shell_teacher": "planned",
+    "browser_terminal": "planned",
+    "deployment": "not_installed",
+    "publication": "queued"
+  },
+  "routes": [
+    "/",
+    "/api/time",
+    "/api/eval"
+  ],
+  "guards": [
+    "No code execution from typed source; only show shell snippets",
+    "No raw hardware seconds claimed beyond monotonic clock and POSIX UTC API",
+    "Longitude determines mean solar offset, not legal/IANA time zone; latitude informs sun geometry not civil offset",
+    "No precise location or geolocation requested; all coordinates user supplied",
+    "Server time marked unavailable if server not connected; device clock is local observation",
+    "Default listen 127.0.0.1; remote use only by user-approved tunneled server",
+    "Persist nothing from typed source unless explicitly opted in",
+    "Finite grammar, bounded tests, no stealth browser/OS permission",
+    "Publish additively to GLASS/main with outcome actual remote verification"
+  ],
+  "estimated_sources": [
+    "Python standard library zoneinfo IANA rules",
+    "Python time/timezone",
+    "NOAA solar approximation",
+    "Intl.DateTimeFormat browser IANA",
+    "Termux Python environment"
+  ],
+  "paths": [
+    "apps/glass-clock/index.html",
+    "apps/glass-clock/client.js",
+    "apps/glass-clock/style.css",
+    "apps/glass-clock/oracle.py",
+    "apps/glass-clock/server.py",
+    "apps/glass-clock/test_oracle.py",
+    "apps/glass-clock/README.md",
+    "docs/GLASS_CLOCK_GRAMMAR.md",
+    "commissions/glass-clock-009/OUTCOME.json"
+  ],
+  "acceptance": {
+    "native_tests": "compile parser samples and DST test",
+    "http": "loopback server GET and symbolic POST",
+    "ui": "device-sized screenshots and live typing (when Chromium can run)",
+    "repo": "main verified by ref after publication"
+  },
+  "idempotency_key": "GLASS.CLOCK.009.v0.1"
+}
