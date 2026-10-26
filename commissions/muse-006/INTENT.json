@@ -1,0 +1,41 @@
+{
+  "schema": "glass.commission.intent.v1",
+  "id": "muse-glass-006",
+  "date": "2026-10-26",
+  "owner_goal": "Muse shall turn GLASS into a typing-only Universal Unison Oracle web experience; source-preserve 28 Arabic operators, 10 modifier marks, metaterminal, 8-facet pyramid; index Unicode scripts and alphabets, AST/grammar growing towers, and grow to 50GiB owner-approved knowledge via streaming corpus storage.",
+  "origin_evidence": [
+    "uploaded GLASS_UNISON_HARNESS.zip",
+    "uploaded GLASS_Genesis_Prototype.zip",
+    "uploaded GLASS_Unison_Growing_Tower_v0.1.zip",
+    "existing GLASS typing-only terminal site",
+    "GLASS source and QITT/Encycled corpus"
+  ],
+  "scope": [
+    "apps/glass-oracle/*",
+    "commissions/muse-006/*"
+  ],
+  "publication_target": "akadaan310/GLASS:main",
+  "operations": [
+    "publish complete Muse master commission",
+    "publish extended typing-only site",
+    "publish versioned seed script atlas (172 groups)",
+    "publish bounded content-addressed ingest reference and tests",
+    "record actual test status and scope"
+  ],
+  "requirements": [
+    "no navigation before Enter on admitted URL",
+    "no submit buttons or auto-search",
+    "separate Unicode script, language, glyph and semantics",
+    "no proven universal translation or sacred historical assertions",
+    "no false claim that 50GiB corpus was ingested",
+    "no embedding user-owned original archives into public GLASS without review",
+    "preserve original 28+10 operator identity"
+  ],
+  "evidence_status": {
+    "local_tests": "5 passed, browser navigation blocked by administrator: 1 skipped",
+    "corpus_ingestion": "small-fixture only, complete 50GiB not attempted",
+    "url_deployment": "glass.com not verified",
+    "script_snapshot": "172 indexed regex Script groups; Unicode 18 reconciliation commissioned"
+  },
+  "recovery": "If main moves concurrently re-read and reconcile; never force-push; do not overwrite existing site."
+}
