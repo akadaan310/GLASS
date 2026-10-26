@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="org.glass.unison" android:versionCode="1" android:versionName="0.1.0">
+  <uses-sdk android:minSdkVersion="29" android:targetSdkVersion="35" />
+  <uses-permission android:name="android.permission.RECORD_AUDIO" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-feature android:name="android.hardware.microphone" android:required="false" />
+  <queries>
+    <intent><action android:name="android.speech.RecognitionService" /></intent>
+  </queries>
+  <application android:label="GLASS · UNISON"
+    android:allowBackup="false"
+    android:usesCleartextTraffic="false"
+    android:supportsRtl="true"
+    android:hardwareAccelerated="true"
+    android:theme="@android:style/Theme.Material.NoActionBar.Fullscreen">
+    <activity android:name=".GlassActivity" android:exported="true"
+      android:screenOrientation="unspecified">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+  </application>
+</manifest>
