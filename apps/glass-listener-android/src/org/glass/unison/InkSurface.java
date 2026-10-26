@@ -36,6 +36,21 @@ public final class InkSurface extends View {
         frames=frame.seq;
         postInvalidate();
     }
+    /** OS recognizer mode shares no raw PCM with our own AudioRecord.
+     * Its reported RMS callback can still drive a clearly labelled visual
+     * envelope. This is an OS measurement hint, not 16k sample math.
+     */
+    public synchronized void ingestOsRms(double hint){
+        double v=clamp(hint,0,1);
+        double before=currentRms;
+        magnitude[cursor]=(float)v;
+        change[cursor]=clamp(Math.abs(v-before),0,1);
+        cursor=(cursor+1)%magnitude.length;
+        currentRms=v;currentFlux=Math.abs(v-before);
+        currentPitch=0;currentCentroid=0;currentZcr=0;
+        signal="OS RMS HINT / NOT RAW PCM";frames++;
+        postInvalidate();
+    }
     public synchronized void setMode(boolean on){active=on;status=on?"LOCAL MICROPHONE LIVE":"MIC OFF";postInvalidate();}
     public synchronized void setStatus(String label){status=label;postInvalidate();}
     public synchronized void setLanguage(String label){language=label;postInvalidate();}
