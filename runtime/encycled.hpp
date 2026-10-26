@@ -1,5 +1,6 @@
 #pragma once
 #include <algorithm>
+#include <bit>
 #include <cmath>
 #include <cstdint>
 #include <map>
@@ -59,7 +60,7 @@ class Machine {
   void write_word(std::uint64_t next, Cause cause=Cause::software_write) {
     const std::uint64_t valid=(std::uint64_t{1}<<width_)-1;
     if((next&~valid)!=0) throw std::out_of_range("word outside width");
-    const unsigned changed=__builtin_popcountll(next^word_);
+    const unsigned changed=std::popcount(next^word_);
     if(changed>max_events_-events_.size()) throw std::length_error("event budget exceeded");
     if(changed==0) return;
     const auto tx=++transaction_;
@@ -108,10 +109,10 @@ class Machine {
   std::map<std::string,Lifetime> lifetimes_;
 };
 
-inline double cycle_residual(double f, double t, double period) {
-  if(!std::isfinite(f)||!std::isfinite(t)||!std::isfinite(period)||period<=0)
+inline double elapsed_cycles(double frequency_hz, double period_seconds) {
+  if(!std::isfinite(frequency_hz)||!std::isfinite(period_seconds)||period_seconds<=0)
     throw std::invalid_argument("finite cycle inputs required");
-  return f*(t+period)-f*t;
+  return frequency_hz*period_seconds;
 }
 inline double integrate_step(const std::vector<std::pair<double,double>>& samples, double end) {
   if(samples.empty()||samples.front().first!=0||!std::isfinite(end)||end<0)
