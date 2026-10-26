@@ -8,7 +8,7 @@
 
 **HOMELESS:** synthetic seeded population of 68 fictional households (167 persons in the present fixture). All movement policy logic operates at household level and retains member identities. Housed, sheltered and unsheltered are provisional projection states; it is not a real population count and cannot replace HOMELESS's Unity-native product. The offered policies have illustrative immediate-score opportunity costs, not calibrated social impact.
 
-**TERMINAL:** local finite command interpreter (no LLM, shell or server). The command plane admits only HELP, TRACE, FLIP bit 0..3, FREQ 0.25..4, STEP 1..64, WORLD HOUSING/SHELTER/HOLD, RESET, PAUSE, PLAY, and PROPOSE / ADMIT. A proposal can be stored with no effect until ADMIT. This demonstrates a deterministic automaton gate for possible future LLM output, not a complete LLM connector or remote commissioning service.
+**TERMINAL:** local finite command interpreter (no LLM, shell or server). The command plane admits only HELP, TRACE, FLIP bit 0..3, FREQ 0.25..4, STEP 1..64, WORLD HOUSING/SHELTER/HOLD, MEET person-id person-id, MET person-id person-id, RESET, PAUSE, PLAY, and PROPOSE / ADMIT. A proposal can be stored with no effect until ADMIT. MEET/MET record and query witnessed encounters between fictional IDs; absence from the current epoch does not establish a real-world non-encounter. This demonstrates a deterministic automaton gate for possible future LLM output, not a complete LLM connector or remote commissioning service.
 
 **ATLAS:** six mathematical foundations for event derivative, cycles, lifetime charge, sampling loss, happens-before and opportunity cost.
 
