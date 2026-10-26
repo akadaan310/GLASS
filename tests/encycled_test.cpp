@@ -28,7 +28,7 @@ int main(){
  try{m.advance(0);}catch(const std::invalid_argument&){refused=true;}
  assert(refused);
  assert(std::abs(glass::encycled::integrate_step({{0,0},{1,1},{3,0}},4)-2.0)<1e-12);
- assert(std::abs(glass::encycled::cycle_residual(2.5,0.3,0.4)-1.0)<1e-12);
+ assert(std::abs(glass::encycled::elapsed_cycles(2.5,0.4)-1.0)<1e-12);
  Machine capped(4,1);capped.write_word(0b0001);
  refused=false;
  try{capped.write_word(0b1111);}catch(const std::length_error&){refused=true;}
