@@ -1,0 +1,15 @@
+1	region	corpus	acquiring
+2	region	behavior	listening
+3	region	publication	queued
+4	rule	corpus-acquired	corpus	acquiring	inventory-complete	inventoried
+5	rule	behavior-acquired	behavior	listening	inventory-complete	listening
+6	rule	publish-inventory	publication	queued	inventory-complete	ready
+7	intent	inventory-attachments	inventory-complete	upload-nine-originals	host-archive-inspector	Hash%20originals;%20recursively%20inventory;%20retain%20source%20occurrences	Persist%20exact%20acquisition%20frontier
+8	outcome	inventory-attachments	inventory-complete	sources/inventory/attachments.json	Inventory%20completed%20with%20nested-format%20review%20records;%20preserve%20each%20occurrence%20and%20original%20bytes
+9	rule	atlas-project	corpus	inventoried	atlas-projected	mapped
+10	rule	behavior-project	behavior	listening	atlas-projected	listening
+11	intent	project-university	atlas-projected	sources/upstream/university	source-span-projector	Recover%20every%20registered%20topic%20and%20preserve%20source%20spans,%20glossary%20identities,%20prerequisites%20and%20chapters	Retain%20exact%20source%20records%20for%20comparison
+12	outcome	project-university	atlas-projected	atlas/university.json	62%20topics,%20six%20divisions,%2093%20glossary%20terms,%2022%20chapter%20identities,%20299%20relations%20extracted%20from%20pinned%20content;%20event%20records%20retrospective%20projection%20intent%20after%20this%20first%20extraction
+13	rule	publish-main	publication	ready	main-published	synced
+14	rule	behavior-published	behavior	listening	main-published	listening
+15	intent	publish-foundation	main-published	GLASS-public-reviewed-unit	github-main-adapter	Publish%20native%20runtime,%20source-preserving%20atlas,%20evidence%20and%20continuation%20on%20main	Retain%20exact%20local%20files%20and%20reconcile%20the%20expected%20remote%20head

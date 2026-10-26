@@ -1,0 +1,89 @@
+{
+  "schema": "glass.form-contracts.v1",
+  "form_fields": [
+    "id",
+    "kind",
+    "source_span_utf8",
+    "original_bytes_sha256",
+    "language",
+    "variety",
+    "script",
+    "orthography",
+    "lexeme",
+    "root",
+    "affixes",
+    "morphology_profile",
+    "letter_name_profile",
+    "translation_relation",
+    "definition",
+    "encoding",
+    "bit_write_profile",
+    "quantum_representation_source",
+    "operations",
+    "witnesses"
+  ],
+  "relation_kinds": [
+    "prerequisite",
+    "historical-division",
+    "defines",
+    "implements",
+    "encodes",
+    "decodes",
+    "translates-under-profile",
+    "same-root-under-source",
+    "synonym-in-context",
+    "analogy",
+    "equivalent-under",
+    "quotient-by",
+    "preserves",
+    "composes",
+    "generates",
+    "listens-to",
+    "publishes",
+    "reifies"
+  ],
+  "method_fields": [
+    "id",
+    "intent",
+    "input_ids",
+    "adapter_id",
+    "signature",
+    "choice_rationale",
+    "source_state",
+    "event",
+    "target_state",
+    "artifact_ids",
+    "recovery",
+    "witness_ids"
+  ],
+  "generator_fields": [
+    "id",
+    "alphabet_id",
+    "grammar_id",
+    "parameter_schema",
+    "production_rules",
+    "implementation_digest",
+    "parent_recipe",
+    "resource_budget",
+    "replay_fixtures",
+    "variation_fixtures",
+    "source_witnesses"
+  ],
+  "glass_vocabulary": [
+    {
+      "term": "dark matter",
+      "definition": "Owner-designated phantom transition-language research vocabulary",
+      "provenance": "current owner directive"
+    },
+    {
+      "term": "calculus and anti-calculus",
+      "definition": "Glass construction family to define through objects, operations, forward/inverse relations, and witnesses",
+      "provenance": "current owner directive"
+    },
+    {
+      "term": "structural weight",
+      "definition": "Versioned observable behavior graph, choice records, helper contracts, and construction witnesses",
+      "provenance": "current owner directive"
+    }
+  ]
+}

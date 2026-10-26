@@ -1,0 +1,22 @@
+{
+  "schema": "glass.execution-receipt.v1",
+  "command": "make -C GLASS all test",
+  "observed_exit_code": 0,
+  "compiler": "g++ -std=c++20 -O2 -Wall -Wextra -Werror",
+  "kernel_cases": [
+    "concurrent reactions",
+    "pre-intents",
+    "declared events",
+    "duplicate outcomes",
+    "journal replay",
+    "stale cursor",
+    "torn tail",
+    "spelling trace"
+  ],
+  "publisher_cases": [
+    "main publication to local bare Git remote",
+    "main branch guard",
+    "queued receipt after unreachable transport"
+  ],
+  "scope": "local Linux native runtime and local Git remote fixture"
+}

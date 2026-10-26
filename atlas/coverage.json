@@ -1,0 +1,104 @@
+{
+  "schema": "glass.coverage.v1",
+  "commission": "atlas-001",
+  "attachment_originals": 9,
+  "attachment_records": 814,
+  "attachment_text_sections": 65,
+  "university": {
+    "divisions": 6,
+    "topics": 62,
+    "term_identities": 93,
+    "chapter_identities": 22,
+    "relations": 299,
+    "stage": "source-record-extracted"
+  },
+  "source_trees": [
+    {
+      "inventory": "sources/inventory/clock9-tree.json",
+      "sha": "5f96947b275a4c435a7268fba432b9137736258d",
+      "entries": 1,
+      "truncated": false,
+      "acquired_text_files": 0
+    },
+    {
+      "inventory": "sources/inventory/computationalgrammartheory-tree.json",
+      "sha": "bfe32fc37f7fa61d50da50ecd2aa7fa97c0dd5a1",
+      "entries": 175,
+      "truncated": false,
+      "acquired_text_files": 0
+    },
+    {
+      "inventory": "sources/inventory/grammarinnumbers-research-tree.json",
+      "sha": "5c96ddca7b032ff76ab11d1c8306d2aef4bcf211",
+      "entries": 271,
+      "truncated": false,
+      "acquired_text_files": 0
+    },
+    {
+      "inventory": "sources/inventory/polyia-research-tree.json",
+      "sha": "bb6319acb88467b618f5a6f673f1867768223ce6",
+      "entries": 1560,
+      "truncated": false,
+      "acquired_text_files": 5
+    },
+    {
+      "inventory": "sources/inventory/polyia-tree.json",
+      "sha": "546583c070b4c282a37f1af678a8188e51bcc644",
+      "entries": 11,
+      "truncated": false,
+      "acquired_text_files": 5
+    },
+    {
+      "inventory": "sources/inventory/purl-research-tree.json",
+      "sha": "83d6bcaf8b811e9d2744fb15a6d42ae5d899de1c",
+      "entries": 291,
+      "truncated": false,
+      "acquired_text_files": 0
+    },
+    {
+      "inventory": "sources/inventory/seurl-tree.json",
+      "sha": "620ff955b87857c3eb7a7700a81b6a4d0217400a",
+      "entries": 3,
+      "truncated": false,
+      "acquired_text_files": 0
+    },
+    {
+      "inventory": "sources/inventory/surface-tree.json",
+      "sha": "aa4474e4bd884ddec98fbeb13b5f0c167cdbe03c",
+      "entries": 644,
+      "truncated": false,
+      "acquired_text_files": 9
+    },
+    {
+      "inventory": "sources/inventory/university-tree.json",
+      "sha": "6a0f5eaa8dd39b58bdd99889721ecea5f54e62bb",
+      "entries": 173,
+      "truncated": false,
+      "acquired_text_files": 12
+    }
+  ],
+  "current_runtime": [
+    "concurrent regions",
+    "declared transitions",
+    "pre-appended intents",
+    "outcome observations",
+    "automatic matching reactions",
+    "journal replay",
+    "expected cursor",
+    "observable behavior weight",
+    "byte spelling trace",
+    "one-shot main Git publisher"
+  ],
+  "frontier": [
+    "full source-content inspection across acquired trees",
+    "remaining University math/exhibit/book files",
+    "all later VII/VIII/IX/Infinity source interpretation",
+    "language lexicons and owner Arabic 48-form profile",
+    "source-specific PHANTOM V3 quantum adapter",
+    "helper registry and parameterized generator promotion",
+    "Oracle server connection and native host build",
+    "HTTP/MCP implementation and authenticated endpoint",
+    "installed continuous publication watcher"
+  ],
+  "observation_start": "Native journal begins after initial source reconnaissance and runtime bootstrap; retrospective entries explicitly identify their timing."
+}

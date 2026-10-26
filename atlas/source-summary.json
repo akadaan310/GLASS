@@ -1,0 +1,55 @@
+{
+  "schema": "glass.source-summary.v1",
+  "originals": [
+    {
+      "source": "02_LETTERS_SCRIPTS_AND_PHANTOM_OPERATORS.md",
+      "sha256": "3891bf34dda465c6957e3cee2138506dbefd4a870f907fadef06df7f8382da18",
+      "bytes": 39430
+    },
+    {
+      "source": "ADVERSARIAL_GRAMMAR_SYNTHESIS.md",
+      "sha256": "6b15436d1974b5de56cdbbeaa3d86f2a609063ae9a8e8fb281c356bbcbf60223",
+      "bytes": 43312
+    },
+    {
+      "source": "BITONOMIA_DIGITAL_GRAMMAR_PILLAR.md",
+      "sha256": "0a25ce9dc5c8f485c93e484a4ee12179d160a6634707a8d7472b52969a077501",
+      "bytes": 37794
+    },
+    {
+      "source": "CAPABILITY_ATLAS.md",
+      "sha256": "b8d7da08793d552f8d163964362449764e38e4e695d08d9e2ac7f2b95e13d5aa",
+      "bytes": 4574
+    },
+    {
+      "source": "D_TERMINAL_RESEARCH_PROGRAMME_v0_1.zip",
+      "sha256": "b6c13e9a0d4589691500d12481946b041f14cf9f48f853868cd977f577bdf36a",
+      "bytes": 109359
+    },
+    {
+      "source": "EIDOPOEIA handoff for the After Hours Muse.md",
+      "sha256": "db470612d7ec6858fac8740282171efe6f2820e653e2d702339947b4ba99dcef",
+      "bytes": 24063
+    },
+    {
+      "source": "MUSE_HARITI_MEDIA_COMMISSION_v1_0.zip",
+      "sha256": "3443e4ae4d32adbd02daa7ada7500a6f776b6f06afd16ddbd6c14c6aa85992f4",
+      "bytes": 185151
+    },
+    {
+      "source": "PHANTOM_RAKE_AUDIT_AND_GF2.zip",
+      "sha256": "2199859849dac2781a9ee294732f63016bee3184f371eac0635608f2441f93d4",
+      "bytes": 18104
+    },
+    {
+      "source": "QUANTUM_ORACLE_PHANTOM_V2_HANDOFF.zip",
+      "sha256": "0e37728a910431be8a3e7290caaf4f49481b6fc12643f336b4debfda4642e92b",
+      "bytes": 16643831
+    }
+  ],
+  "recursive_records": 814,
+  "private_custody": "Complete originals and nested-member census travel in the portable source package.",
+  "university_commit": "6a0f5eaa8dd39b58bdd99889721ecea5f54e62bb",
+  "surface_commit": "aa4474e4bd884ddec98fbeb13b5f0c167cdbe03c",
+  "polyia_runtime_commit": "bb6319acb88467b618f5a6f673f1867768223ce6"
+}

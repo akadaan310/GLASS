@@ -1,0 +1,775 @@
+{
+  "schema": "glass.public-tower.v1",
+  "construction": "owner-scope acquisition seeds",
+  "topics": [
+    {
+      "id": "public.pure-mathematics.arithmetic",
+      "title": "Arithmetic",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.number-systems",
+      "title": "Number systems",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.logic",
+      "title": "Logic",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.sets",
+      "title": "Sets",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.relations",
+      "title": "Relations",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.functions",
+      "title": "Functions",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.elementary-algebra",
+      "title": "Elementary algebra",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.polynomials",
+      "title": "Polynomials",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.euclidean-geometry",
+      "title": "Euclidean geometry",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.trigonometry",
+      "title": "Trigonometry",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.sequences",
+      "title": "Sequences",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.series",
+      "title": "Series",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.single-variable-calculus",
+      "title": "Single-variable calculus",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.multivariable-calculus",
+      "title": "Multivariable calculus",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.linear-algebra",
+      "title": "Linear algebra",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.abstract-algebra",
+      "title": "Abstract algebra",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.groups",
+      "title": "Groups",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.rings",
+      "title": "Rings",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.fields",
+      "title": "Fields",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.number-theory",
+      "title": "Number theory",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.combinatorics",
+      "title": "Combinatorics",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.graph-theory",
+      "title": "Graph theory",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.general-topology",
+      "title": "General topology",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.algebraic-topology",
+      "title": "Algebraic topology",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.homotopy",
+      "title": "Homotopy",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.homology",
+      "title": "Homology",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.cohomology",
+      "title": "Cohomology",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.differential-topology",
+      "title": "Differential topology",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.geometric-topology",
+      "title": "Geometric topology",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.knot-theory",
+      "title": "Knot theory",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.combinatorial-topology",
+      "title": "Combinatorial topology",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.manifolds",
+      "title": "Manifolds",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.differential-geometry",
+      "title": "Differential geometry",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.metric-geometry",
+      "title": "Metric geometry",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.real-analysis",
+      "title": "Real analysis",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.complex-analysis",
+      "title": "Complex analysis",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.measure-theory",
+      "title": "Measure theory",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.functional-analysis",
+      "title": "Functional analysis",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.harmonic-analysis",
+      "title": "Harmonic analysis",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.category-theory",
+      "title": "Category theory",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.order-and-lattices",
+      "title": "Order and lattices",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.model-theory",
+      "title": "Model theory",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.proof-theory",
+      "title": "Proof theory",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.pure-mathematics.set-theoretic-foundations",
+      "title": "Set-theoretic foundations",
+      "domain": "pure-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-mathematics.exact-arithmetic",
+      "title": "Exact arithmetic",
+      "domain": "computational-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-mathematics.symbolic-computation",
+      "title": "Symbolic computation",
+      "domain": "computational-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-mathematics.numerical-analysis",
+      "title": "Numerical analysis",
+      "domain": "computational-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-mathematics.approximation-theory",
+      "title": "Approximation theory",
+      "domain": "computational-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-mathematics.computational-algebra",
+      "title": "Computational algebra",
+      "domain": "computational-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-mathematics.computational-number-theory",
+      "title": "Computational number theory",
+      "domain": "computational-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-mathematics.computational-topology",
+      "title": "Computational topology",
+      "domain": "computational-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-mathematics.computational-geometry",
+      "title": "Computational geometry",
+      "domain": "computational-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-mathematics.ordinary-differential-equations",
+      "title": "Ordinary differential equations",
+      "domain": "computational-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-mathematics.partial-differential-equations",
+      "title": "Partial differential equations",
+      "domain": "computational-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-mathematics.discrete-calculus",
+      "title": "Discrete calculus",
+      "domain": "computational-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-mathematics.difference-equations",
+      "title": "Difference equations",
+      "domain": "computational-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-mathematics.optimization",
+      "title": "Optimization",
+      "domain": "computational-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-mathematics.control",
+      "title": "Control",
+      "domain": "computational-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-mathematics.inverse-problems",
+      "title": "Inverse problems",
+      "domain": "computational-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-mathematics.scientific-computing",
+      "title": "Scientific computing",
+      "domain": "computational-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-mathematics.interval-arithmetic",
+      "title": "Interval arithmetic",
+      "domain": "computational-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-mathematics.verified-computation",
+      "title": "Verified computation",
+      "domain": "computational-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-mathematics.tensor-computation",
+      "title": "Tensor computation",
+      "domain": "computational-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-mathematics.spectral-methods",
+      "title": "Spectral methods",
+      "domain": "computational-mathematics",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.boolean-logic",
+      "title": "Boolean logic",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.digital-circuits",
+      "title": "Digital circuits",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.computer-architecture",
+      "title": "Computer architecture",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.memory-systems",
+      "title": "Memory systems",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.instruction-sets",
+      "title": "Instruction sets",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.machine-code",
+      "title": "Machine code",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.automata",
+      "title": "Automata",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.formal-languages",
+      "title": "Formal languages",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.parsing",
+      "title": "Parsing",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.type-systems",
+      "title": "Type systems",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.programming-language-semantics",
+      "title": "Programming-language semantics",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.compilers",
+      "title": "Compilers",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.algorithms",
+      "title": "Algorithms",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.data-structures",
+      "title": "Data structures",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.computability",
+      "title": "Computability",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.complexity",
+      "title": "Complexity",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.operating-systems",
+      "title": "Operating systems",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.concurrency",
+      "title": "Concurrency",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.distributed-systems",
+      "title": "Distributed systems",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.networks",
+      "title": "Networks",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.databases",
+      "title": "Databases",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.information-theory",
+      "title": "Information theory",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.coding-theory",
+      "title": "Coding theory",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.cryptography",
+      "title": "Cryptography",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.program-synthesis",
+      "title": "Program synthesis",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.verification",
+      "title": "Verification",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.graphics",
+      "title": "Graphics",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.gpu-architecture",
+      "title": "GPU architecture",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.quantum-information",
+      "title": "Quantum information",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computer-science.quantum-algorithms",
+      "title": "Quantum algorithms",
+      "domain": "computer-science",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-models.computational-music-theory",
+      "title": "Computational music theory",
+      "domain": "computational-models",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-models.musical-modes",
+      "title": "Musical modes",
+      "domain": "computational-models",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-models.harmony",
+      "title": "Harmony",
+      "domain": "computational-models",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-models.rhythm",
+      "title": "Rhythm",
+      "domain": "computational-models",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-models.score-representations",
+      "title": "Score representations",
+      "domain": "computational-models",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-models.signal-processing",
+      "title": "Signal processing",
+      "domain": "computational-models",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-models.computational-linguistics",
+      "title": "Computational linguistics",
+      "domain": "computational-models",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-models.morphology",
+      "title": "Morphology",
+      "domain": "computational-models",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-models.computational-chemistry",
+      "title": "Computational chemistry",
+      "domain": "computational-models",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-models.computational-biology",
+      "title": "Computational biology",
+      "domain": "computational-models",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-models.computational-physiology",
+      "title": "Computational physiology",
+      "domain": "computational-models",
+      "stage": "acquisition-seed",
+      "relations": []
+    },
+    {
+      "id": "public.computational-models.computational-anatomy",
+      "title": "Computational anatomy",
+      "domain": "computational-models",
+      "stage": "acquisition-seed",
+      "relations": []
+    }
+  ],
+  "curriculum_sources": [
+    {
+      "id": "mit.math",
+      "url": "https://catalog.mit.edu/degree-charts/mathematics-course-18/",
+      "stage": "located"
+    },
+    {
+      "id": "mit.math.subjects",
+      "url": "https://catalog.mit.edu/subjects/18/",
+      "stage": "located"
+    },
+    {
+      "id": "mit.cs",
+      "url": "https://www.eecs.mit.edu/academics/undergraduate-programs/curriculum/6-3-computer-science-and-engineering/",
+      "stage": "located"
+    },
+    {
+      "id": "stanford.math",
+      "url": "https://bulletin.stanford.edu/programs/MATH-BS",
+      "stage": "located"
+    },
+    {
+      "id": "stanford.cs",
+      "url": "https://www.cs.stanford.edu/bs-degree-requirements",
+      "stage": "located"
+    }
+  ]
+}

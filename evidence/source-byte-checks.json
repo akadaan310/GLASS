@@ -1,0 +1,152 @@
+[
+  {
+    "path": "sources/upstream/university/AGENTS.md",
+    "git_blob_sha": "454b5d4fb6162735efa035334bc9f8deefd15d86",
+    "expected_sha": "454b5d4fb6162735efa035334bc9f8deefd15d86",
+    "matches": true
+  },
+  {
+    "path": "sources/upstream/university/src/content/sources.ts",
+    "git_blob_sha": "a01a540c3d5ca291d449556f4a7a256085ddf8ac",
+    "expected_sha": "a01a540c3d5ca291d449556f4a7a256085ddf8ac",
+    "matches": true
+  },
+  {
+    "path": "sources/upstream/university/src/content/registry.ts",
+    "git_blob_sha": "5f1bffc5f50b161900b48ab988058cfb2c5a8f1e",
+    "expected_sha": "5f1bffc5f50b161900b48ab988058cfb2c5a8f1e",
+    "matches": true
+  },
+  {
+    "path": "sources/upstream/university/src/content/glossary.ts",
+    "git_blob_sha": "4c77864ace3cb3fb8a01ac6a1026e408f2fdf98c",
+    "expected_sha": "4c77864ace3cb3fb8a01ac6a1026e408f2fdf98c",
+    "matches": true
+  },
+  {
+    "path": "sources/upstream/university/src/content/types.ts",
+    "git_blob_sha": "cc5d328429b907750d734c773ca47ab40c782417",
+    "expected_sha": "cc5d328429b907750d734c773ca47ab40c782417",
+    "matches": true
+  },
+  {
+    "path": "sources/upstream/university/src/content/cgt.ts",
+    "git_blob_sha": "cfee24a891bdb24450214c9bc93931b415d1c512",
+    "expected_sha": "cfee24a891bdb24450214c9bc93931b415d1c512",
+    "matches": true
+  },
+  {
+    "path": "sources/upstream/university/src/content/topics/relational.ts",
+    "git_blob_sha": "137047cfc0022d1586455d5f2f8d4f512e33022f",
+    "expected_sha": "137047cfc0022d1586455d5f2f8d4f512e33022f",
+    "matches": true
+  },
+  {
+    "path": "sources/upstream/university/src/content/topics/foundations.ts",
+    "git_blob_sha": "0e87aa41eb5a3233a700e9931b532ff92a84e960",
+    "expected_sha": "0e87aa41eb5a3233a700e9931b532ff92a84e960",
+    "matches": true
+  },
+  {
+    "path": "sources/upstream/university/src/content/topics/worlds.ts",
+    "git_blob_sha": "195cd091e2dadaa86ffcc2eb217f8a9f6c621e5c",
+    "expected_sha": "195cd091e2dadaa86ffcc2eb217f8a9f6c621e5c",
+    "matches": true
+  },
+  {
+    "path": "sources/upstream/university/src/content/topics/geometry.ts",
+    "git_blob_sha": "cb6ac875184bc1542cf5f64a83c21f677ca8ee42",
+    "expected_sha": "cb6ac875184bc1542cf5f64a83c21f677ca8ee42",
+    "matches": true
+  },
+  {
+    "path": "sources/upstream/university/src/content/topics/acoustic.ts",
+    "git_blob_sha": "ac74979e095866d01731f1c6f5d918cf83aedd3c",
+    "expected_sha": "ac74979e095866d01731f1c6f5d918cf83aedd3c",
+    "matches": true
+  },
+  {
+    "path": "sources/upstream/university/src/content/topics/languages.ts",
+    "git_blob_sha": "cfcfc8d620b670765f8844b459afba36a3d9f950",
+    "expected_sha": "cfcfc8d620b670765f8844b459afba36a3d9f950",
+    "matches": true
+  },
+  {
+    "path": "sources/upstream/surface/tools/commission.py",
+    "git_blob_sha": "0c31b714a735e07ad4e8ccb038db3a9dcc806b54",
+    "expected_sha": "0c31b714a735e07ad4e8ccb038db3a9dcc806b54",
+    "matches": true
+  },
+  {
+    "path": "sources/upstream/surface/src/phantom.cpp",
+    "git_blob_sha": "481e17e6e28b51c4f55b71d72ce1aa485b1dbad2",
+    "expected_sha": "481e17e6e28b51c4f55b71d72ce1aa485b1dbad2",
+    "matches": true
+  },
+  {
+    "path": "sources/upstream/surface/docs/PHANTOM.md",
+    "git_blob_sha": "19f98f87cf57982feec0722b76543f6e8be2f5d7",
+    "expected_sha": "19f98f87cf57982feec0722b76543f6e8be2f5d7",
+    "matches": true
+  },
+  {
+    "path": "sources/upstream/surface/docs/MATHEMATICAL_ATLAS.md",
+    "git_blob_sha": "5d0afb9c09a193c8c9c5c07fef7f228db4455e90",
+    "expected_sha": "5d0afb9c09a193c8c9c5c07fef7f228db4455e90",
+    "matches": true
+  },
+  {
+    "path": "sources/upstream/surface/docs/QUANTUM_V3_CONSOLIDATION.md",
+    "git_blob_sha": "40f7f0a8a4b0f90bba88949248c965d7f2168905",
+    "expected_sha": "40f7f0a8a4b0f90bba88949248c965d7f2168905",
+    "matches": true
+  },
+  {
+    "path": "sources/upstream/surface/docs/SUBSTRATE_UNIVERSITY.md",
+    "git_blob_sha": "ae00d6db8d3b9b481bc3ab41094e74006e8d9b8b",
+    "expected_sha": "ae00d6db8d3b9b481bc3ab41094e74006e8d9b8b",
+    "matches": true
+  },
+  {
+    "path": "sources/upstream/surface/include/surface/phantom.hpp",
+    "git_blob_sha": "d9e77a84cb52114bea02f9774314cdcd12e9ff87",
+    "expected_sha": "d9e77a84cb52114bea02f9774314cdcd12e9ff87",
+    "matches": true
+  },
+  {
+    "path": "sources/upstream/surface/initiatives/quantum-oracle-v3/CONSTITUTION_V3.md",
+    "git_blob_sha": "b98fc73daba1532c1bcb44976bd0bbe7fc7c3a71",
+    "expected_sha": "b98fc73daba1532c1bcb44976bd0bbe7fc7c3a71",
+    "matches": true
+  },
+  {
+    "path": "sources/upstream/surface/initiatives/quantum-oracle-v3/SELF_PROMPT.md",
+    "git_blob_sha": "665b734b345f10a01aa5962861180940accc25a4",
+    "expected_sha": "665b734b345f10a01aa5962861180940accc25a4",
+    "matches": true
+  },
+  {
+    "path": "sources/upstream/polyia/GOD_SEED.md",
+    "git_blob_sha": "cbfd990bf3d97b85e7f5647802e937904ee974d1",
+    "expected_sha": "cbfd990bf3d97b85e7f5647802e937904ee974d1",
+    "matches": true
+  },
+  {
+    "path": "sources/upstream/polyia/polyia/generators.py",
+    "git_blob_sha": "4bd185564af5923a26a0f447a69e75f8ce7cb1f5",
+    "expected_sha": "4bd185564af5923a26a0f447a69e75f8ce7cb1f5",
+    "matches": true
+  },
+  {
+    "path": "sources/upstream/polyia/docs/DIVISION_CHARTERS.md",
+    "git_blob_sha": "34c5355c8f82df79fabd205d489bfe9dda8f6666",
+    "expected_sha": "34c5355c8f82df79fabd205d489bfe9dda8f6666",
+    "matches": true
+  },
+  {
+    "path": "sources/upstream/polyia/sources/expanded/Division_Infinity_CEF_Research_Packet_v0.1(1)/division_infinity_packet/RESEARCH_MANIFESTO.md",
+    "git_blob_sha": "e6f4817bb73bc85a60edb041ef69aec6d7af7028",
+    "expected_sha": "e6f4817bb73bc85a60edb041ef69aec6d7af7028",
+    "matches": true
+  }
+]

@@ -1,0 +1,6 @@
+build/
+sources/originals/
+sources/upstream/
+.private/
+*.key
+*.pem
