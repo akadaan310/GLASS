@@ -130,6 +130,47 @@ The strict positional tape for a nonnegative integer \(n\) is its unique base-te
 
 In these examples an unlabelled **0** in a tape list is shorthand for a zero-coefficient cell with a declared ṢIFR gap role, never an additional letter. The electronic binary number 1000₂ equals eight; the decimal address 1000₁₀ equals one thousand. They are never silently conflated.
 
+### The four foundational tape forms and their infinite lift
+
+The owner's **1,000 as confirmation of four tape forms** is modeled by a finite register *type* system, not by claiming that 1,000 equals an ordinary 4-digit Boolean word.
+
+| Form ID | Place | Native register family | Entrance or exit |
+|---|---:|---|---|
+| \(\mathcal T_1\) | \(p=0\) | Alif through Ṭāʾ | 1 initiates; 9 terminal |
+| \(\mathcal T_2\) | \(p=1\) | Yāʾ through Ṣād | 10 initiates; 90 terminal |
+| \(\mathcal T_3\) | \(p=2\) | Qāf through Ẓāʾ | 100 initiates; 900 terminal |
+| \(\mathcal T_4\) | \(p=3\) | Ghayn anchor with Bāʾ–Ṭāʾ coefficient continuation | 1,000 initiates the 3-place return cycle |
+
+For all higher places, repeat the *band types* \(\mathcal T_1,\mathcal T_2,\mathcal T_3\), while Ghayn specifically replaces high-order coefficient-1 ALIF at \(p\equiv0\pmod3\). Thus the fourth tape is a **return/confirmation gate** and the higher-index register families are reusable. That convention is a proposed new operation profile; it is not a claim about historically standard Arabic notation.
+
+### A deterministic reference encoder
+
+~~~text
+encode_nonnegative_integer(n, profile="QITT/0.1"):
+  reject non-integer and n < 0
+  if n == 0: return [Cell(place=0, coefficient=0, role=SIFR_ZERO)]
+  cells = []
+  p = 0
+  while n > 0:
+    digit = n mod 10
+    if digit == 0:
+      cells.append(Cell(p, 0, SIFR_GAP, glyph=none))
+    else:
+      cells.append(Cell(p, digit, LETTER, glyph=L(p,digit)))
+    n = floor(n/10)
+    p = p+1
+    if p > maximum_places: RESOURCE_LIMIT
+  return reverse(cells) with exact place tags and registry version
+
+decode_typed_address(cells):
+  check consecutive place tags, high-to-low, final place 0
+  check SIFR role and every nonzero glyph L(place,coefficient)
+  return sum(coefficient * 10^place for each cell)
+~~~
+
+The encoder and decoder are **algorithms specified in this paper**, not evidence that an interpreter binary is installed. The number of output cells is linear in decimal digit length. The 28 native registry symbols are reused; no additional Unicode glyph is minted when the tape expands.
+
+
 ## 3. ṢIFR: an operator-capable absence and holding type
 
 **Axiom CALRC-Z1.** ṢIFR is a family of *typed cell conditions*, not a single scalar value:
@@ -441,6 +482,27 @@ The ordered domain IDs follow SURFACE's mathematical atlas. These are **review q
 **SNAD / Qur'anic research:** Source spellings, verses, morphology sources, qirāʾāt and interpretation are versioned separately. A numeric registry address is an additional projection; it cannot overwrite exact Qur'anic text or establish speaker intent or theological meaning.
 
 **GLASS Hermes / Agency / Atlas:** Candidate oracles are structured services: REGISTER, PARSE, ADDRESS, INVERT-FIBER, LIFF, MORPH-PROFILE, TOPOLOGY, and PROVENANCE. Hermes may dispatch an oracle only through a registered contract, fixed resource budget and observable evidence; it does not promote an unproved linguistic hypothesis by replaying a self-authored example.
+
+### Oracle/operator transition signature
+
+| Operation | Input type | Output type | Guard and invariant |
+|---|---|---|---|
+| REGISTER | base glyph + source profile | native register ID/weight | only declared 28 glyphs; raw source retained |
+| ADDRESS | exact nonnegative integer | canonical typed tape | digit bound and value round trip |
+| PROJECT | tagged tape | visible glyphs + loss receipt | never claims reversible projection |
+| INVERT_FIBER | visible glyphs + constraints | finite candidate tapes / UNKNOWN | requires place/cycle bounds; no unique answer implied |
+| SIFR_ALLOCATE | fresh place + role | typed empty cell | GAP, ZERO, holder and reserved differ |
+| BIND / RELEASE | typed holder and payload | bound/unbound holder | declared compatible type and generation |
+| LIFF | canonical tape + increment event | canonical successor tape | carry is base-ten; atomic event receipt |
+| GHAYN_RETURN | place \(3k\), \(k\ge1\), coefficient 1 | annotated Ghayn cell | absolute place/cycle unchanged |
+| QITT_BOUNDARY | profiled token sequence + frame | boundary annotation or refusal | no automatic interpretation of ordinary words |
+| BIT_FLIP | declared Boolean occupancy | toggled occupancy | neither integer add nor quantum gate by default |
+| CONTROL_RETURN | MARK_3 mask state | RETURN_1 mask state | 1110→1000; generation increments |
+| MORPH_PROFILE | exact source text + sourced profile | profiled tokens/analysis or UNKNOWN | no unsupported roots/definitions invented |
+| TOPOLOGY_PROJECT | declared graph and face contract | combinatorial complex/invariants | no spatial/physical claims from layout |
+
+These services are proposed as small pure or explicitly effect-typed **GLASS oracles**. Their adapters need observable tool receipts, independent replay and bounded resource contracts before runtime promotion. The oracle's product is a **typed mathematical witness or a classified refusal**, not a self-certified discovery.
+
 
 ## 12. Proposed source-facing address interface
 
