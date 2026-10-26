@@ -1,0 +1,62 @@
+{
+  "schema": "glass.commission.intent/0.1",
+  "id": "son-008",
+  "date": "2026-10-26",
+  "instruction": "Construct bounded symbolic addressing SON/0.1 (UNISON→BISON→TRISON→NISON) with four concurrent programmable URLs and typed search/bit/quantum/self-revision traces in GLASS.",
+  "owner_terms": [
+    "infinite Unison alphabet family",
+    "Boolean URL predicates",
+    "ordered glyphs and words",
+    "tape matrices",
+    "simulated quantum and IO events",
+    "self-changing event receipts",
+    "SON of unison trison bison"
+  ],
+  "source_contracts": [
+    "GLASS/main docs/GLASS_COMMISSION.md, docs/QITT_CYCLIC_ARABIC_REGISTER_CALCULUS.md, docs/ENCYCLED_CALCULUS.md",
+    "GLASS/main apps/glass-oracle/index.html",
+    "Owner-provided GLASS_Selective_Memory_007/unison/query.py, predicate.py, alphabets.py",
+    "Google Search Help operators exact phrase/site/-/filetype/before/after, official Google Programmable Search OR/q parameter"
+  ],
+  "regions": {
+    "identity": "specified",
+    "compiler": "planned",
+    "matrix": "planned",
+    "tracing": "planned",
+    "browser": "planned",
+    "testing": "planned",
+    "publication": "queued"
+  },
+  "effect_contracts": [
+    "read exact source without performing unapproved network requests",
+    "emit versioned canonical URLs and source maps",
+    "one immutable event per operation",
+    "separate software IO, numerical ideal quantum and approved self revision",
+    "Google projection is search string only; no arbitrary Google/tool instruction control",
+    "publish complete verified source to main with exact artifact identities"
+  ],
+  "security": [
+    "no stealth device or account fingerprinting",
+    "no changing search/provider behavior",
+    "no URL encoding of credentials/private data",
+    "explicit self rewrite and no arbitrary code evaluation",
+    "typed resource budgets and malformed query refusals"
+  ],
+  "deliverables": [
+    "apps/son/son.py",
+    "apps/son/index.html",
+    "apps/son/tests/test_son.py",
+    "apps/son/README.md",
+    "docs/SON_UNISON_PROTOCOL.md",
+    "commissions/son-008/OUTCOME.json"
+  ],
+  "stages": "DECLARE→PARSE→EMIT→TRACE→CHECK→PUBLISH→READBACK",
+  "resource_limits": {
+    "lanes": 4,
+    "source_length_each": 2048,
+    "tokens_each": 128,
+    "decoded_envelope_bytes": 16384,
+    "modification_budget": 1
+  },
+  "recovery": "If publication cannot finish record source paths and remaining commit state; never assert a working glass.com deployment without verification."
+}
