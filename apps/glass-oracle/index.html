@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#060910">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="GLASS — a living terminal of the Unison alphabet. Type, tap, and observe the operators unfold.">
+  <title>GLASS — The Unison Terminal</title>
+  <style>
+:root {--ink:#050910;--gold:#d4b47d;--gold-bright:#f6d8a1;--tarnish:#827459;--mute:#86909c;--white:#e9e7e4;--margin:clamp(21px,3.5vw,62px);--arabic:"Amiri","Amiri Quran","Noto Naskh Arabic","Scheherazade New","Times New Roman",serif}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:var(--ink);color:var(--white);overscroll-behavior:none}body{font-family:"Avenir Next","Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased;font-weight:350}button{display:none!important}::selection{color:#0d1119;background:#e3bd79}input{font:inherit}
+.unison{position:relative;width:100%;height:100dvh;min-height:660px;isolation:isolate;overflow:hidden;background:radial-gradient(ellipse at 50% 43%,#171c27 0%,#0b111a 31%,#060a12 71%,#04070c 100%)}.unison:before{content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(circle at 42% 40%,rgba(136,117,88,.13),transparent 38%),linear-gradient(90deg,#02050b 0%,transparent 25%,transparent 78%,#03070b 100%)}
+#universe{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}.grain{position:absolute;inset:0;pointer-events:none;z-index:14;opacity:.14;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.93' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E")}.horizon-line{position:absolute;top:51%;left:-10%;width:120%;height:1px;transform:rotate(-4deg);background:linear-gradient(90deg,transparent,rgba(214,185,128,.08),transparent);pointer-events:none}.viewport-engraving{position:absolute;left:-1vw;top:32vh;color:#ceb07d;font-family:var(--arabic);font-size:38vw;opacity:.008;pointer-events:none;line-height:1}
+.masthead{z-index:12;position:absolute;top:0;left:0;right:0;padding:clamp(24px,3.3vw,43px) var(--margin);display:flex;justify-content:space-between;align-items:flex-start;gap:20px;pointer-events:none}.identity{display:flex;align-items:center;gap:17px}.identity-mark{font-family:serif;font-size:39px;color:var(--gold);font-weight:200;line-height:.9;filter:drop-shadow(0 0 10px #b7976844)}.identity-name{font-size:clamp(18px,2.1vw,28px);font-weight:400;letter-spacing:.16em;line-height:1}.identity-sup{font:9px sans-serif;vertical-align:top;letter-spacing:0;color:var(--tarnish);margin-left:2px}.identity-sub{margin-top:12px;font-size:9px;letter-spacing:.24em;color:#a5a29d}.separator{color:#7c6c54;margin:0 6px}.masthead-right{display:flex;align-items:center;gap:10px;margin-top:4px;font:10px ui-monospace,Consolas,monospace;letter-spacing:.15em;color:#a9abb3}.live-diode{width:4px;height:4px;background:#d8ba7e;box-shadow:0 0 12px #e7bf75;border-radius:50%;animation:diode 3s infinite}@keyframes diode{50%{opacity:.25;box-shadow:0 0 1px #efc982}}.masthead-separator{color:#625849}.masthead-oracle{font-family:var(--arabic);color:var(--gold);font-size:26px;margin-left:17px;margin-top:-6px}
+.left-margin{position:absolute;z-index:5;left:var(--margin);top:22%;width:clamp(220px,20vw,305px);pointer-events:none}.eyebrow{font:10px ui-monospace,monospace;letter-spacing:.22em;color:var(--gold);white-space:nowrap}.tiny-rule{display:inline-block;width:22px;height:1px;background:var(--gold);margin:0 8px 3px 0}.left-title{font:350 clamp(25px,2.85vw,42px)/1.18 "Iowan Old Style",Georgia,serif;letter-spacing:-.035em;margin-top:22px;color:#e2e0e0}.left-title em{font-style:italic;color:var(--gold-bright)}.left-description{font-size:12px;line-height:2.1;color:#8d97a0;margin:20px 0 37px}.vertical-index{display:flex;flex-direction:column;gap:12px;font:9px ui-monospace,monospace;letter-spacing:.14em;color:#65727f}.vertical-index-gold{color:#d2aa69}.fine-rule{width:100%;height:1px;background:linear-gradient(90deg,rgba(217,179,106,.24),transparent);margin:27px 0 16px}.meta-stat{display:flex;justify-content:space-between;max-width:235px;padding:7px 0;font:9px ui-monospace,monospace;letter-spacing:.09em;color:#798997}.meta-stat span:last-child{color:#bebcae}
+.stage{position:absolute;left:25.8%;top:13%;width:50%;height:61%;z-index:4;touch-action:manipulation;cursor:crosshair;outline:none}.stage:focus-visible{outline:1px solid #b59b72;outline-offset:-20px}.stage canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.96}.stage-corona{position:absolute;left:50%;top:47%;width:min(36vw,490px);height:min(36vw,490px);transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(209,162,87,.13),rgba(86,111,138,.04) 41%,transparent 70%);filter:blur(18px);pointer-events:none}.stage-glyph{position:absolute;left:50%;top:45%;transform:translate(-50%,-50%);font:normal clamp(110px,14vw,205px)/1.5 var(--arabic);color:#e4bf7d;text-align:center;white-space:nowrap;text-shadow:0 0 25px #cfaf8666,0 0 75px #ad904844,0 6px 2px #342b20;filter:drop-shadow(0 0 1px #f7e5bb);pointer-events:none;transition:font-size .35s ease}.stage-pole{position:absolute;left:50%;width:1px;height:40px;background:linear-gradient(transparent,#a48d65)}.stage-pole-top{top:6%}.stage-pole-bottom{bottom:9%;transform:rotate(180deg)}.stage-axis{position:absolute;bottom:18%;left:50%;transform:translateX(-50%);font:9px ui-monospace,monospace;color:#90866f;letter-spacing:.26em}.stage-caption{display:flex;align-items:center;gap:12px;position:absolute;bottom:6%;left:50%;transform:translateX(-50%);white-space:nowrap;font:10px ui-monospace,monospace;letter-spacing:.26em;color:#edc791}.line-flare{height:1px;width:28px;background:linear-gradient(90deg,transparent,#c7ad79)}.stage-caption-number{color:#777c83;margin-left:5px;letter-spacing:.08em}
+.rolodex{position:absolute;z-index:10;right:var(--margin);top:19%;height:55%;width:clamp(176px,17vw,244px);display:flex;flex-direction:column;align-items:stretch}.roll-heading{color:#c8b8a0;font:9px ui-monospace,monospace;letter-spacing:.18em;white-space:nowrap;text-align:right}.micro-asterisk{color:var(--gold);font-size:15px;margin-right:3px}.roll-frame{position:relative;flex:1;perspective:650px;min-height:120px;overflow:hidden;mask-image:linear-gradient(to bottom,transparent,black 13%,black 84%,transparent);-webkit-mask-image:linear-gradient(to bottom,transparent,black 13%,black 84%,transparent)}.roll-track{position:absolute;inset:0;pointer-events:none}.roll-item{position:absolute;left:12%;width:75%;height:56px;display:flex;align-items:center;justify-content:center;gap:15px;transform-origin:center;will-change:transform,opacity;cursor:pointer;pointer-events:auto;user-select:none;touch-action:manipulation}.roll-glyph{font:normal clamp(26px,3.2vw,43px)/1.4 var(--arabic);width:55px;text-align:center;color:#9b896e;text-shadow:0 0 15px #d2b17e22;white-space:nowrap}.roll-number{font:9px ui-monospace,monospace;letter-spacing:.06em;color:#7f7b76;min-width:32px}.roll-item[data-selected="true"] .roll-glyph{color:#f4d59c;font-size:clamp(39px,4.4vw,60px);filter:drop-shadow(0 0 12px #d2a66066)}.roll-item[data-selected="true"] .roll-number{color:#ecc58e}.roll-midline{position:absolute;z-index:2;left:10%;right:4%;top:50%;height:1px;background:linear-gradient(90deg,transparent,#be965955,transparent);pointer-events:none}.roll-spine{position:absolute;left:36%;top:8%;height:84%;width:1px;background:linear-gradient(transparent,#92795633 50%,transparent)}.roll-footer{padding:13px 1px 0;border-top:1px solid #6c63564a;display:flex;justify-content:space-between;align-items:center;gap:10px;font:9px ui-monospace,monospace;letter-spacing:.12em;color:#d0b88f}.infinity{font-family:Georgia,serif;font-size:25px;color:var(--gold);line-height:0}.variants{margin-top:15px;display:flex;justify-content:space-between;gap:4px;direction:rtl}.variant{min-width:24px;flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;color:#9b8b73;font:22px/1.5 var(--arabic);border-bottom:1px solid #524a3d61;padding:4px 0}.variant.empty{opacity:.15}.roll-legend{font:7px ui-monospace,monospace;color:#78818c;margin-top:11px;letter-spacing:.03em;text-align:center;white-space:nowrap}
+.terminal{position:absolute;z-index:12;left:clamp(30px,10vw,172px);right:clamp(30px,10vw,172px);bottom:clamp(60px,7.5vh,94px);height:clamp(140px,19vh,204px);background:linear-gradient(180deg,transparent,rgba(8,12,20,.23));}.terminal-upper{display:flex;justify-content:space-between;align-items:center;gap:15px;font:9px ui-monospace,monospace;letter-spacing:.15em;color:#928e88}.terminal-upper-label span{color:var(--gold)}.terminal-upper-right{color:#707d86}.signature-rail{height:71px;display:flex;align-items:center;gap:0;overflow:hidden;white-space:nowrap;mask-image:linear-gradient(to right,transparent 0,black 2%,black 94%,transparent 100%);-webkit-mask-image:linear-gradient(to right,transparent 0,black 2%,black 94%,transparent 100%);}.rail-placeholder{font:34px var(--arabic);letter-spacing:.15em;color:#b9a17d55;word-spacing:20px}.rail-placeholder span:nth-child(2n){color:#cfb98766}.token{display:inline-flex;align-items:center;justify-content:center;min-width:38px;padding:0 9px;font:normal 28px/1.65 var(--arabic);color:#c9a96d;opacity:.82;animation:token-in .26s both}.token[data-direct="true"]{color:#f0d9af}.token[data-active="true"]{background:radial-gradient(circle,#a68b5b20,transparent);text-shadow:0 0 15px #e3ba7988}.token:nth-child(3n){color:#e2cda8}@keyframes token-in{from{transform:translateY(11px);opacity:0}to{transform:translateY(0);opacity:1}}.word-space{display:inline-block;width:28px;height:1px;flex:none;background:#987d5740;margin:0 6px}.terminal-input-line{height:62px;border-top:1px solid #9d815b6a;border-bottom:1px solid #83705734;display:flex;align-items:center;gap:17px;background:linear-gradient(90deg,#cf9f5920,transparent 16%)}.prompt-mark{font:34px var(--arabic);color:var(--gold-bright);padding-left:12px}#sourceInput{background:transparent;border:0;outline:none;min-width:0;flex:1;font:300 clamp(14px,1.52vw,20px)/1.4 "Avenir Next","Segoe UI",system-ui, sans-serif;letter-spacing:.06em;color:#f6eedf;text-shadow:0 0 25px #d8ad6744;padding:0;caret-color:var(--gold-bright)}#sourceInput::placeholder{font-size:clamp(11px,1vw,13px);letter-spacing:.09em;color:#797d81;opacity:1}.input-intent{white-space:nowrap;font:9px ui-monospace,monospace;letter-spacing:.13em;color:#b8a07c;margin-right:14px}.animated-caret{animation:diode 1s steps(2,end) infinite;margin-left:3px}.terminal-output{display:flex;justify-content:space-between;gap:10px;padding-top:13px;font:9px ui-monospace,monospace;letter-spacing:.14em;color:#717e85;white-space:nowrap;overflow:hidden}.hash{color:#a88e66;letter-spacing:.09em}.bottom-inscription{position:absolute;bottom:17px;left:0;right:0;text-align:center;white-space:nowrap;font:8px ui-monospace,monospace;letter-spacing:.21em;color:#5e6770}.bottom-inscription>span{color:#b89a6a;margin:0 18px}.bottom-inscription .small-diamond{color:#686054;margin:0 12px}.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:1100px){.left-margin{left:4%;width:23%;top:24%}.left-title{font-size:30px}.left-description{font-size:11px}.stage{left:21%;width:60%}.rolodex{right:3%;width:19%}.terminal{left:6%;right:6%}}
+@media(max-width:720px){.unison{min-height:600px;height:100dvh}.masthead{padding:23px 20px}.identity{gap:9px}.identity-mark{font-size:30px}.identity-name{font-size:18px}.identity-sub{font-size:7px;letter-spacing:.13em;margin-top:10px}.masthead-right{gap:7px;font-size:8px;margin-top:1px}.masthead-oracle{display:none}.live-word{display:none}.left-margin{display:none}.stage{left:-11%;top:15%;width:92%;height:55%;}.stage-glyph{font-size:clamp(115px,25vw,165px);top:47%}.stage-corona{width:70vw;height:70vw}.stage-caption{bottom:5%;font-size:9px}.rolodex{right:8px;top:23%;width:22%;height:44%}.roll-heading{font-size:7px;letter-spacing:0;text-align:center}.roll-frame{min-height:0}.roll-glyph{font-size:31px;width:45px}.roll-number{display:none}.roll-item{left:0;width:100%}.roll-item[data-selected="true"] .roll-glyph{font-size:44px}.roll-footer{font-size:7px}.variants{margin-top:6px}.variant{font-size:16px;min-width:12px}.roll-legend{display:none}.terminal{left:19px;right:19px;bottom:58px;height:clamp(151px,23vh,194px)}.terminal-upper{font-size:8px;letter-spacing:.08em}.terminal-upper-right{font-size:8px}.signature-rail{height:61px}.terminal-input-line{height:59px;gap:8px}.prompt-mark{font-size:27px;padding-left:6px}#sourceInput{font-size:15px;letter-spacing:0}.input-intent{font-size:8px;letter-spacing:0;margin-right:6px}#sourceInput::placeholder{font-size:10px;letter-spacing:.01em}.terminal-output{font-size:8px;letter-spacing:.04em}.bottom-inscription{font-size:6.5px;letter-spacing:.04em;bottom:19px}.bottom-inscription>span{margin:0 4px}.bottom-inscription .small-diamond{margin:0 3px}}
+@media(max-width:380px){.identity-sub{font-size:6.2px}.stage{left:-13%;width:98%}.terminal-upper-right{display:none}.bottom-inscription{letter-spacing:0;font-size:6px}}
+@media(max-height:720px){.stage{top:10%;height:63%}.rolodex{top:15%;height:54%}.terminal{bottom:50px;height:145px}.signature-rail{height:56px}.terminal-input-line{height:50px}.left-margin{top:25%}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;transition:none!important}.grain{display:none}}
+
+@media(max-width:720px){.roll-heading{font-size:6px;letter-spacing:-.035em;white-space:normal}.rolodex{width:25%}.bottom-inscription{opacity:.85}.terminal-upper{letter-spacing:.035em}}
+
+/* Unicode script constellations: an optical layer, not text translation. */
+#scriptSky{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.86;}
+.script-caption{margin-top:12px;min-height:28px;font:9px/1.5 ui-monospace,monospace;color:#bda77e;letter-spacing:.09em;text-align:center;white-space:normal;overflow-wrap:anywhere;}
+@media(max-width:720px){#scriptSky{opacity:.67}.script-caption{font-size:7px;margin-top:5px;min-height:18px}}
+@media(prefers-reduced-motion:reduce){#scriptSky{opacity:.3}}
+
+  </style>
+</head>
+<body>
+  <div id="unison" class="unison" data-state="listening">
+    <canvas id="universe" aria-hidden="true"></canvas>
+    <canvas id="scriptSky" aria-hidden="true"></canvas>
+    <div class="horizon-line" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="viewport-engraving" aria-hidden="true">۞</div>
+    <header class="masthead">
+      <div class="identity">
+        <div class="identity-mark" aria-hidden="true">◇</div>
+        <div>
+          <div class="identity-name">G L A S S <span class="identity-sup">®</span></div>
+          <div class="identity-sub">UNISON <span class="separator">/</span> THE TERMINAL OF LETTERS</div>
+        </div>
+      </div>
+      <div class="masthead-right" aria-label="GLASS is live">
+        <span class="live-diode" aria-hidden="true"></span>
+        <span class="live-word">LIVE SUBSTRATE</span>
+        <span class="masthead-separator">·</span>
+        <span id="clock">00:00:00</span>
+        <span class="masthead-oracle" aria-hidden="true">۞</span>
+      </div>
+    </header>
+
+    <div class="left-margin" aria-hidden="true">
+      <div class="eyebrow"><span class="tiny-rule"></span> THE FIRST TERMINAL</div>
+      <div class="left-title">The alphabet<br>is an <em>operator.</em></div>
+      <div class="left-description">28 root operators.<br><span id="worldScriptCount">172</span> indexed scripts.<br>Four planes. Eight mirrored facets.</div>
+      <div class="vertical-index">
+        <span>01 / SOURCE</span>
+        <span class="vertical-index-gold">02 / FORM</span>
+        <span>03 / OPERATION</span>
+        <span>04 / RETURN</span>
+      </div>
+      <div class="fine-rule"></div>
+      <div class="meta-stat"><span>REGISTER</span><span>UNISON / 01</span></div>
+      <div class="meta-stat"><span>LETTER FORMS</span><span id="formCount">100</span></div>
+      <div class="meta-stat"><span>MODIFIERS</span><span>10</span></div>
+      <div class="meta-stat"><span>SCRIPT ATLAS</span><span id="worldScriptCountSecondary">172</span></div>
+    </div>
+
+    <div class="stage" id="stage" aria-label="Eight-facet GLASS pyramid representing the current Unison letter; tap to change the selected letter" tabindex="0" role="img">
+      <canvas id="pyramid" aria-hidden="true"></canvas>
+      <div class="stage-corona" aria-hidden="true"></div>
+      <div class="stage-glyph" id="stageGlyph" lang="ar" dir="rtl" aria-hidden="true">ا</div>
+      <div class="stage-pole stage-pole-top" aria-hidden="true"></div>
+      <div class="stage-pole stage-pole-bottom" aria-hidden="true"></div>
+      <div class="stage-axis" aria-hidden="true">A · 0</div>
+      <div class="stage-caption">
+        <span class="line-flare" aria-hidden="true"></span>
+        <span id="stageName">ORIGIN</span>
+        <span class="stage-caption-number" id="stageOrdinal">001 / 028</span>
+      </div>
+    </div>
+
+    <aside class="rolodex" aria-label="Continuously rolling Unison letter operators; tap any symbol to write it">
+      <div class="roll-heading"><span class="micro-asterisk">✳</span> THE INFINITE ROLLODEX</div>
+      <div class="roll-frame" id="rollFrame">
+        <div class="roll-spine" aria-hidden="true"></div>
+        <div id="rollTrack" class="roll-track"></div>
+        <div class="roll-midline" aria-hidden="true"></div>
+      </div>
+      <div class="roll-footer">
+        <span id="rollLabel">ا / ORIGIN</span>
+        <span class="infinity">∞</span>
+      </div>
+      <div id="variantStrip" class="variants" aria-label="Positional forms of the selected Arabic character"></div>
+      <div class="roll-legend">ISOLATED <span>·</span> INITIAL <span>·</span> MEDIAL <span>·</span> FINAL</div>
+      <div id="scriptCaption" class="script-caption" aria-live="off">172 SCRIPT FAMILIES · ∞ RELATIONS</div>
+    </aside>
+
+    <section class="terminal" aria-label="Unison input terminal">
+      <div class="terminal-upper">
+        <div class="terminal-upper-label">LIVE TRANSLITERATION <span>—</span> <span id="sourceMode">AWAITING SOURCE</span></div>
+        <div class="terminal-upper-right"> <span id="wordCount">0</span> WORDS <span class="separator">/</span> <span id="letterCount">0</span> TOKENS</div>
+      </div>
+      <div class="signature-rail" id="signatureRail" aria-live="off" aria-label="Current mapped Unison operator sequence">
+        <span class="rail-placeholder">۞ <span>آ</span> <span>۞</span> <span>ٓ</span> <span>ع</span> <span>۞</span> <span>ٰ</span> <span>ق</span> <span>۞</span> <span>ِ</span> <span>ي</span></span>
+      </div>
+      <div class="terminal-input-line">
+        <div class="prompt-mark" aria-hidden="true">۞</div>
+        <input id="sourceInput" type="text" inputmode="text" enterkeyhint="go" spellcheck="false" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="TYPE ANYTHING. THE ALPHABET WILL ANSWER." aria-label="Type words, Arabic or English, operator glyphs, or a URL. Enter opens a complete web address." maxlength="2048">
+        <div id="inputIntent" class="input-intent">LISTENING <span class="animated-caret">│</span></div>
+      </div>
+      <div class="terminal-output">
+        <span id="signatureLabel">NO SEARCH. NO COMMAND REQUIRED.</span>
+        <span id="signatureHash" class="hash">UNISON·00000000</span>
+      </div>
+    </section>
+    <div class="bottom-inscription" aria-hidden="true"><span>◊</span> EVERY LETTER A GATE <span class="small-diamond">◇</span> EVERY WORD A CONSTELLATION <span class="small-diamond">◇</span> EVERY RETURN A BEGINNING <span>◊</span></div>
+    <div id="a11yStatus" class="sr-only" aria-live="polite"></div>
+    <div id="scriptStatus" class="sr-only" aria-live="off"></div>
+  </div>
+
+<script data-glass-module="registry.js">
+/* Generated from the uploaded UNISON/0.1 alphabet. Actual Unicode Arabic presentation forms. */
+window.GLASS_REGISTRY = {"schema":"glass.unison.terminal.registry/1","source":"Uploaded GLASS_UNISON_HARNESS.zip / unison/compiler.py","source_alphabet":"ابتثجحخدذرزسشصضطظعغفقكلمنهوي","letters":[{"index":0,"base":"ا","role":"origin","name":"ARABIC LETTER ALEF","forms":{"isolated":"ﺍ","final":"ﺎ"},"unicode":"U+0627","ordinal":1},{"index":1,"base":"ب","role":"frame","name":"ARABIC LETTER BEH","forms":{"isolated":"ﺏ","final":"ﺐ","initial":"ﺑ","medial":"ﺒ"},"unicode":"U+0628","ordinal":2},{"index":2,"base":"ت","role":"clock","name":"ARABIC LETTER TEH","forms":{"isolated":"ﺕ","final":"ﺖ","initial":"ﺗ","medial":"ﺘ"},"unicode":"U+062A","ordinal":3},{"index":3,"base":"ث","role":"observation","name":"ARABIC LETTER THEH","forms":{"isolated":"ﺙ","final":"ﺚ","initial":"ﺛ","medial":"ﺜ"},"unicode":"U+062B","ordinal":4},{"index":4,"base":"ج","role":"volume","name":"ARABIC LETTER JEEM","forms":{"isolated":"ﺝ","final":"ﺞ","initial":"ﺟ","medial":"ﺠ"},"unicode":"U+062C","ordinal":5},{"index":5,"base":"ح","role":"orbit","name":"ARABIC LETTER HAH","forms":{"isolated":"ﺡ","final":"ﺢ","initial":"ﺣ","medial":"ﺤ"},"unicode":"U+062D","ordinal":6},{"index":6,"base":"خ","role":"trajectory","name":"ARABIC LETTER KHAH","forms":{"isolated":"ﺥ","final":"ﺦ","initial":"ﺧ","medial":"ﺨ"},"unicode":"U+062E","ordinal":7},{"index":7,"base":"د","role":"depth","name":"ARABIC LETTER DAL","forms":{"isolated":"ﺩ","final":"ﺪ"},"unicode":"U+062F","ordinal":8},{"index":8,"base":"ذ","role":"distance","name":"ARABIC LETTER THAL","forms":{"isolated":"ﺫ","final":"ﺬ"},"unicode":"U+0630","ordinal":9},{"index":9,"base":"ر","role":"redshift","name":"ARABIC LETTER REH","forms":{"isolated":"ﺭ","final":"ﺮ"},"unicode":"U+0631","ordinal":10},{"index":10,"base":"ز","role":"rotation","name":"ARABIC LETTER ZAIN","forms":{"isolated":"ﺯ","final":"ﺰ"},"unicode":"U+0632","ordinal":11},{"index":11,"base":"س","role":"stellar","name":"ARABIC LETTER SEEN","forms":{"isolated":"ﺱ","final":"ﺲ","initial":"ﺳ","medial":"ﺴ"},"unicode":"U+0633","ordinal":12},{"index":12,"base":"ش","role":"cluster","name":"ARABIC LETTER SHEEN","forms":{"isolated":"ﺵ","final":"ﺶ","initial":"ﺷ","medial":"ﺸ"},"unicode":"U+0634","ordinal":13},{"index":13,"base":"ص","role":"spectrum","name":"ARABIC LETTER SAD","forms":{"isolated":"ﺹ","final":"ﺺ","initial":"ﺻ","medial":"ﺼ"},"unicode":"U+0635","ordinal":14},{"index":14,"base":"ض","role":"density","name":"ARABIC LETTER DAD","forms":{"isolated":"ﺽ","final":"ﺾ","initial":"ﺿ","medial":"ﻀ"},"unicode":"U+0636","ordinal":15},{"index":15,"base":"ط","role":"field","name":"ARABIC LETTER TAH","forms":{"isolated":"ﻁ","final":"ﻂ","initial":"ﻃ","medial":"ﻄ"},"unicode":"U+0637","ordinal":16},{"index":16,"base":"ظ","role":"anchor","name":"ARABIC LETTER ZAH","forms":{"isolated":"ﻅ","final":"ﻆ","initial":"ﻇ","medial":"ﻈ"},"unicode":"U+0638","ordinal":17},{"index":17,"base":"ع","role":"gravity","name":"ARABIC LETTER AIN","forms":{"isolated":"ﻉ","final":"ﻊ","initial":"ﻋ","medial":"ﻌ"},"unicode":"U+0639","ordinal":18},{"index":18,"base":"غ","role":"diffusion","name":"ARABIC LETTER GHAIN","forms":{"isolated":"ﻍ","final":"ﻎ","initial":"ﻏ","medial":"ﻐ"},"unicode":"U+063A","ordinal":19},{"index":19,"base":"ف","role":"gate","name":"ARABIC LETTER FEH","forms":{"isolated":"ﻑ","final":"ﻒ","initial":"ﻓ","medial":"ﻔ"},"unicode":"U+0641","ordinal":20},{"index":20,"base":"ق","role":"quality","name":"ARABIC LETTER QAF","forms":{"isolated":"ﻕ","final":"ﻖ","initial":"ﻗ","medial":"ﻘ"},"unicode":"U+0642","ordinal":21},{"index":21,"base":"ك","role":"catalog","name":"ARABIC LETTER KAF","forms":{"isolated":"ﻙ","final":"ﻚ","initial":"ﻛ","medial":"ﻜ"},"unicode":"U+0643","ordinal":22},{"index":22,"base":"ل","role":"link","name":"ARABIC LETTER LAM","forms":{"isolated":"ﻝ","final":"ﻞ","initial":"ﻟ","medial":"ﻠ"},"unicode":"U+0644","ordinal":23},{"index":23,"base":"م","role":"navigator","name":"ARABIC LETTER MEEM","forms":{"isolated":"ﻡ","final":"ﻢ","initial":"ﻣ","medial":"ﻤ"},"unicode":"U+0645","ordinal":24},{"index":24,"base":"ن","role":"event","name":"ARABIC LETTER NOON","forms":{"isolated":"ﻥ","final":"ﻦ","initial":"ﻧ","medial":"ﻨ"},"unicode":"U+0646","ordinal":25},{"index":25,"base":"ه","role":"horizon","name":"ARABIC LETTER HEH","forms":{"isolated":"ﻩ","final":"ﻪ","initial":"ﻫ","medial":"ﻬ"},"unicode":"U+0647","ordinal":26},{"index":26,"base":"و","role":"identity","name":"ARABIC LETTER WAW","forms":{"isolated":"ﻭ","final":"ﻮ"},"unicode":"U+0648","ordinal":27},{"index":27,"base":"ي","role":"yield","name":"ARABIC LETTER YEH","forms":{"isolated":"ﻱ","final":"ﻲ","initial":"ﻳ","medial":"ﻴ"},"unicode":"U+064A","ordinal":28}],"metaterminal":{"glyph":"۞","role":"metaterminal","index":28},"marks":[{"glyph":"َ","role":"activate","unicode":"U+064E"},{"glyph":"ُ","role":"expand","unicode":"U+064F"},{"glyph":"ِ","role":"inspect","unicode":"U+0650"},{"glyph":"ْ","role":"freeze","unicode":"U+0652"},{"glyph":"ّ","role":"compose","unicode":"U+0651"},{"glyph":"ً","role":"repeat","unicode":"U+064B"},{"glyph":"ٌ","role":"broadcast","unicode":"U+064C"},{"glyph":"ٍ","role":"archive","unicode":"U+064D"},{"glyph":"ٰ","role":"elevate","unicode":"U+0670"},{"glyph":"ٓ","role":"project","unicode":"U+0653"}],"pyramid":{"planes":4,"mirrored_halves_per_plane":2,"facets":8,"name":"octaface-unison"},"scope":"Constructed computational alphabet; no historical or theological equivalence asserted.","digest_sha256":"79a3d27f328f164dccf16541a415b25989582b1b2cfffd0d0e61377eb792b8fc"};
+
+</script>
+<script data-glass-module="script-atlas.js">
+/* GLASS script atlas · offline Unicode script property snapshot. */
+window.GLASS_WORLD_SCRIPTS={"schema":"glass.unison.script-atlas/0.1","generation":"offline from regex Script property","regex_version":"2026.5.9","claimed_unicode_version":"unspecified; verify against pinned Unicode 18.0 before a conformance claim","base_unicode_reference":"https://www.unicode.org/Public/18.0.0/ucd/Scripts.txt","not_a_language_count":true,"not_a_reversible_transliterator":true,"script_count":172,"scripts":[{"script":"Adlam","alias":"ADLAM","samples":["𞤀","𞤁","𞤂","𞤃","𞤄","𞤅","𞤆","𞤇","𞤈","𞤉","𞤊","𞤋"],"ranges":[[125184,125259],[125264,125273],[125278,125279]]},{"script":"Ahom","alias":"AHOM","samples":["𑜀","𑜁","𑜂","𑜃","𑜄","𑜅","𑜆","𑜇","𑜈","𑜉","𑜊","𑜋"],"ranges":[[71424,71450],[71453,71467],[71472,71494]]},{"script":"Anatolianhieroglyphs","alias":"ANATOLIANHIEROGLYPHS","samples":["𔐀","𔐁","𔐂","𔐃","𔐄","𔐅","𔐆","𔐇","𔐈","𔐉","𔐊","𔐋"],"ranges":[[82944,83526]]},{"script":"Arabic","alias":"ARABIC","samples":["ؠ","ء","آ","أ","ؤ","إ","ئ","ا","ب","ة","ت","ث"],"ranges":[[1536,1540],[1542,1547],[1549,1562],[1564,1566],[1568,1599],[1601,1610],[1622,1647],[1649,1756],[1758,1791],[1872,1919],[2160,2193],[2199,2273],[2275,2303],[64336,64829],[64832,64975],[65008,65023],[65136,65140],[65142,65276],[69216,69246],[69314,69319],[69328,69336],[69370,69375],[126464,126467],[126469,126495],[126497,126498],[126500,126500],[126503,126503],[126505,126514],[126516,126519],[126521,126521],[126523,126523],[126530,126530],[126535,126535],[126537,126537],[126539,126539],[126541,126543],[126545,126546],[126548,126548],[126551,126551],[126553,126553],[126555,126555],[126557,126557],[126559,126559],[126561,126562],[126564,126564],[126567,126570],[126572,126578],[126580,126583],[126585,126588],[126590,126590],[126592,126601],[126603,126619],[126625,126627],[126629,126633],[126635,126651],[126704,126705]]},{"script":"Armenian","alias":"ARMENIAN","samples":["Ա","Բ","Գ","Դ","Ե","Զ","Է","Ը","Թ","Ժ","Ի","Լ"],"ranges":[[1329,1366],[1369,1418],[1421,1423],[64275,64279]]},{"script":"Avestan","alias":"AVESTAN","samples":["𐬀","𐬁","𐬂","𐬃","𐬄","𐬅","𐬆","𐬇","𐬈","𐬉","𐬊","𐬋"],"ranges":[[68352,68405],[68409,68415]]},{"script":"Balinese","alias":"BALINESE","samples":["ᬅ","ᬆ","ᬇ","ᬈ","ᬉ","ᬊ","ᬋ","ᬌ","ᬍ","ᬎ","ᬏ","ᬐ"],"ranges":[[6912,6988],[6990,7039]]},{"script":"Bamum","alias":"BAMUM","samples":["ꚠ","ꚡ","ꚢ","ꚣ","ꚤ","ꚥ","ꚦ","ꚧ","ꚨ","ꚩ","ꚪ","ꚫ"],"ranges":[[42656,42743],[92160,92728]]},{"script":"Bassavah","alias":"BASSAVAH","samples":["𖫐","𖫑","𖫒","𖫓","𖫔","𖫕","𖫖","𖫗","𖫘","𖫙","𖫚","𖫛"],"ranges":[[92880,92909],[92912,92917]]},{"script":"Batak","alias":"BATAK","samples":["ᯀ","ᯁ","ᯂ","ᯃ","ᯄ","ᯅ","ᯆ","ᯇ","ᯈ","ᯉ","ᯊ","ᯋ"],"ranges":[[7104,7155],[7164,7167]]},{"script":"Bengali","alias":"BENGALI","samples":["ঀ","অ","আ","ই","ঈ","উ","ঊ","ঋ","ঌ","এ","ঐ","ও"],"ranges":[[2432,2435],[2437,2444],[2447,2448],[2451,2472],[2474,2480],[2482,2482],[2486,2489],[2492,2500],[2503,2504],[2507,2510],[2519,2519],[2524,2525],[2527,2531],[2534,2558]]},{"script":"Beriaerfe","alias":"BERIAERFE","samples":[],"ranges":[[93856,93880],[93883,93907]]},{"script":"Bhaiksuki","alias":"BHAIKSUKI","samples":["𑰀","𑰁","𑰂","𑰃","𑰄","𑰅","𑰆","𑰇","𑰈","𑰊","𑰋","𑰌"],"ranges":[[72704,72712],[72714,72758],[72760,72773],[72784,72812]]},{"script":"Bopomofo","alias":"BOPOMOFO","samples":["ㄅ","ㄆ","ㄇ","ㄈ","ㄉ","ㄊ","ㄋ","ㄌ","ㄍ","ㄎ","ㄏ","ㄐ"],"ranges":[[746,747],[12549,12591],[12704,12735]]},{"script":"Brahmi","alias":"BRAHMI","samples":["𑀃","𑀄","𑀅","𑀆","𑀇","𑀈","𑀉","𑀊","𑀋","𑀌","𑀍","𑀎"],"ranges":[[69632,69709],[69714,69749],[69759,69759]]},{"script":"Braille","alias":"BRAILLE","samples":[],"ranges":[[10240,10495]]},{"script":"Buginese","alias":"BUGINESE","samples":["ᨀ","ᨁ","ᨂ","ᨃ","ᨄ","ᨅ","ᨆ","ᨇ","ᨈ","ᨉ","ᨊ","ᨋ"],"ranges":[[6656,6683],[6686,6687]]},{"script":"Buhid","alias":"BUHID","samples":["ᝀ","ᝁ","ᝂ","ᝃ","ᝄ","ᝅ","ᝆ","ᝇ","ᝈ","ᝉ","ᝊ","ᝋ"],"ranges":[[5952,5971]]},{"script":"Canadianaboriginal","alias":"CANADIANABORIGINAL","samples":["ᐁ","ᐂ","ᐃ","ᐄ","ᐅ","ᐆ","ᐇ","ᐈ","ᐉ","ᐊ","ᐋ","ᐌ"],"ranges":[[5120,5759],[6320,6389],[72368,72383]]},{"script":"Carian","alias":"CARIAN","samples":["𐊠","𐊡","𐊢","𐊣","𐊤","𐊥","𐊦","𐊧","𐊨","𐊩","𐊪","𐊫"],"ranges":[[66208,66256]]},{"script":"Caucasianalbanian","alias":"CAUCASIANALBANIAN","samples":["𐔰","𐔱","𐔲","𐔳","𐔴","𐔵","𐔶","𐔷","𐔸","𐔹","𐔺","𐔻"],"ranges":[[66864,66915],[66927,66927]]},{"script":"Chakma","alias":"CHAKMA","samples":["𑄃","𑄄","𑄅","𑄆","𑄇","𑄈","𑄉","𑄊","𑄋","𑄌","𑄍","𑄎"],"ranges":[[69888,69940],[69942,69959]]},{"script":"Cham","alias":"CHAM","samples":["ꨀ","ꨁ","ꨂ","ꨃ","ꨄ","ꨅ","ꨆ","ꨇ","ꨈ","ꨉ","ꨊ","ꨋ"],"ranges":[[43520,43574],[43584,43597],[43600,43609],[43612,43615]]},{"script":"Cherokee","alias":"CHEROKEE","samples":["Ꭰ","Ꭱ","Ꭲ","Ꭳ","Ꭴ","Ꭵ","Ꭶ","Ꭷ","Ꭸ","Ꭹ","Ꭺ","Ꭻ"],"ranges":[[5024,5109],[5112,5117],[43888,43967]]},{"script":"Chorasmian","alias":"CHORASMIAN","samples":["𐾰","𐾱","𐾲","𐾳","𐾴","𐾵","𐾶","𐾷","𐾸","𐾹","𐾺","𐾻"],"ranges":[[69552,69579]]},{"script":"Coptic","alias":"COPTIC","samples":["Ϣ","ϣ","Ϥ","ϥ","Ϧ","ϧ","Ϩ","ϩ","Ϫ","ϫ","Ϭ","ϭ"],"ranges":[[994,1007],[11392,11507],[11513,11519]]},{"script":"Cuneiform","alias":"CUNEIFORM","samples":["𒀀","𒀁","𒀂","𒀃","𒀄","𒀅","𒀆","𒀇","𒀈","𒀉","𒀊","𒀋"],"ranges":[[73728,74649],[74752,74862],[74864,74868],[74880,75075]]},{"script":"Cypriot","alias":"CYPRIOT","samples":["𐠀","𐠁","𐠂","𐠃","𐠄","𐠅","𐠈","𐠊","𐠋","𐠌","𐠍","𐠎"],"ranges":[[67584,67589],[67592,67592],[67594,67637],[67639,67640],[67644,67644],[67647,67647]]},{"script":"Cyprominoan","alias":"CYPROMINOAN","samples":["𒾐","𒾑","𒾒","𒾓","𒾔","𒾕","𒾖","𒾗","𒾘","𒾙","𒾚","𒾛"],"ranges":[[77712,77810]]},{"script":"Cyrillic","alias":"CYRILLIC","samples":["Ѐ","Ё","Ђ","Ѓ","Є","Ѕ","І","Ї","Ј","Љ","Њ","Ћ"],"ranges":[[1024,1156],[1159,1327],[7296,7306],[7467,7467],[7544,7544],[11744,11775],[42560,42655],[65070,65071],[122928,122989],[123023,123023]]},{"script":"Deseret","alias":"DESERET","samples":["𐐀","𐐁","𐐂","𐐃","𐐄","𐐅","𐐆","𐐇","𐐈","𐐉","𐐊","𐐋"],"ranges":[[66560,66639]]},{"script":"Devanagari","alias":"DEVANAGARI","samples":["ऄ","अ","आ","इ","ई","उ","ऊ","ऋ","ऌ","ऍ","ऎ","ए"],"ranges":[[2304,2384],[2389,2403],[2406,2431],[43232,43263],[72448,72457]]},{"script":"Divesakuru","alias":"DIVESAKURU","samples":["𑤀","𑤁","𑤂","𑤃","𑤄","𑤅","𑤆","𑤉","𑤌","𑤍","𑤎","𑤏"],"ranges":[[71936,71942],[71945,71945],[71948,71955],[71957,71958],[71960,71989],[71991,71992],[71995,72006],[72016,72025]]},{"script":"Dogra","alias":"DOGRA","samples":["𑠀","𑠁","𑠂","𑠃","𑠄","𑠅","𑠆","𑠇","𑠈","𑠉","𑠊","𑠋"],"ranges":[[71680,71739]]},{"script":"Duployan","alias":"DUPLOYAN","samples":["𛰀","𛰁","𛰂","𛰃","𛰄","𛰅","𛰆","𛰇","𛰈","𛰉","𛰊","𛰋"],"ranges":[[113664,113770],[113776,113788],[113792,113800],[113808,113817],[113820,113823]]},{"script":"Egyptianhieroglyphs","alias":"EGYPTIANHIEROGLYPHS","samples":["𓀀","𓀁","𓀂","𓀃","𓀄","𓀅","𓀆","𓀇","𓀈","𓀉","𓀊","𓀋"],"ranges":[[77824,78933],[78944,82938]]},{"script":"Elbasan","alias":"ELBASAN","samples":["𐔀","𐔁","𐔂","𐔃","𐔄","𐔅","𐔆","𐔇","𐔈","𐔉","𐔊","𐔋"],"ranges":[[66816,66855]]},{"script":"Elymaic","alias":"ELYMAIC","samples":["𐿠","𐿡","𐿢","𐿣","𐿤","𐿥","𐿦","𐿧","𐿨","𐿩","𐿪","𐿫"],"ranges":[[69600,69622]]},{"script":"Ethiopic","alias":"ETHIOPIC","samples":["ሀ","ሁ","ሂ","ሃ","ሄ","ህ","ሆ","ሇ","ለ","ሉ","ሊ","ላ"],"ranges":[[4608,4680],[4682,4685],[4688,4694],[4696,4696],[4698,4701],[4704,4744],[4746,4749],[4752,4784],[4786,4789],[4792,4798],[4800,4800],[4802,4805],[4808,4822],[4824,4880],[4882,4885],[4888,4954],[4957,4988],[4992,5017],[11648,11670],[11680,11686],[11688,11694],[11696,11702],[11704,11710],[11712,11718],[11720,11726],[11728,11734],[11736,11742],[43777,43782],[43785,43790],[43793,43798],[43808,43814],[43816,43822],[124896,124902],[124904,124907],[124909,124910],[124912,124926]]},{"script":"Garay","alias":"GARAY","samples":[],"ranges":[[68928,68965],[68969,68997],[69006,69007]]},{"script":"Georgian","alias":"GEORGIAN","samples":["Ⴀ","Ⴁ","Ⴂ","Ⴃ","Ⴄ","Ⴅ","Ⴆ","Ⴇ","Ⴈ","Ⴉ","Ⴊ","Ⴋ"],"ranges":[[4256,4293],[4295,4295],[4301,4301],[4304,4346],[4348,4351],[7312,7354],[7357,7359],[11520,11557],[11559,11559],[11565,11565]]},{"script":"Glagolitic","alias":"GLAGOLITIC","samples":["Ⰰ","Ⰱ","Ⰲ","Ⰳ","Ⰴ","Ⰵ","Ⰶ","Ⰷ","Ⰸ","Ⰹ","Ⰺ","Ⰻ"],"ranges":[[11264,11359],[122880,122886],[122888,122904],[122907,122913],[122915,122916],[122918,122922]]},{"script":"Gothic","alias":"GOTHIC","samples":["𐌰","𐌱","𐌲","𐌳","𐌴","𐌵","𐌶","𐌷","𐌸","𐌹","𐌺","𐌻"],"ranges":[[66352,66378]]},{"script":"Grantha","alias":"GRANTHA","samples":["𑌅","𑌆","𑌇","𑌈","𑌉","𑌊","𑌋","𑌌","𑌏","𑌐","𑌓","𑌔"],"ranges":[[70400,70403],[70405,70412],[70415,70416],[70419,70440],[70442,70448],[70450,70451],[70453,70457],[70460,70468],[70471,70472],[70475,70477],[70480,70480],[70487,70487],[70493,70499],[70502,70508],[70512,70516]]},{"script":"Greek","alias":"GREEK","samples":["Ͱ","ͱ","Ͳ","ͳ","Ͷ","ͷ","ͺ","ͻ","ͼ","ͽ","Ϳ","Ά"],"ranges":[[880,883],[885,887],[890,893],[895,895],[900,900],[902,902],[904,906],[908,908],[910,929],[931,993],[1008,1023],[7462,7466],[7517,7521],[7526,7530],[7615,7615],[7936,7957],[7960,7965],[7968,8005],[8008,8013],[8016,8023],[8025,8025],[8027,8027],[8029,8029],[8031,8061],[8064,8116],[8118,8132],[8134,8147],[8150,8155],[8157,8175],[8178,8180],[8182,8190],[8486,8486],[43877,43877],[65856,65934],[65952,65952],[119296,119365]]},{"script":"Gujarati","alias":"GUJARATI","samples":["અ","આ","ઇ","ઈ","ઉ","ઊ","ઋ","ઌ","ઍ","એ","ઐ","ઑ"],"ranges":[[2689,2691],[2693,2701],[2703,2705],[2707,2728],[2730,2736],[2738,2739],[2741,2745],[2748,2757],[2759,2761],[2763,2765],[2768,2768],[2784,2787],[2790,2801],[2809,2815]]},{"script":"Gunjalagondi","alias":"GUNJALAGONDI","samples":["𑵠","𑵡","𑵢","𑵣","𑵤","𑵥","𑵧","𑵨","𑵪","𑵫","𑵬","𑵭"],"ranges":[[73056,73061],[73063,73064],[73066,73102],[73104,73105],[73107,73112],[73120,73129]]},{"script":"Gurmukhi","alias":"GURMUKHI","samples":["ਅ","ਆ","ਇ","ਈ","ਉ","ਊ","ਏ","ਐ","ਓ","ਔ","ਕ","ਖ"],"ranges":[[2561,2563],[2565,2570],[2575,2576],[2579,2600],[2602,2608],[2610,2611],[2613,2614],[2616,2617],[2620,2620],[2622,2626],[2631,2632],[2635,2637],[2641,2641],[2649,2652],[2654,2654],[2662,2678]]},{"script":"Gurungkhema","alias":"GURUNGKHEMA","samples":[],"ranges":[[90368,90425]]},{"script":"Han","alias":"HAN","samples":["々","〻","㐀","㐁","㐂","㐃","㐄","㐅","㐆","㐇","㐈","㐉"],"ranges":[[11904,11929],[11931,12019],[12032,12245],[12293,12293],[12295,12295],[12321,12329],[12344,12347],[13312,19903],[19968,40959],[63744,64109],[64112,64217],[94178,94179],[94192,94198],[131072,173791],[173824,178205],[178208,183981],[183984,191456],[191472,192093],[194560,195101],[196608,201546],[201552,210041]]},{"script":"Hangul","alias":"HANGUL","samples":["ᄀ","ᄁ","ᄂ","ᄃ","ᄄ","ᄅ","ᄆ","ᄇ","ᄈ","ᄉ","ᄊ","ᄋ"],"ranges":[[4352,4607],[12334,12335],[12593,12686],[12800,12830],[12896,12926],[43360,43388],[44032,55203],[55216,55238],[55243,55291],[65440,65470],[65474,65479],[65482,65487],[65490,65495],[65498,65500]]},{"script":"Hanifirohingya","alias":"HANIFIROHINGYA","samples":["𐴀","𐴁","𐴂","𐴃","𐴄","𐴅","𐴆","𐴇","𐴈","𐴉","𐴊","𐴋"],"ranges":[[68864,68903],[68912,68921]]},{"script":"Hanunoo","alias":"HANUNOO","samples":["ᜠ","ᜡ","ᜢ","ᜣ","ᜤ","ᜥ","ᜦ","ᜧ","ᜨ","ᜩ","ᜪ","ᜫ"],"ranges":[[5920,5940]]},{"script":"Hatran","alias":"HATRAN","samples":["𐣠","𐣡","𐣢","𐣣","𐣤","𐣥","𐣦","𐣧","𐣨","𐣩","𐣪","𐣫"],"ranges":[[67808,67826],[67828,67829],[67835,67839]]},{"script":"Hebrew","alias":"HEBREW","samples":["א","ב","ג","ד","ה","ו","ז","ח","ט","י","ך","כ"],"ranges":[[1425,1479],[1488,1514],[1519,1524],[64285,64310],[64312,64316],[64318,64318],[64320,64321],[64323,64324],[64326,64335]]},{"script":"Hiragana","alias":"HIRAGANA","samples":["ぁ","あ","ぃ","い","ぅ","う","ぇ","え","ぉ","お","か","が"],"ranges":[[12353,12438],[12445,12447],[110593,110879],[110898,110898],[110928,110930],[127488,127488]]},{"script":"Imperialaramaic","alias":"IMPERIALARAMAIC","samples":["𐡀","𐡁","𐡂","𐡃","𐡄","𐡅","𐡆","𐡇","𐡈","𐡉","𐡊","𐡋"],"ranges":[[67648,67669],[67671,67679]]},{"script":"Inscriptionalpahlavi","alias":"INSCRIPTIONALPAHLAVI","samples":["𐭠","𐭡","𐭢","𐭣","𐭤","𐭥","𐭦","𐭧","𐭨","𐭩","𐭪","𐭫"],"ranges":[[68448,68466],[68472,68479]]},{"script":"Inscriptionalparthian","alias":"INSCRIPTIONALPARTHIAN","samples":["𐭀","𐭁","𐭂","𐭃","𐭄","𐭅","𐭆","𐭇","𐭈","𐭉","𐭊","𐭋"],"ranges":[[68416,68437],[68440,68447]]},{"script":"Javanese","alias":"JAVANESE","samples":["ꦄ","ꦅ","ꦆ","ꦇ","ꦈ","ꦉ","ꦊ","ꦋ","ꦌ","ꦍ","ꦎ","ꦏ"],"ranges":[[43392,43469],[43472,43481],[43486,43487]]},{"script":"Kaithi","alias":"KAITHI","samples":["𑂃","𑂄","𑂅","𑂆","𑂇","𑂈","𑂉","𑂊","𑂋","𑂌","𑂍","𑂎"],"ranges":[[69760,69826],[69837,69837]]},{"script":"Kannada","alias":"KANNADA","samples":["ಀ","ಅ","ಆ","ಇ","ಈ","ಉ","ಊ","ಋ","ಌ","ಎ","ಏ","ಐ"],"ranges":[[3200,3212],[3214,3216],[3218,3240],[3242,3251],[3253,3257],[3260,3268],[3270,3272],[3274,3277],[3285,3286],[3292,3294],[3296,3299],[3302,3311],[3313,3315]]},{"script":"Katakana","alias":"KATAKANA","samples":["ァ","ア","ィ","イ","ゥ","ウ","ェ","エ","ォ","オ","カ","ガ"],"ranges":[[12449,12538],[12541,12543],[12784,12799],[13008,13054],[13056,13143],[65382,65391],[65393,65437],[110576,110579],[110581,110587],[110589,110590],[110592,110592],[110880,110882],[110933,110933],[110948,110951]]},{"script":"Kawi","alias":"KAWI","samples":["𑼂","𑼄","𑼅","𑼆","𑼇","𑼈","𑼉","𑼊","𑼋","𑼌","𑼍","𑼎"],"ranges":[[73472,73488],[73490,73530],[73534,73562]]},{"script":"Kayahli","alias":"KAYAHLI","samples":["ꤊ","ꤋ","ꤌ","ꤍ","ꤎ","ꤏ","ꤐ","ꤑ","ꤒ","ꤓ","ꤔ","ꤕ"],"ranges":[[43264,43309],[43311,43311]]},{"script":"Kharoshthi","alias":"KHAROSHTHI","samples":["𐨀","𐨐","𐨑","𐨒","𐨓","𐨕","𐨖","𐨗","𐨙","𐨚","𐨛","𐨜"],"ranges":[[68096,68099],[68101,68102],[68108,68115],[68117,68119],[68121,68149],[68152,68154],[68159,68168],[68176,68184]]},{"script":"Khitansmallscript","alias":"KHITANSMALLSCRIPT","samples":["𘬀","𘬁","𘬂","𘬃","𘬄","𘬅","𘬆","𘬇","𘬈","𘬉","𘬊","𘬋"],"ranges":[[94180,94180],[101120,101589],[101631,101631]]},{"script":"Khmer","alias":"KHMER","samples":["ក","ខ","គ","ឃ","ង","ច","ឆ","ជ","ឈ","ញ","ដ","ឋ"],"ranges":[[6016,6109],[6112,6121],[6128,6137],[6624,6655]]},{"script":"Khojki","alias":"KHOJKI","samples":["𑈀","𑈁","𑈂","𑈃","𑈄","𑈅","𑈆","𑈇","𑈈","𑈉","𑈊","𑈋"],"ranges":[[70144,70161],[70163,70209]]},{"script":"Khudawadi","alias":"KHUDAWADI","samples":["𑊰","𑊱","𑊲","𑊳","𑊴","𑊵","𑊶","𑊷","𑊸","𑊹","𑊺","𑊻"],"ranges":[[70320,70378],[70384,70393]]},{"script":"Kiratrai","alias":"KIRATRAI","samples":[],"ranges":[[93504,93561]]},{"script":"Lao","alias":"LAO","samples":["ກ","ຂ","ຄ","ຆ","ງ","ຈ","ຉ","ຊ","ຌ","ຍ","ຎ","ຏ"],"ranges":[[3713,3714],[3716,3716],[3718,3722],[3724,3747],[3749,3749],[3751,3773],[3776,3780],[3782,3782],[3784,3790],[3792,3801],[3804,3807]]},{"script":"Latin","alias":"LATIN","samples":["A","B","C","D","E","F","G","H","I","J","K","L"],"ranges":[[65,90],[97,122],[170,170],[186,186],[192,214],[216,246],[248,696],[736,740],[7424,7461],[7468,7516],[7522,7525],[7531,7543],[7545,7614],[7680,7935],[8305,8305],[8319,8319],[8336,8348],[8490,8491],[8498,8498],[8526,8526],[8544,8584],[11360,11391],[42786,42887],[42891,42972],[42993,43007],[43824,43866],[43868,43876],[43878,43881],[64256,64262],[65313,65338],[65345,65370],[67456,67461],[67463,67504],[67506,67514],[122624,122654],[122661,122666]]},{"script":"Lepcha","alias":"LEPCHA","samples":["ᰀ","ᰁ","ᰂ","ᰃ","ᰄ","ᰅ","ᰆ","ᰇ","ᰈ","ᰉ","ᰊ","ᰋ"],"ranges":[[7168,7223],[7227,7241],[7245,7247]]},{"script":"Limbu","alias":"LIMBU","samples":["ᤀ","ᤁ","ᤂ","ᤃ","ᤄ","ᤅ","ᤆ","ᤇ","ᤈ","ᤉ","ᤊ","ᤋ"],"ranges":[[6400,6430],[6432,6443],[6448,6459],[6464,6464],[6468,6479]]},{"script":"Lineara","alias":"LINEARA","samples":["𐘀","𐘁","𐘂","𐘃","𐘄","𐘅","𐘆","𐘇","𐘈","𐘉","𐘊","𐘋"],"ranges":[[67072,67382],[67392,67413],[67424,67431]]},{"script":"Linearb","alias":"LINEARB","samples":["𐀀","𐀁","𐀂","𐀃","𐀄","𐀅","𐀆","𐀇","𐀈","𐀉","𐀊","𐀋"],"ranges":[[65536,65547],[65549,65574],[65576,65594],[65596,65597],[65599,65613],[65616,65629],[65664,65786]]},{"script":"Lisu","alias":"LISU","samples":["ꓐ","ꓑ","ꓒ","ꓓ","ꓔ","ꓕ","ꓖ","ꓗ","ꓘ","ꓙ","ꓚ","ꓛ"],"ranges":[[42192,42239],[73648,73648]]},{"script":"Lycian","alias":"LYCIAN","samples":["𐊀","𐊁","𐊂","𐊃","𐊄","𐊅","𐊆","𐊇","𐊈","𐊉","𐊊","𐊋"],"ranges":[[66176,66204]]},{"script":"Lydian","alias":"LYDIAN","samples":["𐤠","𐤡","𐤢","𐤣","𐤤","𐤥","𐤦","𐤧","𐤨","𐤩","𐤪","𐤫"],"ranges":[[67872,67897],[67903,67903]]},{"script":"Mahajani","alias":"MAHAJANI","samples":["𑅐","𑅑","𑅒","𑅓","𑅔","𑅕","𑅖","𑅗","𑅘","𑅙","𑅚","𑅛"],"ranges":[[69968,70006]]},{"script":"Makasar","alias":"MAKASAR","samples":["𑻠","𑻡","𑻢","𑻣","𑻤","𑻥","𑻦","𑻧","𑻨","𑻩","𑻪","𑻫"],"ranges":[[73440,73464]]},{"script":"Malayalam","alias":"MALAYALAM","samples":["ഄ","അ","ആ","ഇ","ഈ","ഉ","ഊ","ഋ","ഌ","എ","ഏ","ഐ"],"ranges":[[3328,3340],[3342,3344],[3346,3396],[3398,3400],[3402,3407],[3412,3427],[3430,3455]]},{"script":"Mandaic","alias":"MANDAIC","samples":["ࡀ","ࡁ","ࡂ","ࡃ","ࡄ","ࡅ","ࡆ","ࡇ","ࡈ","ࡉ","ࡊ","ࡋ"],"ranges":[[2112,2139],[2142,2142]]},{"script":"Manichaean","alias":"MANICHAEAN","samples":["𐫀","𐫁","𐫂","𐫃","𐫄","𐫅","𐫆","𐫇","𐫉","𐫊","𐫋","𐫌"],"ranges":[[68288,68326],[68331,68342]]},{"script":"Marchen","alias":"MARCHEN","samples":["𑱲","𑱳","𑱴","𑱵","𑱶","𑱷","𑱸","𑱹","𑱺","𑱻","𑱼","𑱽"],"ranges":[[72816,72847],[72850,72871],[72873,72886]]},{"script":"Masaramgondi","alias":"MASARAMGONDI","samples":["𑴀","𑴁","𑴂","𑴃","𑴄","𑴅","𑴆","𑴈","𑴉","𑴋","𑴌","𑴍"],"ranges":[[72960,72966],[72968,72969],[72971,73014],[73018,73018],[73020,73021],[73023,73031],[73040,73049]]},{"script":"Medefaidrin","alias":"MEDEFAIDRIN","samples":["𖹀","𖹁","𖹂","𖹃","𖹄","𖹅","𖹆","𖹇","𖹈","𖹉","𖹊","𖹋"],"ranges":[[93760,93850]]},{"script":"Meeteimayek","alias":"MEETEIMAYEK","samples":["ꫠ","ꫡ","ꫢ","ꫣ","ꫤ","ꫥ","ꫦ","ꫧ","ꫨ","ꫩ","ꫪ","ꫲ"],"ranges":[[43744,43766],[43968,44013],[44016,44025]]},{"script":"Mendekikakui","alias":"MENDEKIKAKUI","samples":["𞠀","𞠁","𞠂","𞠃","𞠄","𞠅","𞠆","𞠇","𞠈","𞠉","𞠊","𞠋"],"ranges":[[124928,125124],[125127,125142]]},{"script":"Meroiticcursive","alias":"MEROITICCURSIVE","samples":["𐦠","𐦡","𐦢","𐦣","𐦤","𐦥","𐦦","𐦧","𐦨","𐦩","𐦪","𐦫"],"ranges":[[68000,68023],[68028,68047],[68050,68095]]},{"script":"Meroitichieroglyphs","alias":"MEROITICHIEROGLYPHS","samples":["𐦀","𐦁","𐦂","𐦃","𐦄","𐦅","𐦆","𐦇","𐦈","𐦉","𐦊","𐦋"],"ranges":[[67968,67999]]},{"script":"Miao","alias":"MIAO","samples":["𖼀","𖼁","𖼂","𖼃","𖼄","𖼅","𖼆","𖼇","𖼈","𖼉","𖼊","𖼋"],"ranges":[[93952,94026],[94031,94087],[94095,94111]]},{"script":"Modi","alias":"MODI","samples":["𑘀","𑘁","𑘂","𑘃","𑘄","𑘅","𑘆","𑘇","𑘈","𑘉","𑘊","𑘋"],"ranges":[[71168,71236],[71248,71257]]},{"script":"Mongolian","alias":"MONGOLIAN","samples":["ᠠ","ᠡ","ᠢ","ᠣ","ᠤ","ᠥ","ᠦ","ᠧ","ᠨ","ᠩ","ᠪ","ᠫ"],"ranges":[[6144,6145],[6148,6148],[6150,6169],[6176,6264],[6272,6314],[71264,71276]]},{"script":"Mro","alias":"MRO","samples":["𖩀","𖩁","𖩂","𖩃","𖩄","𖩅","𖩆","𖩇","𖩈","𖩉","𖩊","𖩋"],"ranges":[[92736,92766],[92768,92777],[92782,92783]]},{"script":"Multani","alias":"MULTANI","samples":["𑊀","𑊁","𑊂","𑊃","𑊄","𑊅","𑊆","𑊈","𑊊","𑊋","𑊌","𑊍"],"ranges":[[70272,70278],[70280,70280],[70282,70285],[70287,70301],[70303,70313]]},{"script":"Myanmar","alias":"MYANMAR","samples":["က","ခ","ဂ","ဃ","င","စ","ဆ","ဇ","ဈ","ဉ","ည","ဋ"],"ranges":[[4096,4255],[43488,43518],[43616,43647],[71376,71395]]},{"script":"Nabataean","alias":"NABATAEAN","samples":["𐢀","𐢁","𐢂","𐢃","𐢄","𐢅","𐢆","𐢇","𐢈","𐢉","𐢊","𐢋"],"ranges":[[67712,67742],[67751,67759]]},{"script":"Nagmundari","alias":"NAGMUNDARI","samples":["𞓐","𞓑","𞓒","𞓓","𞓔","𞓕","𞓖","𞓗","𞓘","𞓙","𞓚","𞓛"],"ranges":[[124112,124153]]},{"script":"Nandinagari","alias":"NANDINAGARI","samples":["𑦠","𑦡","𑦢","𑦣","𑦤","𑦥","𑦦","𑦧","𑦪","𑦫","𑦬","𑦭"],"ranges":[[72096,72103],[72106,72151],[72154,72164]]},{"script":"Newa","alias":"NEWA","samples":["𑐀","𑐁","𑐂","𑐃","𑐄","𑐅","𑐆","𑐇","𑐈","𑐉","𑐊","𑐋"],"ranges":[[70656,70747],[70749,70753]]},{"script":"Newtailue","alias":"NEWTAILUE","samples":["ᦀ","ᦁ","ᦂ","ᦃ","ᦄ","ᦅ","ᦆ","ᦇ","ᦈ","ᦉ","ᦊ","ᦋ"],"ranges":[[6528,6571],[6576,6601],[6608,6618],[6622,6623]]},{"script":"Nko","alias":"NKO","samples":["ߊ","ߋ","ߌ","ߍ","ߎ","ߏ","ߐ","ߑ","ߒ","ߓ","ߔ","ߕ"],"ranges":[[1984,2042],[2045,2047]]},{"script":"Nushu","alias":"NUSHU","samples":["𖿡","𛅰","𛅱","𛅲","𛅳","𛅴","𛅵","𛅶","𛅷","𛅸","𛅹","𛅺"],"ranges":[[94177,94177],[110960,111355]]},{"script":"Nyiakengpuachuehmong","alias":"NYIAKENGPUACHUEHMONG","samples":["𞄀","𞄁","𞄂","𞄃","𞄄","𞄅","𞄆","𞄇","𞄈","𞄉","𞄊","𞄋"],"ranges":[[123136,123180],[123184,123197],[123200,123209],[123214,123215]]},{"script":"Ogham","alias":"OGHAM","samples":["ᚁ","ᚂ","ᚃ","ᚄ","ᚅ","ᚆ","ᚇ","ᚈ","ᚉ","ᚊ","ᚋ","ᚌ"],"ranges":[[5760,5788]]},{"script":"Olchiki","alias":"OLCHIKI","samples":["ᱚ","ᱛ","ᱜ","ᱝ","ᱞ","ᱟ","ᱠ","ᱡ","ᱢ","ᱣ","ᱤ","ᱥ"],"ranges":[[7248,7295]]},{"script":"Oldhungarian","alias":"OLDHUNGARIAN","samples":["𐲀","𐲁","𐲂","𐲃","𐲄","𐲅","𐲆","𐲇","𐲈","𐲉","𐲊","𐲋"],"ranges":[[68736,68786],[68800,68850],[68858,68863]]},{"script":"Olditalic","alias":"OLDITALIC","samples":["𐌀","𐌁","𐌂","𐌃","𐌄","𐌅","𐌆","𐌇","𐌈","𐌉","𐌊","𐌋"],"ranges":[[66304,66339],[66349,66351]]},{"script":"Oldnortharabian","alias":"OLDNORTHARABIAN","samples":["𐪀","𐪁","𐪂","𐪃","𐪄","𐪅","𐪆","𐪇","𐪈","𐪉","𐪊","𐪋"],"ranges":[[68224,68255]]},{"script":"Oldpermic","alias":"OLDPERMIC","samples":["𐍐","𐍑","𐍒","𐍓","𐍔","𐍕","𐍖","𐍗","𐍘","𐍙","𐍚","𐍛"],"ranges":[[66384,66426]]},{"script":"Oldpersian","alias":"OLDPERSIAN","samples":["𐎠","𐎡","𐎢","𐎣","𐎤","𐎥","𐎦","𐎧","𐎨","𐎩","𐎪","𐎫"],"ranges":[[66464,66499],[66504,66517]]},{"script":"Oldsogdian","alias":"OLDSOGDIAN","samples":["𐼀","𐼁","𐼂","𐼃","𐼄","𐼅","𐼆","𐼇","𐼈","𐼉","𐼊","𐼋"],"ranges":[[69376,69415]]},{"script":"Oldsoutharabian","alias":"OLDSOUTHARABIAN","samples":["𐩠","𐩡","𐩢","𐩣","𐩤","𐩥","𐩦","𐩧","𐩨","𐩩","𐩪","𐩫"],"ranges":[[68192,68223]]},{"script":"Oldturkic","alias":"OLDTURKIC","samples":["𐰀","𐰁","𐰂","𐰃","𐰄","𐰅","𐰆","𐰇","𐰈","𐰉","𐰊","𐰋"],"ranges":[[68608,68680]]},{"script":"Olduyghur","alias":"OLDUYGHUR","samples":["𐽰","𐽱","𐽲","𐽳","𐽴","𐽵","𐽶","𐽷","𐽸","𐽹","𐽺","𐽻"],"ranges":[[69488,69513]]},{"script":"Olonal","alias":"OLONAL","samples":[],"ranges":[[124368,124410],[124415,124415]]},{"script":"Oriya","alias":"ORIYA","samples":["ଅ","ଆ","ଇ","ଈ","ଉ","ଊ","ଋ","ଌ","ଏ","ଐ","ଓ","ଔ"],"ranges":[[2817,2819],[2821,2828],[2831,2832],[2835,2856],[2858,2864],[2866,2867],[2869,2873],[2876,2884],[2887,2888],[2891,2893],[2901,2903],[2908,2909],[2911,2915],[2918,2935]]},{"script":"Osage","alias":"OSAGE","samples":["𐒰","𐒱","𐒲","𐒳","𐒴","𐒵","𐒶","𐒷","𐒸","𐒹","𐒺","𐒻"],"ranges":[[66736,66771],[66776,66811]]},{"script":"Osmanya","alias":"OSMANYA","samples":["𐒀","𐒁","𐒂","𐒃","𐒄","𐒅","𐒆","𐒇","𐒈","𐒉","𐒊","𐒋"],"ranges":[[66688,66717],[66720,66729]]},{"script":"Pahawhhmong","alias":"PAHAWHHMONG","samples":["𖬀","𖬁","𖬂","𖬃","𖬄","𖬅","𖬆","𖬇","𖬈","𖬉","𖬊","𖬋"],"ranges":[[92928,92997],[93008,93017],[93019,93025],[93027,93047],[93053,93071]]},{"script":"Palmyrene","alias":"PALMYRENE","samples":["𐡠","𐡡","𐡢","𐡣","𐡤","𐡥","𐡦","𐡧","𐡨","𐡩","𐡪","𐡫"],"ranges":[[67680,67711]]},{"script":"Paucinhau","alias":"PAUCINHAU","samples":["𑫀","𑫁","𑫂","𑫃","𑫄","𑫅","𑫆","𑫇","𑫈","𑫉","𑫊","𑫋"],"ranges":[[72384,72440]]},{"script":"Phagspa","alias":"PHAGSPA","samples":["ꡀ","ꡁ","ꡂ","ꡃ","ꡄ","ꡅ","ꡆ","ꡇ","ꡈ","ꡉ","ꡊ","ꡋ"],"ranges":[[43072,43127]]},{"script":"Phoenician","alias":"PHOENICIAN","samples":["𐤀","𐤁","𐤂","𐤃","𐤄","𐤅","𐤆","𐤇","𐤈","𐤉","𐤊","𐤋"],"ranges":[[67840,67867],[67871,67871]]},{"script":"Psalterpahlavi","alias":"PSALTERPAHLAVI","samples":["𐮀","𐮁","𐮂","𐮃","𐮄","𐮅","𐮆","𐮇","𐮈","𐮉","𐮊","𐮋"],"ranges":[[68480,68497],[68505,68508],[68521,68527]]},{"script":"Rejang","alias":"REJANG","samples":["ꤰ","ꤱ","ꤲ","ꤳ","ꤴ","ꤵ","ꤶ","ꤷ","ꤸ","ꤹ","ꤺ","ꤻ"],"ranges":[[43312,43347],[43359,43359]]},{"script":"Runic","alias":"RUNIC","samples":["ᚠ","ᚡ","ᚢ","ᚣ","ᚤ","ᚥ","ᚦ","ᚧ","ᚨ","ᚩ","ᚪ","ᚫ"],"ranges":[[5792,5866],[5870,5880]]},{"script":"Samaritan","alias":"SAMARITAN","samples":["ࠀ","ࠁ","ࠂ","ࠃ","ࠄ","ࠅ","ࠆ","ࠇ","ࠈ","ࠉ","ࠊ","ࠋ"],"ranges":[[2048,2093],[2096,2110]]},{"script":"Saurashtra","alias":"SAURASHTRA","samples":["ꢂ","ꢃ","ꢄ","ꢅ","ꢆ","ꢇ","ꢈ","ꢉ","ꢊ","ꢋ","ꢌ","ꢍ"],"ranges":[[43136,43205],[43214,43225]]},{"script":"Sharada","alias":"SHARADA","samples":["𑆃","𑆄","𑆅","𑆆","𑆇","𑆈","𑆉","𑆊","𑆋","𑆌","𑆍","𑆎"],"ranges":[[70016,70111],[72544,72551]]},{"script":"Shavian","alias":"SHAVIAN","samples":["𐑐","𐑑","𐑒","𐑓","𐑔","𐑕","𐑖","𐑗","𐑘","𐑙","𐑚","𐑛"],"ranges":[[66640,66687]]},{"script":"Siddham","alias":"SIDDHAM","samples":["𑖀","𑖁","𑖂","𑖃","𑖄","𑖅","𑖆","𑖇","𑖈","𑖉","𑖊","𑖋"],"ranges":[[71040,71093],[71096,71133]]},{"script":"Sidetic","alias":"SIDETIC","samples":[],"ranges":[[67904,67929]]},{"script":"Signwriting","alias":"SIGNWRITING","samples":[],"ranges":[[120832,121483],[121499,121503],[121505,121519]]},{"script":"Sinhala","alias":"SINHALA","samples":["අ","ආ","ඇ","ඈ","ඉ","ඊ","උ","ඌ","ඍ","ඎ","ඏ","ඐ"],"ranges":[[3457,3459],[3461,3478],[3482,3505],[3507,3515],[3517,3517],[3520,3526],[3530,3530],[3535,3540],[3542,3542],[3544,3551],[3558,3567],[3570,3572],[70113,70132]]},{"script":"Sogdian","alias":"SOGDIAN","samples":["𐼰","𐼱","𐼲","𐼳","𐼴","𐼵","𐼶","𐼷","𐼸","𐼹","𐼺","𐼻"],"ranges":[[69424,69465]]},{"script":"Sorasompeng","alias":"SORASOMPENG","samples":["𑃐","𑃑","𑃒","𑃓","𑃔","𑃕","𑃖","𑃗","𑃘","𑃙","𑃚","𑃛"],"ranges":[[69840,69864],[69872,69881]]},{"script":"Soyombo","alias":"SOYOMBO","samples":["𑩐","𑩜","𑩝","𑩞","𑩟","𑩠","𑩡","𑩢","𑩣","𑩤","𑩥","𑩦"],"ranges":[[72272,72354]]},{"script":"Sundanese","alias":"SUNDANESE","samples":["ᮃ","ᮄ","ᮅ","ᮆ","ᮇ","ᮈ","ᮉ","ᮊ","ᮋ","ᮌ","ᮍ","ᮎ"],"ranges":[[7040,7103],[7360,7367]]},{"script":"Sunuwar","alias":"SUNUWAR","samples":[],"ranges":[[72640,72673],[72688,72697]]},{"script":"Sylotinagri","alias":"SYLOTINAGRI","samples":["ꠀ","ꠁ","ꠃ","ꠄ","ꠅ","ꠇ","ꠈ","ꠉ","ꠊ","ꠌ","ꠍ","ꠎ"],"ranges":[[43008,43052]]},{"script":"Syriac","alias":"SYRIAC","samples":["ܐ","ܒ","ܓ","ܔ","ܕ","ܖ","ܗ","ܘ","ܙ","ܚ","ܛ","ܜ"],"ranges":[[1792,1805],[1807,1866],[1869,1871],[2144,2154]]},{"script":"Tagalog","alias":"TAGALOG","samples":["ᜀ","ᜁ","ᜂ","ᜃ","ᜄ","ᜅ","ᜆ","ᜇ","ᜈ","ᜉ","ᜊ","ᜋ"],"ranges":[[5888,5909],[5919,5919]]},{"script":"Tagbanwa","alias":"TAGBANWA","samples":["ᝠ","ᝡ","ᝢ","ᝣ","ᝤ","ᝥ","ᝦ","ᝧ","ᝨ","ᝩ","ᝪ","ᝫ"],"ranges":[[5984,5996],[5998,6000],[6002,6003]]},{"script":"Taile","alias":"TAILE","samples":["ᥐ","ᥑ","ᥒ","ᥓ","ᥔ","ᥕ","ᥖ","ᥗ","ᥘ","ᥙ","ᥚ","ᥛ"],"ranges":[[6480,6509],[6512,6516]]},{"script":"Taitham","alias":"TAITHAM","samples":["ᨠ","ᨡ","ᨢ","ᨣ","ᨤ","ᨥ","ᨦ","ᨧ","ᨨ","ᨩ","ᨪ","ᨫ"],"ranges":[[6688,6750],[6752,6780],[6783,6793],[6800,6809],[6816,6829]]},{"script":"Taiviet","alias":"TAIVIET","samples":["ꪀ","ꪁ","ꪂ","ꪃ","ꪄ","ꪅ","ꪆ","ꪇ","ꪈ","ꪉ","ꪊ","ꪋ"],"ranges":[[43648,43714],[43739,43743]]},{"script":"Taiyo","alias":"TAIYO","samples":[],"ranges":[[124608,124638],[124640,124661],[124670,124671]]},{"script":"Takri","alias":"TAKRI","samples":["𑚀","𑚁","𑚂","𑚃","𑚄","𑚅","𑚆","𑚇","𑚈","𑚉","𑚊","𑚋"],"ranges":[[71296,71353],[71360,71369]]},{"script":"Tamil","alias":"TAMIL","samples":["ஃ","அ","ஆ","இ","ஈ","உ","ஊ","எ","ஏ","ஐ","ஒ","ஓ"],"ranges":[[2946,2947],[2949,2954],[2958,2960],[2962,2965],[2969,2970],[2972,2972],[2974,2975],[2979,2980],[2984,2986],[2990,3001],[3006,3010],[3014,3016],[3018,3021],[3024,3024],[3031,3031],[3046,3066],[73664,73713],[73727,73727]]},{"script":"Tangsa","alias":"TANGSA","samples":["𖩰","𖩱","𖩲","𖩳","𖩴","𖩵","𖩶","𖩷","𖩸","𖩹","𖩺","𖩻"],"ranges":[[92784,92862],[92864,92873]]},{"script":"Tangut","alias":"TANGUT","samples":["𖿠","𗀀","𗀁","𗀂","𗀃","𗀄","𗀅","𗀆","𗀇","𗀈","𗀉","𗀊"],"ranges":[[94176,94176],[94208,101119],[101632,101662],[101760,101874]]},{"script":"Telugu","alias":"TELUGU","samples":["అ","ఆ","ఇ","ఈ","ఉ","ఊ","ఋ","ఌ","ఎ","ఏ","ఐ","ఒ"],"ranges":[[3072,3084],[3086,3088],[3090,3112],[3114,3129],[3132,3140],[3142,3144],[3146,3149],[3157,3158],[3160,3162],[3164,3165],[3168,3171],[3174,3183],[3191,3199]]},{"script":"Thaana","alias":"THAANA","samples":["ހ","ށ","ނ","ރ","ބ","ޅ","ކ","އ","ވ","މ","ފ","ދ"],"ranges":[[1920,1969]]},{"script":"Thai","alias":"THAI","samples":["ก","ข","ฃ","ค","ฅ","ฆ","ง","จ","ฉ","ช","ซ","ฌ"],"ranges":[[3585,3642],[3648,3675]]},{"script":"Tibetan","alias":"TIBETAN","samples":["ༀ","ཀ","ཁ","ག","གྷ","ང","ཅ","ཆ","ཇ","ཉ","ཊ","ཋ"],"ranges":[[3840,3911],[3913,3948],[3953,3991],[3993,4028],[4030,4044],[4046,4052],[4057,4058]]},{"script":"Tifinagh","alias":"TIFINAGH","samples":["ⴰ","ⴱ","ⴲ","ⴳ","ⴴ","ⴵ","ⴶ","ⴷ","ⴸ","ⴹ","ⴺ","ⴻ"],"ranges":[[11568,11623],[11631,11632],[11647,11647]]},{"script":"Tirhuta","alias":"TIRHUTA","samples":["𑒀","𑒁","𑒂","𑒃","𑒄","𑒅","𑒆","𑒇","𑒈","𑒉","𑒊","𑒋"],"ranges":[[70784,70855],[70864,70873]]},{"script":"Todhri","alias":"TODHRI","samples":[],"ranges":[[67008,67059]]},{"script":"Tolongsiki","alias":"TOLONGSIKI","samples":[],"ranges":[[73136,73179],[73184,73193]]},{"script":"Toto","alias":"TOTO","samples":["𞊐","𞊑","𞊒","𞊓","𞊔","𞊕","𞊖","𞊗","𞊘","𞊙","𞊚","𞊛"],"ranges":[[123536,123566]]},{"script":"Tulutigalari","alias":"TULUTIGALARI","samples":[],"ranges":[[70528,70537],[70539,70539],[70542,70542],[70544,70581],[70583,70592],[70594,70594],[70597,70597],[70599,70602],[70604,70613],[70615,70616],[70625,70626]]},{"script":"Ugaritic","alias":"UGARITIC","samples":["𐎀","𐎁","𐎂","𐎃","𐎄","𐎅","𐎆","𐎇","𐎈","𐎉","𐎊","𐎋"],"ranges":[[66432,66461],[66463,66463]]},{"script":"Vai","alias":"VAI","samples":["ꔀ","ꔁ","ꔂ","ꔃ","ꔄ","ꔅ","ꔆ","ꔇ","ꔈ","ꔉ","ꔊ","ꔋ"],"ranges":[[42240,42539]]},{"script":"Vithkuqi","alias":"VITHKUQI","samples":["𐕰","𐕱","𐕲","𐕳","𐕴","𐕵","𐕶","𐕷","𐕸","𐕹","𐕺","𐕼"],"ranges":[[66928,66938],[66940,66954],[66956,66962],[66964,66965],[66967,66977],[66979,66993],[66995,67001],[67003,67004]]},{"script":"Wancho","alias":"WANCHO","samples":["𞋀","𞋁","𞋂","𞋃","𞋄","𞋅","𞋆","𞋇","𞋈","𞋉","𞋊","𞋋"],"ranges":[[123584,123641],[123647,123647]]},{"script":"Warangciti","alias":"WARANGCITI","samples":["𑢠","𑢡","𑢢","𑢣","𑢤","𑢥","𑢦","𑢧","𑢨","𑢩","𑢪","𑢫"],"ranges":[[71840,71922],[71935,71935]]},{"script":"Yezidi","alias":"YEZIDI","samples":["𐺀","𐺁","𐺂","𐺃","𐺄","𐺅","𐺆","𐺇","𐺈","𐺉","𐺊","𐺋"],"ranges":[[69248,69289],[69291,69293],[69296,69297]]},{"script":"Yi","alias":"YI","samples":["ꀀ","ꀁ","ꀂ","ꀃ","ꀄ","ꀅ","ꀆ","ꀇ","ꀈ","ꀉ","ꀊ","ꀋ"],"ranges":[[40960,42124],[42128,42182]]},{"script":"Zanabazarsquare","alias":"ZANABAZARSQUARE","samples":["𑨀","𑨋","𑨌","𑨍","𑨎","𑨏","𑨐","𑨑","𑨒","𑨓","𑨔","𑨕"],"ranges":[[72192,72263]]}],"sha256_canonical_payload":"98dae4daa1e180406d57b11351adcc87b269536312d673862c1df3bcfbec3683"};
+
+</script>
+<script data-glass-module="app.js">
+/* GLASS / UNISON TERMINAL 1.0
+   A self-contained, deterministic symbol-operator projection. Distinct from natural-language translation.
+   All operations are local except the user's explicit Enter on a complete HTTP(S) address.
+   No search, accounts, cookies, telemetry, LLM endpoints, or background network connections.
+*/
+(()=>{'use strict';
+const registry=window.GLASS_REGISTRY;
+if(!registry||registry.letters.length!==28)throw new Error('GLASS registry unavailable');
+const symbols=[...registry.letters,registry.metaterminal];
+const marks=registry.marks;
+const $=id=>document.getElementById(id);
+const input=$('sourceInput'),stage=$('stage'),world=$('universe'),pyramid=$('pyramid');
+const roll=$('rollTrack'),rollFrame=$('rollFrame'),signature=$('signatureRail');
+const counts={words:$('wordCount'),letters:$('letterCount')};
+const byGlyph=new Map(registry.letters.map(c=>[c.base,c]));
+const T=Math.PI*2;
+const choose=(n,N)=>((n%N)+N)%N;
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+let phase=.001,forcedUntil=0,active=-1,lastFrame=0,lastVariant=-1,currentSource='',sourceIndex=0,animStopped=false,skippingMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let symbolicTokens=[],lastSignal=0;
+const startingTime=performance.now();
+const seeded=r=>{let n=r>>>0;return ()=>{n=(Math.imul(n,1664525)+1013904223)>>>0;return n/4294967296}};
+let rand=seeded(7943),stars=[];
+const shapes=[['south', 'SOUTH'],['west','WEST'],['north','NORTH'],['east','EAST']];
+const ctx=world.getContext('2d',{alpha:true}),pctx=pyramid.getContext('2d',{alpha:true});
+const rollCells=[];
+for(let i=-6;i<=6;i++){
+ const el=document.createElement('div');el.className='roll-item';el.dataset.offset=String(i);el.setAttribute('role','option');el.setAttribute('aria-label','Unison operator');el.tabIndex=0;
+ const glyph=document.createElement('span');glyph.className='roll-glyph';glyph.lang='ar';glyph.dir='rtl';
+ const label=document.createElement('span');label.className='roll-number';
+ el.append(glyph,label);roll.appendChild(el);rollCells.push({el,glyph,label,i});
+ el.addEventListener('click',()=>tapRolodex(el));
+ el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();tapRolodex(el)}});
+}
+function fnv32(s){let v=0x811c9dc5;for(const cp of s){let c=cp.codePointAt(0);v^=c&255;v=Math.imul(v,0x01000193)>>>0;v^=(c>>>8)&255;v=Math.imul(v,0x01000193)>>>0;v^=(c>>>16)&255;v=Math.imul(v,0x01000193)>>>0;v^=(c>>>24)&255;v=Math.imul(v,0x01000193)>>>0;}return v>>>0}
+function safeLetter(ch){const un=ch.normalize('NFKC');if(byGlyph.has(un))return byGlyph.get(un);if(byGlyph.has(ch))return byGlyph.get(ch);const decomposed=un.normalize('NFD');for(const scalar of decomposed){if(byGlyph.has(scalar))return byGlyph.get(scalar);}return null}
+function projection(source){
+ const out=[];let pos=0;let directCount=0;
+ for(const ch of source){
+  if(/\s/u.test(ch)){out.push({space:true});pos++;continue}
+  if(/\p{M}/u.test(ch)){
+   const mark=marks.find(m=>m.glyph===ch);
+   if(mark&&out.length&&out[out.length-1].letter)out[out.length-1].mark=ch;
+   pos++;continue;
+  }
+  const direct=safeLetter(ch),index=direct?direct.index:fnv32(ch+'|'+pos+'|unison')%28;
+  if(direct)directCount++;
+  out.push({letter:symbols[index],direct:!!direct,source:ch,index,mark:''});
+  pos++;
+  if(out.length>=2048)break;
+ }
+ return {out,directCount};
+}
+function getUrl(raw){
+ const s=raw.trim();if(!s||/\s/.test(s)||s.length>1024)return null;
+ if(/^glass:\/\//i.test(s))return {glass:s};
+ if(/^[A-Za-z][\w+.-]*:/.test(s)&&!/^https?:\/\//i.test(s))return null;
+ let u;
+ try{
+  u=new URL(/^https?:\/\//i.test(s)?s:'https://'+s);
+  if(!['https:','http:'].includes(u.protocol)||u.username||u.password||!u.hostname.includes('.'))return null;
+  const parts=u.hostname.split('.');if(parts.some(p=>!p||!/^([a-zA-Z0-9-]+)$/.test(p))||parts.at(-1).length<2)return null;
+  if(!s.includes('.')||!/^([a-z0-9-]+\.)+[a-z]{2,}/i.test(u.hostname))return null;
+  return {url:u.toString()};
+ }catch{return null}
+}
+function status(message){$('a11yStatus').textContent=message}
+function setActive(index,now=performance.now()){
+ const normalized=choose(index,symbols.length);
+ if(normalized===active)return;
+ active=normalized;
+ const s=symbols[active],role=s.role.toUpperCase(),base=s.base||s.glyph;
+ $('stageName').textContent=role;
+ $('stageOrdinal').textContent=String(active+1).padStart(3,'0')+' / 029';
+ $('rollLabel').textContent=(base||'۞')+' / '+role;
+ $('stageGlyph').textContent=base||'۞';
+ $('stage').setAttribute('aria-label','GLASS eight-face pyramid. Selected '+role+' operator, letter '+(base||'۞')+'. Tap to advance.');
+ const forms=s.forms||{};const v=$('variantStrip');v.replaceChildren();
+ ['isolated','initial','medial','final'].forEach(k=>{
+  const cell=document.createElement('span');cell.className='variant'+(!forms[k]?' empty':'');cell.textContent=forms[k]||'·';cell.title=k;
+  cell.setAttribute('aria-label',forms[k]?k+' form of '+base:k+' form does not exist for '+base);
+  v.appendChild(cell);
+ });
+ lastVariant=-1;
+}
+function tapRolodex(el){
+ const i=Number(el.dataset.registryIndex);
+ if(!Number.isInteger(i)||i<0||i>=symbols.length)return;
+ phase=i;forcedUntil=performance.now()+6200;setActive(i);
+ const glyph=symbols[i].base||symbols[i].glyph;
+ const st=input.selectionStart||0,end=input.selectionEnd||0;
+ input.value=input.value.slice(0,st)+glyph+input.value.slice(end);
+ input.focus({preventScroll:true});input.setSelectionRange(st+glyph.length,st+glyph.length);
+ changeInput();status('Inserted '+glyph+' · '+symbols[i].role);
+}
+function changeInput(){
+ const val=input.value;
+ if(val===currentSource)return;
+ currentSource=val;sourceIndex++;
+ const {out,directCount}=projection(val);symbolicTokens=out;
+ counts.words.textContent=val.trim()?String(val.trim().split(/\s+/).length):'0';
+ counts.letters.textContent=String(out.filter(t=>t.letter).length);
+ const dest=$('signatureRail');dest.replaceChildren();
+ const nonspaces=out.filter(t=>t.letter);
+ if(nonspaces.length){
+  out.slice(-70).forEach((t,k)=>{
+   if(t.space){const gap=document.createElement('span');gap.className='word-space';gap.setAttribute('aria-hidden','true');dest.append(gap);return;}
+   const token=document.createElement('span');token.className='token';token.lang='ar';token.dir='rtl';token.textContent=(t.letter.base||t.letter.glyph)+(t.mark||'');
+   token.dataset.direct=String(t.direct);token.title=t.letter.role+' / '+(t.direct?'Arabic source':'deterministic Unicode projection');
+   if(k===out.length-1)token.dataset.active='true';dest.append(token);
+  });
+  const last=nonspaces.at(-1);
+  phase=last.index;forcedUntil=performance.now()+1600;setActive(last.index);
+ }else{
+  const holder=document.createElement('span');holder.className='rail-placeholder';holder.textContent='۞    آ    ۞    َ    ع    ۞    ٰ    ق    ۞';dest.append(holder);
+ }
+ const location=getUrl(val);
+ const mode=location?(location.glass?'GLASS OPERATOR':'ADDRESS READY'):nonspaces.length?directCount===nonspaces.length?'ARABIC · SOURCE':'UNISON · ENCODING':'AWAITING SOURCE';
+ $('sourceMode').textContent=mode;
+ $('sourceInput').dataset.intent=location?'address':'symbol';
+ if(location){
+  $('inputIntent').textContent=location.glass?'LOCAL TERMINAL ↵':'OPEN ADDRESS ↵';
+  $('signatureLabel').textContent=location.glass?'LOCAL GLASS ADDRESS · ENTER TO RESOLVE':'HTTPS ADDRESS · ENTER TO OPEN';
+ }else{
+  $('inputIntent').innerHTML='LISTENING <span class="animated-caret">│</span>';
+  $('signatureLabel').textContent=nonspaces.length?directCount===nonspaces.length?'DIRECT ARABIC REGISTRY · LIVE':'UNISON OPERATOR PROJECTION · LIVE':'NO SEARCH. NO COMMAND REQUIRED.';
+ }
+ $('signatureHash').textContent='UNISON·'+fnv32(val).toString(16).toUpperCase().padStart(8,'0');
+}
+function handleEnter(){
+ const text=input.value,nav=getUrl(text);
+ if(nav?.url){status('Opening '+nav.url);window.location.assign(nav.url);return;}
+ if(nav?.glass){
+  const part=nav.glass.slice(8).replace(/^terminal\/?/,'');
+  const m=part.match(/^alpha\/(\d+)/);
+  if(m){phase=Number(m[1])%symbols.length;forcedUntil=performance.now()+5000;setActive(phase);status('Resolved '+nav.glass);}
+  else {status('Resolved local GLASS operator '+nav.glass);}
+  $('signatureLabel').textContent='GLASS ADDRESS · RESOLVED LOCALLY';return;
+ }
+ if(text.trim()){
+  lastSignal=performance.now();$('signatureLabel').textContent='SEQUENCE RECEIVED · NO SEARCH PERFORMED';
+  status('Received '+text.length+' source characters. Projection reference '+fnv32(text).toString(16));
+ }
+}
+input.addEventListener('input',changeInput);
+input.addEventListener('keydown',e=>{
+ if(e.key==='Enter'){e.preventDefault();handleEnter()}
+ else if(e.key==='ArrowUp'&&e.altKey){e.preventDefault();phase=choose(active+1,symbols.length);forcedUntil=performance.now()+5000;setActive(phase)}
+ else if(e.key==='ArrowDown'&&e.altKey){e.preventDefault();phase=choose(active-1,symbols.length);forcedUntil=performance.now()+5000;setActive(phase)}
+});
+stage.addEventListener('click',()=>{phase=choose(active+1,symbols.length);forcedUntil=performance.now()+5500;setActive(phase);status('Selected '+symbols[active].role);});
+stage.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();stage.click()}});
+// Swipe on the existing letter surface is interpreted as a tap-oriented selection gesture, not a button.
+let touchStart=null;
+rollFrame.addEventListener('touchstart',e=>{if(e.touches.length===1)touchStart=e.touches[0].clientY},{passive:true});
+rollFrame.addEventListener('touchend',e=>{if(touchStart===null||!e.changedTouches.length)return;const d=e.changedTouches[0].clientY-touchStart;touchStart=null;if(Math.abs(d)>22){phase=choose(active+Math.round(-d/40),symbols.length);forcedUntil=performance.now()+5500;setActive(phase);status('Rolled to '+symbols[active].role);}}, {passive:true});
+function fit(canvas,context){const b=canvas.getBoundingClientRect();const d=clamp(devicePixelRatio||1,1,2);const w=Math.max(1,Math.round(b.width*d)),h=Math.max(1,Math.round(b.height*d));if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;context.setTransform(d,0,0,d,0,0);return true}return false}
+function resetStars(){rand=seeded(7943);stars=[];for(let i=0;i<165;i++){stars.push({x:rand(),y:rand(),r:.25+rand()*1.1,p:rand()*T,t:.13+rand()*.6});}}
+function drawUniverse(now){
+ const resized=fit(world,ctx),w=world.clientWidth,h=world.clientHeight;
+ if(resized)resetStars();
+ ctx.clearRect(0,0,w,h);
+ for(const s of stars){let twinkle=.55+.45*Math.sin(now*.00033+s.p);ctx.fillStyle=`rgba(226,211,178,${s.t*twinkle})`;ctx.beginPath();ctx.arc(s.x*w,s.y*h,s.r,0,T);ctx.fill()}
+ let cx=w*.50,cy=h*.40;
+ const r=Math.min(w*.31,h*.44);
+ const aura=ctx.createRadialGradient(cx,cy,0,cx,cy,r);
+ aura.addColorStop(0,'rgba(196,152,94,.06)');aura.addColorStop(.55,'rgba(145,137,120,.025)');aura.addColorStop(1,'rgba(0,0,0,0)');ctx.fillStyle=aura;ctx.beginPath();ctx.arc(cx,cy,r,0,T);ctx.fill();
+ ctx.strokeStyle='rgba(213,188,146,.065)';ctx.lineWidth=.6;
+ for(let k=0;k<7;k++){
+  const y=h*(.22+k*.073);ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke();
+ }
+ // A slow moving reference meridian, not a real astronomical measurement.
+ const angle=now*.00005;
+ ctx.strokeStyle='rgba(203,174,125,.10)';ctx.beginPath();ctx.ellipse(cx,cy,r*1.27,r*.54,angle,0,T);ctx.stroke();
+}
+function xyzProject(a,cosa,sina){const [x,y,z]=a;const px=x*cosa-z*sina,pz=x*sina+z*cosa;const tilt=-.20;const py=y*Math.cos(tilt)-pz*Math.sin(tilt);const zz=y*Math.sin(tilt)+pz*Math.cos(tilt);const scale=2.7/(2.7-zz*.4);return {x:px*scale,y:-py*scale,z:zz}}
+function drawPyramid(now){
+ fit(pyramid,pctx);
+ const w=pyramid.clientWidth,h=pyramid.clientHeight;
+ pctx.clearRect(0,0,w,h);
+ const Cx=w*.5,Cy=h*.44,base=Math.min(w,h)*.23;
+ const activeSymbol=symbols[active<0?0:active];
+ const sourceHash=fnv32(currentSource||'۞');
+ const theta=now*.00012;
+ const gx=.85+Math.sin(now*.00037)*.08;
+ const peak=[0,1.30,0],baseCoords=[[1.03,-.73,1.03],[-1.03,-.73,1.03],[-1.03,-.73,-1.03],[1.03,-.73,-1.03]];
+ const c=Math.cos(theta),s=Math.sin(theta);
+ pctx.save();pctx.translate(Cx,Cy);
+ // Twenty-eight orbiting terminal addresses around the central glyph.
+ pctx.save();pctx.rotate(-.30);const rx=base*2.02,ry=base*.98;
+ pctx.strokeStyle='#d3ae7340';pctx.lineWidth=.7;
+ [1,1.19,1.41].forEach((radius,i)=>{pctx.beginPath();pctx.ellipse(0,0,rx*radius,ry*radius,0,.10+theta*.22,T-.28);pctx.stroke()});
+ pctx.setTransform(1,0,0,1,0,0); // restored below after scaling? avoid wiping logical transform on HiDPI.
+ pctx.restore();
+ // Ground halo.
+ const aura=pctx.createRadialGradient(0,0,base*.06,0,0,base*2.1);aura.addColorStop(0,'#c8aa6025');aura.addColorStop(.5,'#a18d4a08');aura.addColorStop(1,'#00000000');pctx.fillStyle=aura;pctx.beginPath();pctx.ellipse(0,0,base*1.9,base*1.35,0,0,T);pctx.fill();
+ const faces=[];
+ for(let j=0;j<4;j++){
+  const first=baseCoords[j],second=baseCoords[(j+1)%4];
+  const mid=first.map((v,i)=>(v+second[i])/2);
+  for(let side=0;side<2;side++){
+   const a=side===0?first:mid,b=side===0?mid:second;
+   const hinge=side===0?-1:1;
+   const openness=(.02+.05*(.5+.5*Math.sin(now*.00045+j*1.6)));
+   const aa=[a[0]+a[0]*openness,a[1],a[2]+a[2]*openness];
+   const bb=[b[0]+b[0]*openness,b[1],b[2]+b[2]*openness];
+   const tip=[peak[0]+hinge*.016,peak[1],peak[2]+hinge*.006];
+   const projected=[tip,aa,bb].map(p=>xyzProject(p,c,s));
+   faces.push({j,side,vertices:projected,depth:projected.reduce((n,p)=>n+p.z,0),lit:((sourceHash>>(j*2+side))&1)!==0});
+  }
+ }
+ faces.sort((a,b)=>a.depth-b.depth);
+ for(const f of faces){
+  let [a,b,d]=f.vertices;
+  const gradient=pctx.createLinearGradient(a.x*base,a.y*base,d.x*base,d.y*base);
+  const near=Math.max(.02,Math.min(.16,.07+f.depth*.014));
+  gradient.addColorStop(0,f.lit?'rgba(222,177,105,.28)':'rgba(142,160,167,.12)');gradient.addColorStop(.5,f.lit?`rgba(190,153,98,${near})`:'rgba(34,48,57,.08)');gradient.addColorStop(1,'rgba(8,19,31,.04)');
+  pctx.beginPath();pctx.moveTo(a.x*base,a.y*base);pctx.lineTo(b.x*base,b.y*base);pctx.lineTo(d.x*base,d.y*base);pctx.closePath();pctx.fillStyle=gradient;pctx.fill();
+  pctx.strokeStyle=f.lit?'rgba(238,204,144,.55)':'rgba(133,151,161,.30)';pctx.lineWidth=f.lit?1.15:.75;pctx.stroke();
+  // Four mirrored pair ridges are intentionally separated: 8 facets total.
+  const mx=(a.x+b.x+d.x)/3,my=(a.y+b.y+d.y)/3;
+  if(f.lit){pctx.beginPath();pctx.arc(mx*base,my*base,1.45,0,T);pctx.fillStyle='#f2d29c';pctx.fill()}
+ }
+ // Temporal arc along silhouette.
+ pctx.lineWidth=.7;pctx.strokeStyle='rgba(229,203,146,.28)';pctx.setLineDash([4,11]);pctx.beginPath();pctx.ellipse(0,0,base*1.73,base*.87,theta*.4,0,T);pctx.stroke();pctx.setLineDash([]);
+ // Constellated 28 operator letters follow an outer elliptic circuit.
+ const a28=Math.min(28,symbols.length-1);
+ pctx.font=`${Math.max(12,Math.min(19,base*.13))}px 'Amiri','Noto Naskh Arabic',serif`;
+ pctx.textAlign='center';pctx.textBaseline='middle';
+ for(let j=0;j<a28;j++){
+  const t=T*j/a28+theta*.21,xx=Math.cos(t)*base*1.95,yy=Math.sin(t)*base*1.14;
+  pctx.fillStyle=j===active?'rgba(246,216,161,.96)':'rgba(214,176,112,.37)';
+  pctx.fillText(registry.letters[j].base,xx,yy);
+ }
+ // Axial corner glints.
+ for(let i=0;i<4;i++){const pt=xyzProject(baseCoords[i],c,s);pctx.fillStyle='rgba(241,206,154,.45)';pctx.beginPath();pctx.arc(pt.x*base,pt.y*base,1.8,0,T);pctx.fill()}
+ pctx.restore();
+}
+function rolling(now){
+ if(active<0)setActive(0,now);
+ if(now>forcedUntil){phase+=(Math.min((now-lastFrame)||16,40))*(skippingMotion?0:.00070);const next=choose(Math.round(phase),symbols.length);if(next!==active)setActive(next,now)}
+ const rounded=Math.round(phase),fraction=phase-rounded;
+ const h=rollFrame.clientHeight||400;
+ const spacing=clamp(h/7.5,31,62);
+ for(const {el,glyph,label,i} of rollCells){
+  const index=choose(rounded+i,symbols.length),sym=symbols[index];
+  const distance=i-fraction,absolute=Math.abs(distance);
+  let y=h/2+distance*spacing;
+  const scaling=clamp(1.17-absolute*.12,.45,1.18);
+  const rotate=clamp(distance*9,-60,60),opacity=clamp(1.0-absolute*.17,0,1);
+  el.style.transform=`translate3d(0,${y-28}px,0) scale(${scaling}) rotateX(${-rotate}deg)`;
+  el.style.opacity=opacity.toFixed(3);
+  el.style.zIndex=String(100-Math.round(absolute));
+  el.dataset.registryIndex=String(index);
+  el.dataset.selected=String(index===active&&absolute<.55);
+  glyph.textContent=sym.base||sym.glyph;
+  label.textContent=String(index+1).padStart(2,'0');
+  el.setAttribute('aria-label',`${sym.role} · ${sym.base||sym.glyph} · tap to type`);
+ }
+ // Time-varying isolated/initial/final/medial for the same selected glyph.
+ const sym=symbols[active],forms=sym.forms||{},k=Math.floor(now/2200)%4;
+ if(k!==lastVariant){lastVariant=k;const key=['isolated','initial','medial','final'][k];$('stageGlyph').textContent=forms[key]||sym.base||sym.glyph;const children=[...$('variantStrip').children];children.forEach((el,ind)=>{el.style.color=ind===k?'#efd3a0':'#9b8b73';el.style.textShadow=ind===k?'0 0 15px #c4a16b66':'none';});}
+}
+function timeStep(now){
+ if(animStopped)return;
+ $('clock').textContent=new Date().toLocaleTimeString('en-GB',{hour12:false,timeZone:'UTC'})+' UTC';
+ drawUniverse(now);
+ drawPyramid(now);
+ rolling(now);
+ lastFrame=now;
+ requestAnimationFrame(timeStep);
+}
+window.GLASS={
+ registry, // source-linkable JSON metadata, not a key/secret.
+ project:projection,
+ signature:fnv32,
+ resolve:getUrl,
+ address:(index)=>'glass://terminal/alpha/'+String(choose(index,29)).padStart(2,'0'),
+ live:()=>({source:input.value,selected:symbols[active],operators:symbolicTokens.filter(t=>t.letter).map(t=>t.letter.role),hash:fnv32(input.value),forms:registry.letters.reduce((a,r)=>a+Object.keys(r.forms).length,0)}),
+};
+$('formCount').textContent=String(registry.letters.reduce((a,r)=>a+Object.keys(r.forms).length,0));
+phase=28;forcedUntil=performance.now()+1500;setActive(28);changeInput();requestAnimationFrame(timeStep);
+})();
+
+</script>
+<script data-glass-module="world-atlas.js">
+/* GLASS / UNISON · WORLD SCRIPT ORBIT 0.1
+ * Read-only visualization over a versioned Unicode Script property snapshot.
+ * This is not language translation, an LLM, a dictionary or a global search index.
+ * All input and rendering remain in the browser. No network calls.
+ */
+(()=>{'use strict';
+ const atlas=window.GLASS_WORLD_SCRIPTS;
+ if(!atlas||!Array.isArray(atlas.scripts))return;
+ const canvas=document.getElementById('scriptSky'),input=document.getElementById('sourceInput');
+ const caption=document.getElementById('scriptCaption');
+ if(!canvas||!input||!caption)return;
+ const ctx=canvas.getContext('2d',{alpha:true});
+ const scripts=atlas.scripts;
+ const ranges=[];
+ scripts.forEach((s,i)=>s.ranges.forEach(([from,to])=>ranges.push({from,to,i})));
+ ranges.sort((a,b)=>a.from-b.from);
+ const memo=new Map();let chosen=[],selected=new Set(),lastDigest='',started=performance.now(),lastLabel=-1;
+ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function scriptOf(codepoint){
+  if(memo.has(codepoint))return memo.get(codepoint);
+  let lo=0,hi=ranges.length-1,found=-1;
+  while(lo<=hi){let mid=(lo+hi)>>1,r=ranges[mid];if(codepoint<r.from)hi=mid-1;else if(codepoint>r.to)lo=mid+1;else{found=r.i;break}}
+  memo.set(codepoint,found);
+  return found;
+ }
+ function sampleAt(i,t){
+  const s=scripts[(i+scripts.length)%scripts.length];
+  const samples=s.samples||[];
+  return samples.length?samples[(Math.floor(t/2100)+Math.floor(i))%samples.length]:'◇';
+ }
+ function change(){
+  const text=input.value,signal=[];const seen=new Set();let count=0;
+  for(const ch of text){if(++count>2048)break;
+   const ix=scriptOf(ch.codePointAt(0));if(ix>=0&&!seen.has(ix)){seen.add(ix);signal.push(ix)}
+  }
+  selected=seen;chosen=signal;
+  const names=signal.slice(0,3).map(i=>scripts[i].script);
+  caption.textContent=signal.length?names.join(' ◇ ')+(signal.length>3?' +'+(signal.length-3):'')+' · LIVE SOURCE':scripts.length+' SCRIPT GROUPS · INFINITE ADDRESSABLE FORMS';
+  document.getElementById('scriptStatus').textContent='GLASS detected '+signal.length+' scripts from input';
+ }
+ document.getElementById('worldScriptCount')?.replaceChildren(document.createTextNode(String(scripts.length)));
+ document.getElementById('worldScriptCountSecondary')?.replaceChildren(document.createTextNode(String(scripts.length)));
+ input.addEventListener('input',change);change();
+ function draw(now){
+  const width=canvas.clientWidth,height=canvas.clientHeight,dpr=Math.min(devicePixelRatio||1,2);
+  if(canvas.width!==Math.round(width*dpr)||canvas.height!==Math.round(height*dpr)){
+   canvas.width=Math.max(1,Math.round(width*dpr));canvas.height=Math.max(1,Math.round(height*dpr));
+  }
+  ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,width,height);
+  const compact=width<720;
+  const cx=width*(compact?.43:.50),cy=height*(compact?.38:.43);
+  const rx=Math.min(width*(compact?.36:.28),400),ry=Math.min(height*(compact?.26:.33),310);
+  const count=compact?8:24;
+  const cycle=reduce?0:(now-started)/16500;
+  for(let k=0;k<count;k++){
+   let idx;
+   if(chosen.length&&k%4===0)idx=chosen[Math.floor((k/4)%chosen.length)];
+   else idx=Math.floor((cycle+k/count)*scripts.length)%scripts.length;
+   idx=(idx+scripts.length)%scripts.length;
+   const s=scripts[idx];
+   let a=2*Math.PI*k/count+(reduce?0:(now-started)*.000085);
+   const wave=1+.09*Math.sin(now*.00031+k*4.1);
+   const x=cx+Math.cos(a)*rx*wave,y=cy+Math.sin(a)*ry*(.62+.12*Math.cos(now*.00027));
+   const active=selected.has(idx);
+   const alpha=(active?.58:.12)*(compact?.8:1)*(0.65+.35*Math.cos(a));
+   if(!s.samples.length)continue;
+   ctx.textAlign='center';ctx.textBaseline='middle';ctx.font=(active?26:compact?13:17)+'px "Noto Sans","Noto Sans Symbols 2","Noto Naskh Arabic",serif';
+   ctx.fillStyle=`rgba(${active?'240,209,158':'189,174,151'},${Math.max(.04,alpha)})`;
+   ctx.fillText(sampleAt(idx,now),x,y);
+   if(active){ctx.strokeStyle='rgba(218,181,112,.18)';ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(cx,cy);ctx.stroke()}
+  }
+  if(document.getElementById('unison')?.isConnected)requestAnimationFrame(draw);
+ }
+ requestAnimationFrame(draw);
+ window.GLASS_SCRIPT_QUERY={count:scripts.length,scriptForCharacter:ch=>{const x=scriptOf(ch.codePointAt(0));return x<0?null:scripts[x].script;},metadata:()=>({schema:atlas.schema,regex_version:atlas.regex_version,script_count:atlas.script_count})};
+})();
+
+</script>
+</body>
+</html>
