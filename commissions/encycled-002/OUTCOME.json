@@ -18,12 +18,12 @@
     {
       "path": "docs/ENCYCLED_CALCULUS.md",
       "status": "formal treatise authored and published",
-      "commit": "eea72fd6aec31796b84fbc6aa8340e51a75f0028"
+      "commit": "bb6e40ce0d698a78d2fdc47e54a18d0439436b51"
     },
     {
       "path": "atlas/encycled-calculus-v0.1.json",
       "status": "23-domain atlas and synthetic cohort formal metadata",
-      "commit": "3228d22e738928bc7ba64fb30a4a95fa987f22cc"
+      "commit": "86df01e8d50dad0a55c4bb3928c10dc177bf7eab"
     },
     {
       "path": "runtime/encycled.hpp",
@@ -43,12 +43,12 @@
     {
       "path": "apps/clockworld/index.html",
       "status": "full-screen responsive browser simulation source published",
-      "commit": "7695b03f7d0e2835c9ed313a8b0e52b684595f4a"
+      "commit": "471e04a23c3fd41f480944e9df0639273dfff289"
     },
     {
       "path": "apps/clockworld/README.md",
       "status": "screen instructions and limits published",
-      "commit": "8abf61bc79b1c13149cd49cfa831930a8caa459b"
+      "commit": "bdeb29c20169d382f66b997cb3132afdeb4f7c7f"
     },
     {
       "path": "evidence/encycled-002/native-fixtures.json",
@@ -65,7 +65,7 @@
     "gcc_cpp20_compile": "PASS Linux g++14.2",
     "native_suite": "PASS event replay, 5 per-bit events/4 transactions, lifetimes, bounds, integrate step, elapsed cycles",
     "native_cli": "PASS JSON trace (tick 4, final word 8, 5 per-bit events, replay true)",
-    "browser_js_syntax": "PASS Node v22 --check",
+    "browser_js_syntax": "PASS Node v22 --check for the updated MEET/MET reference script",
     "browser_runtime_screenshot": "NOT_VERIFIED: headless Chromium timed out even on minimal HTML",
     "android_or_unity": "NOT_RUN",
     "actual_physical_bit_capture": "NOT_RUN",
@@ -77,7 +77,7 @@
     "mechanics": "implemented-tested-local",
     "visualization": "implemented-source-only",
     "harness": "finite-local-command-proposal-gate",
-    "game_model": "seeded-synthetic-demo",
+    "game_model": "seeded-synthetic-demo-with-witnessed-encounter-query",
     "publication": "main-committed-awaiting-independent-head-readback"
   },
   "source_provenance": "selected direct user-owned GitHub files read; user source narrative in this chat",
@@ -94,5 +94,5 @@
     "versioned, authorized HOMELESS Unity adapter",
     "external calibrated hardware capture to study physical transitions"
   ],
-  "note": "Do not claim a deployed LLM, a physical time microscope, or completed HOMELESS game."
+  "note": "Do not claim a deployed LLM, a physical time microscope, or completed HOMELESS game. This final version includes synthetic witnessed encounters; unobserved history is UNKNOWN."
 }
