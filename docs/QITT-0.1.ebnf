@@ -1,0 +1,98 @@
+(* QITṬ/0.1 — Cyclic Arabic Letter-Register Computational Language.
+   Formal grammar for a proposed new language, not an assertion about
+   historical Arabic or a replacement for normal Arabic orthography.
+   The lexical boundary is Unicode NFC, with raw source text preserved.
+   Any grammatical word may be classified as a program only with an
+   explicitly declared interpretation / operator registry.
+*)
+
+Program       = Header, EOL, { Statement, EOL } ;
+Header        = "QITT/0.1", SP, "PROFILE", SP, ProfileName ;
+Statement     = WordStatement | AddressStatement | TapeStatement
+              | OperationStatement | BoundaryStatement | ControlStatement ;
+
+WordStatement = "WORD", SP, QuotedArabic ;
+AddressStatement
+              = "ADDR", SP, Natural ;
+TapeStatement = "TAPE", SP, "[", Cell, { ";", Cell }, "]" ;
+OperationStatement
+              = "APPLY", SP, Operation, SP, "TO", SP, AddressExpression ;
+BoundaryStatement
+              = "BOUNDARY", SP, "QITT", SP, "ON", SP, QuotedArabic ;
+ControlStatement
+              = "CONTROL", SP, ControlPattern, SP, ControlEvent ;
+
+AddressExpression
+              = "ADDR", SP, Natural | "TAPE", SP, "[", Cell, { ";", Cell }, "]" ;
+
+Cell          = Position, ":", Digit, ":", CellKind, ":", GlyphOrVoid ;
+CellKind      = "LETTER" | "SIFR_GAP" | "SIFR_ZERO"
+              | "SIFR_OPERAND" | "SIFR_OPERATOR" | "SIFR_RESERVED" ;
+GlyphOrVoid   = Letter | "_" ;
+Operation     = "LIFF" | "CARRY" | "BORROW" | "FLIP" | "BIND"
+              | "RELEASE" | "GHAYN_RETURN" | "QITT_BOUNDARY" ;
+ControlEvent  = "ACTIVATE" | "GROW" | "RETURN" ;
+ControlPattern= "0000" | "1000" | "1100" | "1110" ;
+
+ProfileName   = "bare_graphemes" | "diacritics_preserved"
+              | "shadda_expanded_opt_in" ;
+QuotedArabic  = '"', ArabicScalar, { ArabicScalar }, '"' ;
+ArabicScalar  = Letter | Diacritic | HamzaSign ;
+(* Minimum two, maximum nine counted bare graphemes per program word.
+   One-letter tokens may occur in registry declarations but not WORD. *)
+Letter        = "ا" | "ب" | "ج" | "د" | "ه" | "و" | "ز" | "ح" | "ط"
+              | "ي" | "ك" | "ل" | "م" | "ن" | "س" | "ع" | "ف" | "ص"
+              | "ق" | "ر" | "ش" | "ت" | "ث" | "خ" | "ذ" | "ض" | "ظ" | "غ" ;
+(* Hamza is an annotation/operator-mark within this chosen 28-letter
+   registry profile, not an automatically numbered 29th letter. *)
+HamzaSign     = "ء" | "أ" | "إ" | "ؤ" | "ئ" ;
+Diacritic     = "َ" | "ِ" | "ُ" | "ْ" | "ّ" | "ً" | "ٍ" | "ٌ" ;
+Natural       = "0" | NonzeroDigit, { Digit } ;
+Position      = "0" | NonzeroDigit, { Digit } ;
+Digit         = "0" | NonzeroDigit ;
+NonzeroDigit  = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" ;
+SP            = " ", { " " } ;
+EOL           = "\n" ;
+
+(* Typed well-formedness refinements — outside context-free EBNF:
+   T1: Every position p is an integer 0<=p<=1023.
+   T2: TAPE cells are in strictly decreasing contiguous order and end at p=0.
+   T3: Leading coefficient is nonzero unless the tape is exactly one SIFR_ZERO.
+   T4: For a coefficient d in 1..9, CellKind=LETTER and GlyphOrVoid=L(p,d).
+   T5: For coefficient 0, CellKind=SIFR_GAP except unique numeric zero,
+       whose cell is 0:0:SIFR_ZERO:_.
+   T6: No implicit conversion from SIFR_OPERAND/SIFR_OPERATOR/SIFR_RESERVED
+       to SIFR_GAP or decimal numeric zero.
+   T7: No shadda doubling except under shadda_expanded_opt_in profile.
+   T8: Word value is additive native letter weight under the declared profile;
+       program/operation effect is separately supplied by an operator registry.
+   T9: Every syntax/semantic action must preserve raw source and its profile.
+   T10: CONTROL uses exactly the registered path
+        0000 -> 1000 -> 1100 -> 1110 -> 1000;
+        the post-return 1000 state retains a distinct phase/version tag.
+   T11: Letters alone cannot be decoded to a unique slot tape.
+*)
+
+(* Positional lift L(p,d):
+   0 never has a letter; SIFR holds a typed slot.
+   p=0: units[d], p=1: tens[d], p=2: hundreds[d].
+   p>=3, p%3=0: GHAYN if d=1, else units[d].
+   p>=3, p%3=1: tens[d].
+   p>=3, p%3=2: hundreds[d].
+   V(p,d) = d*10^p (regardless of native weight of emitted glyph).
+   encode(n) emits a tagged cell at every position down to 0.
+   decode(encode(n)) = n for all n within resource contract.
+*)
+
+(* Sample QITṬ text — these are specification fixtures, not executed runs:
+QITT/0.1 PROFILE bare_graphemes
+WORD "قط"
+ADDR 109
+TAPE [2:1:LETTER:ق;1:0:SIFR_GAP:_;0:9:LETTER:ط]
+APPLY LIFF TO ADDR 999
+BOUNDARY QITT ON "قط"
+CONTROL 0000 ACTIVATE
+CONTROL 1000 GROW
+CONTROL 1100 GROW
+CONTROL 1110 RETURN
+*)
