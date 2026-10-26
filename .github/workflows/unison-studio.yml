@@ -1,0 +1,51 @@
+name: GLASS Unison native and syntax reference
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'apps/unison-studio/**'
+      - '.github/workflows/unison-studio.yml'
+permissions:
+  contents: read
+jobs:
+  host-verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Add TypeScript syntax parser
+        run: |
+          npm install --global typescript@5.8.3
+          echo "NODE_PATH=$(npm root -g)" >> "$GITHUB_ENV"
+      - name: Swift toolchain detection
+        run: swift --version
+      - name: Compile typed source projections
+        working-directory: apps/unison-studio
+        run: python compiler/build_demo.py
+      - name: Build Swift Linux server
+        working-directory: apps/unison-studio
+        run: swiftc -O -o server/unison-server server/main.swift
+      - name: Test Python AST and Swift HTTP
+        working-directory: apps/unison-studio
+        env:
+          PYTHONPATH: .
+        run: python -m unittest discover -s tests -v
+      - name: Test portable Swift module
+        working-directory: apps/unison-studio/swift-core
+        run: swift test --jobs 2
+      - name: JavaScript syntax
+        working-directory: apps/unison-studio
+        run: |
+          node --check public/app.js
+          node --check compiler/typescript_ast.cjs

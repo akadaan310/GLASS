@@ -1,0 +1,34 @@
+{
+  "schema": "glass.unison.adapter-registry/0.1",
+  "research_product": "GLASS Unison",
+  "promotion_rules": [
+    "source pin and license check",
+    "real parser witness or explicit unsupported status",
+    "typed input/output/effect signature",
+    "clock/source/semantic boundary",
+    "independent replay and negative controls",
+    "user authority for OS, network, broker, or private account effects"
+  ],
+  "adapters": [
+    {"id":"python.ast","source":"CPython stdlib ast","lang":"python","type":"syntax","status":"host-implemented","effects":"none"},
+    {"id":"swift.compiler.parse","source":"swiftc -frontend -dump-parse","lang":"swift","type":"syntax","status":"host-implemented","effects":"parser child process, no source execution"},
+    {"id":"swift.syntax.library","source":"https://github.com/swiftlang/swift-syntax","lang":"swift","type":"syntax","status":"future","effects":"none after download/pin"},
+    {"id":"html.eventtree","source":"CPython html.parser","lang":"html","type":"syntax events","status":"host-implemented","effects":"none"},
+    {"id":"typescript.compiler","source":"https://github.com/microsoft/TypeScript","lang":"typescript/javascript","type":"syntax","status":"host-implemented-with-installed-global-TypeScript-5.8.3","effects":"none"},
+    {"id":"java.javac","source":"JDK JavacTask.parse","lang":"java","type":"syntax","status":"host-implemented","effects":"none"},
+    {"id":"kotlin.tree-sitter","source":"https://github.com/tree-sitter-grammars/tree-sitter-kotlin","lang":"kotlin","type":"syntax","status":"pending-pinning-and-tests","effects":"none"},
+    {"id":"swift.android","source":"https://www.swift.org/documentation/articles/swift-sdk-for-android-getting-started.html","lang":"swift","type":"aarch64 native runtime","status":"sdk-ndk-missing","effects":"build/install with owner approval"},
+    {"id":"swift.wasm","source":"https://docs.swift.org/latest/documentation/wasmguide/","lang":"swift","type":"browser wasm runtime","status":"sdk-missing","effects":"none"},
+    {"id":"apple.ui.adapter","source":"UIKit, SwiftUI Apple-platform frameworks","lang":"swift","type":"native UI","status":"not-portable-in-general","effects":"explicit approved reimplementation required"},
+    {"id":"lean.strategy","source":"https://github.com/QuantConnect/Lean","license":"Apache-2.0","lang":"C#, Python","type":"event-driven market strategy runtime","status":"upstream-inspected-not-imported","effects":"live orders disallowed"},
+    {"id":"tradingview.lightweight","source":"https://github.com/tradingview/lightweight-charts","license":"Apache-2.0, notice/attribution","lang":"typescript","type":"chart frontend","status":"candidate-not-bundled","effects":"none"},
+    {"id":"glass.unibet","source":"compiler/unibet.py","lang":"typed glyph capsule","type":"reversible AST-kind token codebook","status":"host-tested","effects":"none"}
+  ],
+  "market_ingress_contract": {
+    "envelope_fields": ["provider","venue","symbol","type","event_time","ingest_time","sequence","price","volume","clock_domain","source_terms","gap_marker"],
+    "classes": ["public_trades","public_quotes","owned_account_actions","synthetic"],
+    "default": "synthetic",
+    "provider_connected": false,
+    "invariant": "No private cross-platform clicks or universal trading universe can be inferred from public feeds"
+  }
+}

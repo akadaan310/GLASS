@@ -1,0 +1,7 @@
+[Unit]
+Description=GLASS Unison source-change trigger
+[Path]
+PathChanged=/opt/glass/unison-studio/examples
+Unit=glass-unison-generator.service
+[Install]
+WantedBy=multi-user.target

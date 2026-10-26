@@ -1,0 +1,40 @@
+{
+  "schema": "glass.commission.outcome.v1",
+  "commission_id": "glass.unison-005",
+  "date": "2026-10-26",
+  "intent_path": "commissions/unison-005/INTENT.json",
+  "state": {
+    "science": "specified",
+    "parsers": "6_real_syntax_adapters",
+    "swift_backend": "host_built",
+    "swift_core": "host_tested",
+    "market": "synthetic_swift",
+    "browser": "fixture_verified_Chromium",
+    "glyph": "roundtrip_verified",
+    "publication": "awaiting_commit_readback"
+  },
+  "artifacts": [
+    "apps/unison-studio",
+    "docs/UNISON_UNIFIED_RUNTIME.md",
+    "atlas/unison-ast-v0.1.json",
+    ".github/workflows/unison-studio.yml"
+  ],
+  "evidence": "apps/unison-studio/evidence/host.json",
+  "host_checks": {
+    "python_tests": 14,
+    "swift_tests": 4,
+    "browser_screens": 8,
+    "native_swift_compiler": "6.2.1",
+    "typescript": "5.8.3",
+    "jdk": "21"
+  },
+  "no_live_claims": [
+    "Android Swift SDK not installed",
+    "no Android APK or iOS runtime",
+    "no internet website deployed",
+    "no actual market data or orders",
+    "no guarantee of production browser security"
+  ],
+  "publication_receipt": "commissions/unison-005/PUBLISH_RECEIPT.json (written after remote main readback)",
+  "future": "Swift Android package, Wasm binary, Kotlin/LLVM adapters, market licensed connectors, instrumented runtime equivalence tests"
+}

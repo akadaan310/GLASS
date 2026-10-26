@@ -1,0 +1,12 @@
+[Unit]
+Description=GLASS Unison finite source generator (one-shot; local)
+After=local-fs.target
+[Service]
+Type=oneshot
+User=glass
+WorkingDirectory=/opt/glass/unison-studio
+ExecStart=/usr/bin/python3 tools/watch_unison.py
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/opt/glass/unison-studio/public/data /opt/glass/unison-studio/evidence
+PrivateTmp=true

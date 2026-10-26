@@ -1,0 +1,73 @@
+{
+  "schema": "glass.unison.catalog/0.1",
+  "scope": "syntactic + synthetic, no OS translation or live orders",
+  "sources": {
+    "swift": {
+      "title": "SWIFT",
+      "language": "swift",
+      "node_count": 32,
+      "edge_count": 31,
+      "source_hash": "90a093fc86a24fcfee3bb266eff41dc69579a5b1a48a8442af3c60eafd19a331",
+      "parser": "swiftc -frontend -dump-parse (Swift parser, not typechecker)",
+      "warnings": [],
+      "path": "/data/ir-swift.json"
+    },
+    "swiftui": {
+      "title": "SWIFTUI",
+      "language": "swift",
+      "node_count": 19,
+      "edge_count": 18,
+      "source_hash": "03d8ee1efa6028aee49e71e6a33e9f8e6d02e7fbacb4f3d5407ee6be0e683c32",
+      "parser": "swiftc -frontend -dump-parse (Swift parser, not typechecker)",
+      "warnings": [
+        "Apple framework import: syntax parsed but iOS UI/ABI remains unavailable on Android"
+      ],
+      "path": "/data/ir-swiftui.json"
+    },
+    "web": {
+      "title": "WEB",
+      "language": "html",
+      "node_count": 13,
+      "edge_count": 12,
+      "source_hash": "8e22c0eb1de67a3b1317066188893284d9486d54dd45d9b03bab6a4717105931",
+      "parser": "Python html.parser, HTML syntactic event stream (not a browser DOM)",
+      "warnings": [],
+      "path": "/data/ir-web.json"
+    },
+    "typescript": {
+      "title": "TYPESCRIPT",
+      "language": "typescript",
+      "node_count": 62,
+      "edge_count": 61,
+      "source_hash": "aae729eaa4676b3fa269d68230c63521d6714e1b15ee5d7211d37651d7926d7c",
+      "parser": "TypeScript compiler 5.8.3 syntax AST",
+      "warnings": [],
+      "path": "/data/ir-typescript.json"
+    },
+    "python": {
+      "title": "PYTHON",
+      "language": "python",
+      "node_count": 58,
+      "edge_count": 57,
+      "source_hash": "008c7b5fa96e017022015ea9275b942643e86bd5cda0726a55e064ed8d62b330",
+      "parser": "CPython ast 3.13",
+      "warnings": [],
+      "path": "/data/ir-python.json"
+    },
+    "java": {
+      "title": "JAVA",
+      "language": "java",
+      "node_count": 37,
+      "edge_count": 36,
+      "source_hash": "6770f696d27e562d82b457b8d770810d05c86bf32c4ed47baaf30f3ebd867229",
+      "parser": "JDK JavacTask.parse Java syntax tree",
+      "warnings": [
+        "Android framework imports: syntax parsed without Android SDK API resolution or ART execution"
+      ],
+      "path": "/data/ir-java.json"
+    }
+  },
+  "strategy": "/data/strategy.json",
+  "codebook": "/data/unibet.json",
+  "owner_source": "GLASS/main Unison 005"
+}

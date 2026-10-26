@@ -1,0 +1,107 @@
+{
+  "schema": "glass.unison-atlas/0.1",
+  "title": "GLASS Unison / typed multi-language syntax/runtime observatory",
+  "commission": "glass.unison-005",
+  "epistemic_status": "source-derived parser trees, live Swift Linux server on development host, tested bounded pure operations; no universal iOS/Android binary execution",
+  "owner_integration": [
+    "GLASS Encycled Calculus/0.1",
+    "GLASS QITT/0.1",
+    "GLASS Native Browser/0.1"
+  ],
+  "unison_signature": [
+    "exact-source",
+    "syntax-ast",
+    "identifier-trie",
+    "typed-operation",
+    "lowered-ir-unimplemented",
+    "clock",
+    "runtime-capability",
+    "evidence"
+  ],
+  "source_profiles": {
+    "swift": {
+      "title": "SWIFT",
+      "language": "swift",
+      "node_count": 32,
+      "edge_count": 31,
+      "source_hash": "90a093fc86a24fcfee3bb266eff41dc69579a5b1a48a8442af3c60eafd19a331",
+      "parser": "swiftc -frontend -dump-parse (Swift parser, not typechecker)",
+      "warnings": [],
+      "path": "/data/ir-swift.json"
+    },
+    "swiftui": {
+      "title": "SWIFTUI",
+      "language": "swift",
+      "node_count": 19,
+      "edge_count": 18,
+      "source_hash": "03d8ee1efa6028aee49e71e6a33e9f8e6d02e7fbacb4f3d5407ee6be0e683c32",
+      "parser": "swiftc -frontend -dump-parse (Swift parser, not typechecker)",
+      "warnings": [
+        "Apple framework import: syntax parsed but iOS UI/ABI remains unavailable on Android"
+      ],
+      "path": "/data/ir-swiftui.json"
+    },
+    "web": {
+      "title": "WEB",
+      "language": "html",
+      "node_count": 13,
+      "edge_count": 12,
+      "source_hash": "8e22c0eb1de67a3b1317066188893284d9486d54dd45d9b03bab6a4717105931",
+      "parser": "Python html.parser, HTML syntactic event stream (not a browser DOM)",
+      "warnings": [],
+      "path": "/data/ir-web.json"
+    },
+    "typescript": {
+      "title": "TYPESCRIPT",
+      "language": "typescript",
+      "node_count": 62,
+      "edge_count": 61,
+      "source_hash": "aae729eaa4676b3fa269d68230c63521d6714e1b15ee5d7211d37651d7926d7c",
+      "parser": "TypeScript compiler 5.8.3 syntax AST",
+      "warnings": [],
+      "path": "/data/ir-typescript.json"
+    },
+    "python": {
+      "title": "PYTHON",
+      "language": "python",
+      "node_count": 58,
+      "edge_count": 57,
+      "source_hash": "008c7b5fa96e017022015ea9275b942643e86bd5cda0726a55e064ed8d62b330",
+      "parser": "CPython ast 3.13",
+      "warnings": [],
+      "path": "/data/ir-python.json"
+    },
+    "java": {
+      "title": "JAVA",
+      "language": "java",
+      "node_count": 37,
+      "edge_count": 36,
+      "source_hash": "6770f696d27e562d82b457b8d770810d05c86bf32c4ed47baaf30f3ebd867229",
+      "parser": "JDK JavacTask.parse Java syntax tree",
+      "warnings": [
+        "Android framework imports: syntax parsed without Android SDK API resolution or ART execution"
+      ],
+      "path": "/data/ir-java.json"
+    }
+  },
+  "source_profiles_count": 6,
+  "ast_nodes": 221,
+  "glyph_registry_entries": 91,
+  "compression_status": "round-trip AST-kind sequence with codebook, not source code bytes and not cryptographic hash inversion",
+  "market_provider": "NONE",
+  "market_events_synthetic": 768,
+  "engine": "Swift 6.2.1 Linux compiled; Swift Android/WebAssembly SDK future adapter",
+  "open_source_adapters": "apps/unison-studio/adapters/registry.json",
+  "research_document": "docs/UNISON_UNIFIED_RUNTIME.md",
+  "implementation": "apps/unison-studio",
+  "tests": "apps/unison-studio/evidence/host.json",
+  "unverified": [
+    "Kotlin/SwiftUI platform behavior",
+    "Android APK",
+    "Swift WebAssembly runtime",
+    "iOS emulator",
+    "broker/stock data",
+    "arbitrary-language compiler",
+    "infinite compression"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "schema": "glass.unison.strategy/0.1",
+  "operation": "SIGNAL_ONLY",
+  "left": {
+    "indicator": "SMA",
+    "window": 3
+  },
+  "relation": "CROSS_ABOVE",
+  "right": {
+    "indicator": "SMA",
+    "window": 9
+  },
+  "side": "BUY",
+  "auth": "simulation_only",
+  "executed_orders": 0,
+  "fixture": {
+    "prices": [
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      10,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      30
+    ],
+    "triggered": true
+  }
+}

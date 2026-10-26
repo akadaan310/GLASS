@@ -1,0 +1,157 @@
+{
+  "schema": "glass.unison.host-evidence/0.1",
+  "date": "2026-10-26",
+  "context": "isolated Linux source development environment",
+  "verified": true,
+  "swift_toolchain": "Swift version 6.2.1 (swift-6.2.1-RELEASE)\nTarget: x86_64-unknown-linux-gnu",
+  "python_version": "3.13.5",
+  "compiler_versions": {
+    "typescript": "5.8.3 installed",
+    "jdk": "21",
+    "node": "v22.16.0"
+  },
+  "checks": [
+    {
+      "argv": [
+        "python",
+        "compiler/build_demo.py"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "stdout_tail": "{\n  \"entries\": 6,\n  \"nodes\": 221,\n  \"codebook_letters\": 91,\n  \"strategy_fixture\": {\n    \"prices\": [\n      10,\n      10,\n      10,\n      10,\n      10,\n      10,\n      10,\n      10,\n      10,\n      10,\n      1,\n      1,\n      1,\n      1,\n      1,\n      1,\n      1,\n      1,\n      1,\n      30\n    ],\n    \"triggered\": true\n  },\n  \"complete\": true\n}\n",
+      "stderr_tail": ""
+    },
+    {
+      "argv": [
+        "swiftc",
+        "-O",
+        "-o",
+        "server/unison-server",
+        "server/main.swift"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "argv": [
+        "python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "stdout_tail": "",
+      "stderr_tail": "ttp.SwiftServerTests.test_market_deterministic_and_labeled) ... ok\ntest_no_arbitrary_file_or_mutation (test_http.SwiftServerTests.test_no_arbitrary_file_or_mutation) ... ok\ntest_swift_http (test_http.SwiftServerTests.test_swift_http) ... ok\ntest_android_java_native_parser (test_pipeline.UnisonPipelineTests.test_android_java_native_parser) ... ok\ntest_budgets_and_unknown_adapter (test_pipeline.UnisonPipelineTests.test_budgets_and_unknown_adapter) ... ok\ntest_codebook_has_no_magic_compression (test_pipeline.UnisonPipelineTests.test_codebook_has_no_magic_compression) ... ok\ntest_codebook_roundtrip_and_integrity (test_pipeline.UnisonPipelineTests.test_codebook_roundtrip_and_integrity) ... ok\ntest_html_parse (test_pipeline.UnisonPipelineTests.test_html_parse) ... ok\ntest_python_ast_is_structural (test_pipeline.UnisonPipelineTests.test_python_ast_is_structural) ... ok\ntest_source_is_not_executed (test_pipeline.UnisonPipelineTests.test_source_is_not_executed) ... ok\ntest_strategy_parse_and_bounded_signal (test_pipeline.UnisonPipelineTests.test_strategy_parse_and_bounded_signal) ... ok\ntest_swift_compiler_real_parser (test_pipeline.UnisonPipelineTests.test_swift_compiler_real_parser) ... ok\ntest_typescript_real_parser (test_pipeline.UnisonPipelineTests.test_typescript_real_parser) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 1.443s\n\nOK\n"
+    },
+    {
+      "argv": [
+        "swift",
+        "test",
+        "--jobs",
+        "2"
+      ],
+      "cwd": "swift-core",
+      "exit": 0,
+      "stdout_tail": "Test Suite 'All tests' started at 2026-10-26 07:13:24.545\nTest Suite 'debug.xctest' started at 2026-10-26 07:13:24.547\nTest Suite 'UnisonCoreTests' started at 2026-10-26 07:13:24.547\nTest Case 'UnisonCoreTests.testClockReplay' started at 2026-10-26 07:13:24.547\nTest Case 'UnisonCoreTests.testClockReplay' passed (0.001 seconds)\nTest Case 'UnisonCoreTests.testFactory' started at 2026-10-26 07:13:24.548\nTest Case 'UnisonCoreTests.testFactory' passed (0.001 seconds)\nTest Case 'UnisonCoreTests.testRefusalIsAtomic' started at 2026-10-26 07:13:24.549\nTest Case 'UnisonCoreTests.testRefusalIsAtomic' passed (0.0 seconds)\nTest Case 'UnisonCoreTests.testSyntaxShape' started at 2026-10-26 07:13:24.549\nTest Case 'UnisonCoreTests.testSyntaxShape' passed (0.0 seconds)\nTest Suite 'UnisonCoreTests' passed at 2026-10-26 07:13:24.549\n\t Executed 4 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds\nTest Suite 'debug.xctest' passed at 2026-10-26 07:13:24.549\n\t Executed 4 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds\nTest Suite 'All tests' passed at 2026-10-26 07:13:24.549\n\t Executed 4 tests, with 0 failures (0 unexpected) in 0.002 (0.002) seconds\n◇ Test run started.\n↳ Testing Library Version: 6.2.1 (c9d57c83568b06d)\n↳ Target Platform: x86_64-unknown-linux-gnu\n✔ Test run with 0 tests in 0 suites passed after 0.001 seconds.\n",
+      "stderr_tail": "[0/1] Planning build\nBuilding for debugging...\n[0/4] Write swift-version--1BA0962812E73E12.txt\nBuild complete! (0.22s)\n"
+    },
+    {
+      "argv": [
+        "node",
+        "--check",
+        "public/app.js"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "argv": [
+        "node",
+        "--check",
+        "compiler/typescript_ast.cjs"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "argv": [
+        "python",
+        "tools/watch_unison.py"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "stdout_tail": "{\n  \"entries\": 6,\n  \"nodes\": 221,\n  \"codebook_letters\": 91,\n  \"strategy_fixture\": {\n    \"prices\": [\n      10,\n      10,\n      10,\n      10,\n      10,\n      10,\n      10,\n      10,\n      10,\n      10,\n      1,\n      1,\n      1,\n      1,\n      1,\n      1,\n      1,\n      1,\n      1,\n      30\n    ],\n    \"triggered\": true\n  },\n  \"complete\": true\n}\n{\"status\": \"GENERATED\", \"cursor\": 2, \"digest\": \"63fb1b10a56df1ec00725a357c121acf88c0276a383f0867f79ab73b86df73a8\"}\n",
+      "stderr_tail": ""
+    },
+    {
+      "argv": [
+        "python",
+        "tools/watch_unison.py"
+      ],
+      "cwd": ".",
+      "exit": 0,
+      "stdout_tail": "{\"status\": \"UNCHANGED\", \"cursor\": 2}\n",
+      "stderr_tail": ""
+    }
+  ],
+  "demo": {
+    "profile_count": 6,
+    "ast_total": 221,
+    "profiles": {
+      "swift": 32,
+      "swiftui": 19,
+      "web": 13,
+      "typescript": 62,
+      "python": 58,
+      "java": 37
+    },
+    "codebook_distinct": 91,
+    "unibet_raw_token_json_bytes": 3053,
+    "unibet_with_metadata_bytes": 3216,
+    "standard_deflate_bytes": 782,
+    "catalog_sha256": "5ef8156e233f36ba805a79218b5ee253edb470c5bcb669c97988b5ec8a73cf30"
+  },
+  "market": {
+    "origin": "synthetic-xorshift32",
+    "seed": 24681357,
+    "events": 768,
+    "leader": "ORCA",
+    "leader_burst_score": 11.53,
+    "broker_orders": 0
+  },
+  "browser": {
+    "status": "PASS_SNAPSHOT_WITH_INTERCEPTED_FIXTURE",
+    "evidence_path": "evidence/unison-real-ast.png",
+    "screens_verified": [
+      "AST Swift",
+      "SwiftUI",
+      "TypeScript",
+      "Android Java",
+      "Market",
+      "Unibet",
+      "Runtime",
+      "Mobile"
+    ],
+    "screenshot_status": "headless Chromium set_content and injected same JSON fixture; localhost HTTP navigation blocked by browser admin policy",
+    "frontend_errors": 0
+  },
+  "unavailable": [
+    "Swift Android SDK/NDK/Android app build",
+    "Swift Wasm SDK binary",
+    "real broker or live market feed",
+    "UIKit/SwiftUI Android compatibility",
+    "Kotlin and LLVM IR parsers",
+    "public website deployment"
+  ],
+  "source_label": "host-measured for compilations and fixtures, browser fixture-intercept test; nothing is a physical/device/market observation"
+}
