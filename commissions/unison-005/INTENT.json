@@ -1,0 +1,81 @@
+{
+  "schema": "glass.commission.intent.v1",
+  "id": "glass.unison-005",
+  "created": "2026-10-26",
+  "title": "Unison AST + Swift runtime + cross-platform layout + market-event observatory",
+  "origin": "Owner current turn: reverse trees of Swift/iOS, Android/Kotlin and HTML/JS, Unibet codebook, time-bearing IO, Swift-served web frontend, open source market strategy engine language, market event concentration.",
+  "prerequisites": [
+    {
+      "repo": "akadaan310/GLASS",
+      "files": [
+        "AGENTS.md",
+        "docs/ENCYCLED_CALCULUS.md",
+        "docs/QITT_CYCLIC_ARABIC_REGISTER_CALCULUS.md",
+        "apps/glass-browser/README.md"
+      ]
+    },
+    {
+      "upstream": "swiftlang/swift",
+      "technology": "Swift 6.2.1 installed locally; official Swift Android/Wasm SDK sources"
+    },
+    {
+      "upstream": "swiftlang/swift-syntax",
+      "technology": "source accurate syntax AST"
+    },
+    {
+      "upstream": "tree-sitter/tree-sitter",
+      "technology": "portable parser grammars"
+    },
+    {
+      "upstream": "QuantConnect/Lean",
+      "technology": "Apache 2.0 event-driven trading with Python/C#"
+    },
+    {
+      "upstream": "tradingview/lightweight-charts",
+      "technology": "Apache 2.0 charts with required attribution"
+    }
+  ],
+  "regions": {
+    "scientific_form": "planned",
+    "source_parsers": "planned",
+    "unison_ir": "planned",
+    "swift_server": "planned",
+    "web_console": "planned",
+    "market": "planned",
+    "glyphs": "planned",
+    "verification": "planned",
+    "publication": "queued"
+  },
+  "paths": [
+    "apps/unison-studio",
+    "commissions/unison-005",
+    "docs/UNISON_UNIFIED_RUNTIME.md",
+    "atlas/unison-ast-v0.1.json"
+  ],
+  "transition_order": "SCOPE→PIN→PARSE→TYPE→CANONICALIZE→GENERATE→CHECK→REPLAY→PUBLISH→CONTINUE",
+  "constraints": [
+    "Publish independent, additive files to GLASS/main; do not rewrite concurrent work",
+    "No assumption that iOS SwiftUI/UIKit binary can execute on Android; use Swift shared portable core and explicit UI adapters",
+    "Swift server on Linux, WebAssembly Swift optional (no invented browser support), Swift Android cross-compilation requires SDK/NDK",
+    "No unbounded self-modifying background agent; bounded on-demand and opt-in watch loop with journaling",
+    "Do not infer functional SDK behavior solely from AST; no magic irreversible SHA decompression",
+    "Do not claim access to private stock exchange click streams; all first-stage market data synthetic, provider input scoped and credentialed",
+    "Do not claim novelty or performance gains from a deterministic source-code size test",
+    "No external scientific-theory validation; public technology documentation used only to verify OSS capabilities",
+    "Keep external source code and licenses separate; do not vendor uninspected apps"
+  ],
+  "recovery": "Write source/trace receipts, preserve outstanding failures. On remote concurrency re-read head before publication; never force update.",
+  "output_gates": [
+    "real Swift Linux executable",
+    "ASTs via genuine language parsers for Swift/TypeScript/Python/HTML",
+    "typed finite Unison IR with codebook roundtrip",
+    "market event anomaly window scored on bounded simulation",
+    "interactive read-only Web UI",
+    "host tests and exact GitHub readback"
+  ],
+  "security": {
+    "user_uploaded_source": "parse-only, bounded, no arbitrary execution",
+    "server": "localhost by default, GET-only read-only API",
+    "deployment": "no credentials, trading or execution rights"
+  }
+}
