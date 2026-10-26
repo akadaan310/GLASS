@@ -84,6 +84,16 @@
     {
       "id": "ADMIT",
       "type": "pending operation × finite grammar × guards → typed executable or refusal"
+    },
+    {
+      "id": "ENCOUNTER_RECORD",
+      "type": "synthetic actor pair × time × witness → encounter event",
+      "guard": "distinct known synthetic IDs"
+    },
+    {
+      "id": "ENCOUNTER_QUERY",
+      "type": "actor pair × observation epoch → witnessed/not_observed/unknown",
+      "guard": "cannot assert never met without complete history"
     }
   ],
   "model_source_type": "synthetic, local, deterministic",
@@ -117,7 +127,21 @@
       "shelter",
       "hold"
     ],
-    "scale": "illustrative score, not currency, welfare measurement or historical numbers"
+    "scale": "illustrative score, not currency, welfare measurement or historical numbers",
+    "encounter_protocol": {
+      "commands": [
+        "MEET synthetic_id synthetic_id",
+        "MET synthetic_id synthetic_id"
+      ],
+      "record_fields": [
+        "id_pair",
+        "simulation_day",
+        "simulation_clock",
+        "provenance"
+      ],
+      "outcome_semantics": "witnessed yes, or NOT OBSERVED THIS EPOCH with earlier history UNKNOWN",
+      "physical_person_identification": false
+    }
   },
   "interfaces": [
     {
