@@ -27,6 +27,7 @@ public final class LanguageClock {
     private long phrase=0,voicedFrames=0,quietFrames=0;
     private boolean withinPhrase=false;
     private Candidate awaiting;
+    private boolean awaitingFromAsr=false;
     private String previousConfirmed="unknown";
     private String osLanguage="unknown";
     private double osConfidence=0;
@@ -45,6 +46,23 @@ public final class LanguageClock {
             f.lowEnergy, f.highEnergy,clip(f.pitchHz/500.0,0,1)
         };
     }
+    /** A genuine on-device language callback does not supply PCM features.
+     * Its evidence is an OS confidence CATEGORY mapped to a hint scale, not
+     * a probability of correct language. Never silently assume accuracy.
+     */
+    public synchronized Candidate proposeFromOnDevice(String language,double evidence){
+        if(awaiting!=null)return awaiting;
+        phrase++;awaitingFromAsr=true;withinPhrase=false;
+        if(id(language)<0){language="unknown";evidence=0;}
+        evidence=clip(evidence,0,0.98);
+        boolean changed=!previousConfirmed.equals("unknown")&&!language.equals("unknown")
+            &&!previousConfirmed.equals(language);
+        boolean ask=confirmed<BOOTSTRAP_CONFIRMATIONS || evidence<threshold() || changed;
+        return awaiting=new Candidate(language,evidence,phrase,
+            "installed on-device SpeechRecognizer result; not a verified ground-truth label",
+            ask,changed);
+    }
+
     public synchronized void externalOnDeviceHint(String language,double evidence){
         if(id(language)<0){osLanguage="unknown";osConfidence=0;}
         else{osLanguage=language;osConfidence=clip(evidence,0,0.98);}
@@ -65,6 +83,7 @@ public final class LanguageClock {
         if(voicedFrames<5)return null; // Ignore a very brief artifact.
         for(int j=0;j<DIM;j++)latestFeatures[j]=accum[j]/voicedFrames;
         phrase++;
+        awaitingFromAsr=false;
         return awaiting=propose();
     }
     private Candidate propose(){
@@ -117,10 +136,13 @@ public final class LanguageClock {
         }
         if(!previousConfirmed.equals("unknown")&&!previousConfirmed.equals(language))switches++;
         int old=counts[i];
-        for(int j=0;j<DIM;j++)centroids[i][j]=(centroids[i][j]*old+latestFeatures[j])/(old+1.0);
-        counts[i]++;confirmed++;
+        if(!awaitingFromAsr){
+            for(int j=0;j<DIM;j++)centroids[i][j]=(centroids[i][j]*old+latestFeatures[j])/(old+1.0);
+            counts[i]++;
+        }
+        confirmed++;awaitingFromAsr=false;
         previousConfirmed=language;
-        awaiting=null;osLanguage="unknown";osConfidence=0;
+        awaiting=null;awaitingFromAsr=false;osLanguage="unknown";osConfidence=0;
     }
     public synchronized void dismissAsUncertain(){
         // Rejects current prediction without pretending to know truth.
