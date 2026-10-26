@@ -63,6 +63,33 @@
         "lemma",
         "inflection profile"
       ]
+    },
+    {
+      "id": "arabic.qitt.cyclic-register.v0.1",
+      "stage": "formalized-with-numbered-fixtures; interpreter-not-installed",
+      "authority": "owner-directive-2026-10-25",
+      "research_language": "QITT/0.1",
+      "objects": [
+        "28-letter native weight register",
+        "high-order 3-phase address lift",
+        "typed SIFR states",
+        "ALIF-LIFF carry/turn",
+        "GHAYN return"
+      ],
+      "formal_spec": "docs/QITT_CYCLIC_ARABIC_REGISTER_CALCULUS.md",
+      "grammar": "docs/QITT-0.1.ebnf",
+      "registry": "atlas/qitt-register-v0.1.json",
+      "word_profiles": [
+        "bare_graphemes",
+        "diacritics_preserved",
+        "shadda_expanded_opt_in"
+      ],
+      "prohibitions": [
+        "no implicit historical proof",
+        "no binary=decimal conflation",
+        "no glyph-only inversion",
+        "no external-theory search in this commission"
+      ]
     }
   ]
 }
