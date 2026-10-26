@@ -1,0 +1,30 @@
+{
+  "schema": "glass.commission.outcome.v1",
+  "id": "glass-clock-009",
+  "date": "2026-10-26",
+  "primary_source_commit": "389438da438f3c1dd007833c111c7a03b81235e4",
+  "source_path": "apps/glass-clock/",
+  "science": "Unison clock grammar: symbolic typed device/server/UTC/monotonic/IANA civil zone/earth wedge/solar/phase/non-time/pure shell generator",
+  "source_files": 15,
+  "local_checks": {
+    "python_unittest": "25 PASSED",
+    "node_syntax": "PASS",
+    "shell_examples": "5 project-generated snippets executed successfully",
+    "browser": "desktop & Android-sized Chromium render PASS using injected test-backed response fixtures; direct localhost navigation BLOCKED_BY_ADMINISTRATOR",
+    "http": "local Python server actual requests PASS"
+  },
+  "delivery": {
+    "android_termux": "complete runnable ZIP, not yet installed on user's phone",
+    "public_domain": "glass.com not deployed",
+    "remote_terminal": "not connected to an authorized Gateway server",
+    "offline_single_html": "available; server-labelled UNKNOWN without backend"
+  },
+  "science_limits": [
+    "IANA civil zones not derivable from longitude alone",
+    "latitude affects solar geometry not official civil offset",
+    "NOAA solar approximation not exact solar measurement",
+    "browser monotonic and server monotonic cannot share one epoch without conversion",
+    "symbol shell output pure generation, not execution"
+  ],
+  "next": "owner downloads GLASS_Clock_Oracle_009.zip, extracts in Termux, runs sh start-glass.sh, opens http://127.0.0.1:8765/ and confirms on-device loopback"
+}
