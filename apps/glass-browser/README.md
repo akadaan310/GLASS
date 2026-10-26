@@ -20,7 +20,7 @@ From the project root:
 bash tools/test_host.sh
 cd android
 # Require Android SDK platform 36, Android build tools, NDK 27.2.12479018,
-# CMake 3.22.1, Gradle 8.11.1, JDK 17 and network dependencies available.
+# CMake 3.22.1, Gradle 8.13, JDK 17 and network dependencies available.
 gradle :app:assembleDebug --no-daemon
 # APK: android/app/build/outputs/apk/debug/app-debug.apk
 ```
