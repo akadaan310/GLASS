@@ -1,0 +1,36 @@
+{
+  "schema": "glass.generator-recipe.v1",
+  "grammar": "commissions/atlas-001/grammar.json",
+  "helpers": "atlas/helpers.json",
+  "inputs": [
+    "pinned source set",
+    "reviewed source-to-record mapping",
+    "publication path allowlist"
+  ],
+  "outputs": [
+    "source inventory",
+    "atlas projection",
+    "main publication receipt"
+  ],
+  "bindings": [
+    {
+      "event": "inventory-complete",
+      "witness_intent": "inventory-attachments",
+      "witness_artifact": "sources/inventory/attachments.json",
+      "binding_stage": "source-specific adapter commission"
+    },
+    {
+      "event": "atlas-projected",
+      "witness_intent": "project-university",
+      "witness_artifact": "atlas/university.json",
+      "binding_stage": "source-specific adapter commission"
+    },
+    {
+      "event": "main-published",
+      "witness_intent": "publish-foundation",
+      "witness_artifact": "5ff09c989172249698df26c33fdeada8eb31df64",
+      "binding_stage": "source-specific adapter commission"
+    }
+  ],
+  "execution_stage": "recipe with witnessed construction path; adapter-binding commission follows"
+}

@@ -1,0 +1,68 @@
+{
+  "schema": "glass.language-profile-frontier.v1",
+  "profiles": [
+    {
+      "id": "latin-script.utf8-byte-write.v1",
+      "stage": "implemented-byte-trace",
+      "implementation": "runtime/glass.hpp::spell",
+      "examples": [
+        "I",
+        "N",
+        "IN",
+        "inorganic"
+      ]
+    },
+    {
+      "id": "arabic.letter-name-expansion.supplied",
+      "stage": "source-located",
+      "source": "02_LETTERS_SCRIPTS_AND_PHANTOM_OPERATORS.md",
+      "examples": [
+        {
+          "token": "ا",
+          "name_spelling": "ألف"
+        },
+        {
+          "token": "ل",
+          "name_spelling": "لام"
+        }
+      ]
+    },
+    {
+      "id": "greek.source-spellings.supplied",
+      "stage": "source-located",
+      "source": "EIDOPOEIA handoff for the After Hours Muse.md",
+      "scope": "preserve supplied Greek spellings and author-defined terminology"
+    },
+    {
+      "id": "arabic.owner-48-forms",
+      "stage": "awaiting-owner-Muse-inventory",
+      "required": [
+        "inventory enumeration",
+        "language variety",
+        "morphological categories",
+        "source witnesses",
+        "example lexemes"
+      ]
+    },
+    {
+      "id": "latin-language.morphology",
+      "stage": "source-acquisition",
+      "required": [
+        "dictionary edition",
+        "lexeme",
+        "root/affix evidence",
+        "inflection profile"
+      ]
+    },
+    {
+      "id": "greek-language.morphology",
+      "stage": "source-acquisition",
+      "required": [
+        "language period",
+        "dictionary edition",
+        "lemma",
+        "inflection profile"
+      ]
+    }
+  ]
+}

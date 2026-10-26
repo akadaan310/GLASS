@@ -1,1 +1,1 @@
-{"cursor":15,"configuration":{"schema":"glass.configuration.v1","regions":{"behavior":"listening","corpus":"mapped","publication":"ready"},"pending_intents":["publish-foundation"]}}
+{"cursor":16,"configuration":{"schema":"glass.configuration.v1","regions":{"behavior":"listening","corpus":"mapped","publication":"synced"},"pending_intents":[]}}

@@ -1,0 +1,61 @@
+{
+  "schema": "glass.behavior-grammar.v1",
+  "start": "S0",
+  "alphabet": [
+    "atlas-projected",
+    "inventory-complete",
+    "main-published"
+  ],
+  "productions": [
+    {
+      "lhs": "S0",
+      "terminal": "inventory-complete",
+      "rhs": "S1",
+      "witness": {
+        "from": 0,
+        "to": 1,
+        "event": "inventory-complete",
+        "intent": "inventory-attachments",
+        "artifact": "sources/inventory/attachments.json",
+        "choice": "Hash originals; recursively inventory; retain source occurrences; recovery=Persist exact acquisition frontier",
+        "observation": "Inventory completed with nested-format review records; preserve each occurrence and original bytes"
+      }
+    },
+    {
+      "lhs": "S1",
+      "terminal": "atlas-projected",
+      "rhs": "S2",
+      "witness": {
+        "from": 1,
+        "to": 2,
+        "event": "atlas-projected",
+        "intent": "project-university",
+        "artifact": "atlas/university.json",
+        "choice": "Recover every registered topic and preserve source spans, glossary identities, prerequisites and chapters; recovery=Retain exact source records for comparison",
+        "observation": "62 topics, six divisions, 93 glossary terms, 22 chapter identities, 299 relations extracted from pinned content; event records retrospective projection intent after this first extraction"
+      }
+    },
+    {
+      "lhs": "S2",
+      "terminal": "main-published",
+      "rhs": "S3",
+      "witness": {
+        "from": 2,
+        "to": 3,
+        "event": "main-published",
+        "intent": "publish-foundation",
+        "artifact": "5ff09c989172249698df26c33fdeada8eb31df64",
+        "choice": "Publish native runtime, source-preserving atlas, evidence and continuation on main; recovery=Retain exact local files and reconcile the expected remote head",
+        "observation": "GitHub adapter fast-forwarded main from expected parent and returned success; remote head observed separately"
+      }
+    },
+    {
+      "lhs": "S3",
+      "terminal": "epsilon",
+      "rhs": [],
+      "witness": "end-of-retained-observation-trace"
+    }
+  ],
+  "construction": "exact retained observation trace",
+  "weight_sha256": "38edb3b0248b299e5a37870bd61712a99de18ffe927df1c51905a9a91e613db1"
+}

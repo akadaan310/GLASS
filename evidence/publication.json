@@ -1,0 +1,12 @@
+{
+  "schema": "glass.publication.v1",
+  "repository": "akadaan310/GLASS",
+  "branch": "main",
+  "previous_head": "7737d4fa3064ba1edfe2c84e05e85514b7998d70",
+  "published_head": "5ff09c989172249698df26c33fdeada8eb31df64",
+  "published_tree": "4b835640e0974db224e1840a3536a713982ac09a",
+  "outcome": "published",
+  "transport": "connected GitHub adapter",
+  "visibility": "public implementation and reviewed source metadata; originals retained in private package",
+  "source_files": 33
+}

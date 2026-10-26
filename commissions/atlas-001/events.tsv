@@ -13,3 +13,4 @@
 13	rule	publish-main	publication	ready	main-published	synced
 14	rule	behavior-published	behavior	listening	main-published	listening
 15	intent	publish-foundation	main-published	GLASS-public-reviewed-unit	github-main-adapter	Publish%20native%20runtime,%20source-preserving%20atlas,%20evidence%20and%20continuation%20on%20main	Retain%20exact%20local%20files%20and%20reconcile%20the%20expected%20remote%20head
+16	outcome	publish-foundation	main-published	5ff09c989172249698df26c33fdeada8eb31df64	GitHub%20adapter%20fast-forwarded%20main%20from%20expected%20parent%20and%20returned%20success;%20remote%20head%20observed%20separately

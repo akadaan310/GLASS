@@ -1,0 +1,63 @@
+{
+  "schema": "glass.helper-registry.v1",
+  "helpers": [
+    {
+      "id": "glass.helper.apply",
+      "signature": "Machine x Words -> Machine",
+      "implementation": "runtime/glass.hpp",
+      "implementation_sha256": "c9d9ab5fc9915bd16c0cd8ba21743768e3fab8036d126a14c512b8fa4d9ea145",
+      "effects": [
+        "validate declaration or event",
+        "update active configuration"
+      ],
+      "evidence": "evidence/native-tests.json"
+    },
+    {
+      "id": "glass.helper.submit",
+      "signature": "Journal x Words x ExpectedCursor -> Receipt",
+      "implementation": "runtime/glass.hpp",
+      "implementation_sha256": "c9d9ab5fc9915bd16c0cd8ba21743768e3fab8036d126a14c512b8fa4d9ea145",
+      "effects": [
+        "exclusive writer lock",
+        "validate next configuration",
+        "append and fsync"
+      ],
+      "evidence": "evidence/native-tests.json"
+    },
+    {
+      "id": "glass.helper.weight",
+      "signature": "Machine -> JSON StructuralWeight",
+      "implementation": "runtime/glass.hpp",
+      "implementation_sha256": "c9d9ab5fc9915bd16c0cd8ba21743768e3fab8036d126a14c512b8fa4d9ea145",
+      "effects": [
+        "derive observed event alphabet and exact behavior path"
+      ],
+      "evidence": "evidence/native-tests.json"
+    },
+    {
+      "id": "glass.helper.spell",
+      "signature": "UTF8Bytes -> JSON ByteWriteTrace",
+      "implementation": "runtime/glass.hpp",
+      "implementation_sha256": "c9d9ab5fc9915bd16c0cd8ba21743768e3fab8036d126a14c512b8fa4d9ea145",
+      "effects": [
+        "encode every byte and bit write"
+      ],
+      "evidence": "evidence/native-tests.json"
+    },
+    {
+      "id": "glass.helper.publish",
+      "signature": "Repository x ReceiptPath x SelectedPaths -> PublicationReceipt",
+      "implementation": "runtime/publish.cpp",
+      "implementation_sha256": "72b050b9eaff4a2b5675e2116c4791ed8277423555b981bd620719f38978d98a",
+      "effects": [
+        "fetch and reconcile main",
+        "stage selected paths",
+        "commit",
+        "push main",
+        "observe remote head",
+        "persist attempt receipt"
+      ],
+      "evidence": "evidence/native-tests.json"
+    }
+  ]
+}
