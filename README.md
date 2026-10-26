@@ -40,3 +40,17 @@ Oracle deployment, continuously running synchronization, HTTP/MCP transport, mor
 The owner's Arabic computational-addressing commission is now specified as **QITṬ/0.1**: a 28-letter numeric registry with typed ṢIFR holding states, ALIF/LIFF turning, Ghayn returns, the three-phase high-order register lift, grammar and topology.
 
 Read the [formal science dossier](docs/QITT_CYCLIC_ARABIC_REGISTER_CALCULUS.md), [28-register machine-readable table](atlas/qitt-register-v0.1.json), [syntax grammar](docs/QITT-0.1.ebnf), and [predeclared commission](commissions/qitt-001/INTENT.json). Scope: formalization from the owner's proposal and repository source; no external theory search, execution test, or historical verification was performed. This new language is **specified, not yet an installed interpreter**.
+
+
+## GLASS Ω — Encycled Calculus & Clockworld
+
+A research extension to the GLASS atlas for event-directed computation and **Four-Tilde Computational Mechanics** (\(\widetilde{\mathcal M}^{(4)}\)): bit/value, lifetime, clock and observation. The native C++20 reference implements bounded per-bit events, logical clock ticks, typed event origins, object lifetime intervals, atomic refusals and deterministic replay.
+
+- [Complete formal science commission](docs/ENCYCLED_CALCULUS.md) · [machine-readable mathematics atlas](atlas/encycled-calculus-v0.1.json)
+- [Full-screen interactive Clockworld instrument](apps/clockworld/index.html) · [running instructions and limitations](apps/clockworld/README.md)
+- [Native reference implementation](runtime/encycled.hpp) · [CLI](runtime/encycled_cli.cpp) · [tests](tests/encycled_test.cpp)
+- [Actual local test evidence](evidence/encycled-002/native-fixtures.json) · [predeclared commission](commissions/encycled-002/INTENT.json)
+
+The science distinguishes real-world hardware observation from the **synthetic** oscillator and housing/world models. The browser offers four views (Mechanics / HOMELESS / Terminal / Atlas), but is not the Unity-native HOMELESS product. The finite terminal gate accepts an optional LLM *proposal* as plain text only; no LLM, shell, production agent, or continuous Git publisher has been deployed by this unit.
+
+Main publication occurs through source-linked GitHub commits; research acceptance is not inferred from a source commit.
