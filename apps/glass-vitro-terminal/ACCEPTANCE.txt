@@ -1,0 +1,29 @@
+PASS sha256 empty
+PASS sha256 abc
+PASS binary gates
+PASS bit rotation
+PASS URL Unicode percent encoding
+PASS row and column tapes
+PASS diagonal paths
+PASS geometric paths
+PASS 10x10 exact multiply witness
+PASS MAC order preserved
+PASS genesis and clock
+PASS English opcode parsing
+PASS Unison symbolic parsing
+PASS clock stop independent of display
+PASS HALT guard
+PASS RESUME guard
+PASS N dimensional allocation
+PASS dimension translate
+PASS rotation preserves norm
+PASS invalid plane denied
+PASS natural language matrix
+PASS heat is switching proxy
+PASS unmapped input never pretends understanding
+PASS sterile URL generation
+PASS SHA chained provenance
+PASS autonomous oracle transition
+PASS autonomous transition obeys HALT
+PASS Euclidean origin norm
+ALL 28 tests passed
