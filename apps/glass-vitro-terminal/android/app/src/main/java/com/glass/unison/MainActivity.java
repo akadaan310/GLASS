@@ -19,15 +19,13 @@ import android.widget.TextView;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.text.Editable;
-import android.graphics.drawable.ColorDrawable;
+import java.nio.charset.StandardCharsets;
+import java.nio.ByteBuffer;
+import java.nio.CharBuffer;
+import java.nio.charset.CharsetDecoder;
+import java.nio.charset.CodingErrorAction;
 
-import com.termux.terminal.TerminalSession;
-import com.termux.terminal.TerminalSessionClient;
-import com.termux.view.TerminalView;
-import com.termux.view.TerminalViewClient;
 
-import java.lang.reflect.Proxy;
-import java.util.Locale;
 
 /** The visible GLASS world is drawn by the native pixel engine; no web view. */
 public final class MainActivity extends Activity {
@@ -37,13 +35,19 @@ public final class MainActivity extends Activity {
     private native String nativeDispatch(long pointer, String input);
     private native String nativeStatus(long pointer);
     private native void nativeRaster(long pointer, int[] pixels, int width, int height, long phase);
+    private native long nativeShellOpen(String cwd);
+    private native byte[] nativeShellRead(long handle);
+    private native void nativeShellWrite(long handle, byte[] data);
+    private native void nativeShellResize(long handle, int cols, int rows);
+    private native void nativeShellStop(long handle);
+    private native void nativeShellDispose(long handle);
 
     private long engine;
     private FrameLayout root;
     private NativeWorld world;
     private EditText keyboard;
-    private TerminalView terminalView;
-    private TerminalSession terminalSession;
+    private ShellPane terminalView;
+    private volatile long shellHandle=0;
     private long paintCounter = 0;
     private boolean showingShell = false;
 
@@ -66,12 +70,18 @@ public final class MainActivity extends Activity {
         root.addView(keyboard,p);
         keyboard.addTextChangedListener(new TextWatcher(){
             @Override public void beforeTextChanged(CharSequence s,int a,int c,int d){}
-            @Override public void onTextChanged(CharSequence s,int a,int b,int c){world.typing=s.toString();world.invalidate();}
+            @Override public void onTextChanged(CharSequence s,int a,int b,int c){world.typing=s.toString();world.invalidate();if(terminalView!=null)terminalView.setPendingInput(s.toString());}
             @Override public void afterTextChanged(Editable e){}
         });
         keyboard.setOnEditorActionListener((TextView v,int action,KeyEvent event)->{
             if(action==EditorInfo.IME_ACTION_GO || (event!=null&&event.getKeyCode()==KeyEvent.KEYCODE_ENTER)){
                 String command=keyboard.getText().toString().trim();keyboard.setText("");
+                if(showingShell){
+                    if(command.equals(":exit")){returnWorld();return true;}
+                    if(command.equals(":ctrl-c"))nativeShellWrite(shellHandle,new byte[]{3});
+                    else nativeShellWrite(shellHandle,(command+"\n").getBytes(StandardCharsets.UTF_8));
+                    return true;
+                }
                 if(command.equals(":shell")){openShell();return true;}
                 if(!command.isEmpty())world.lastResult=nativeDispatch(engine,command);
                 world.invalidate();return true;
@@ -85,59 +95,48 @@ public final class MainActivity extends Activity {
         manager.showSoftInput(keyboard,InputMethodManager.SHOW_IMPLICIT);
     }
     private void openShell() {
-        // The embedded Apache-licensed Termux terminal emulator supplies actual PTY semantics.
         if(showingShell)return;
-        showingShell=true;
-        final String[] env={"PATH=/system/bin:/system/xbin", "HOME="+getFilesDir().getAbsolutePath(),
-                "TERM=xterm-256color", "TMPDIR="+getCacheDir().getAbsolutePath(), "LANG=C.UTF-8"};
-        try {
-            TerminalSessionClient sessionClient=(TerminalSessionClient)Proxy.newProxyInstance(
-                TerminalSessionClient.class.getClassLoader(),new Class[]{TerminalSessionClient.class},(proxy,m,args)->{
-                    switch(m.getName()){
-                        case "onTextChanged": case "onColorsChanged":
-                            runOnUiThread(()->{if(terminalView!=null)terminalView.invalidate();});break;
-                        case "onSessionFinished":runOnUiThread(this::returnWorld);break;
-                        case "onPasteTextFromClipboard":break;
-                        case "onCopyTextToClipboard":break;
-                    }
-                    if(m.getReturnType()==boolean.class)return false;
-                    if(m.getReturnType()==float.class)return 1.0f;
-                    if(m.getReturnType()==int.class)return 0;
-                    return null;
+        final long handle=nativeShellOpen(getFilesDir().getAbsolutePath());
+        if(handle==0){world.lastResult="⊣ PTY UNAVAILABLE";world.invalidate();return;}
+        shellHandle=handle;showingShell=true;
+        terminalView=new ShellPane(this);
+        terminalView.setResizeHandler((columns,rows)->nativeShellResize(handle,columns,rows));
+        terminalView.setOnClickListener(v->showKeyboard());
+        root.addView(terminalView,new FrameLayout.LayoutParams(-1,-1));
+        terminalView.append("⟦ GLASS · LOCAL PTY SHELL ⟧\nType commands; keyboard Go sends Enter. :exit returns to UNISON.\n");
+        Thread reader=new Thread(()->{
+            CharsetDecoder decoder=StandardCharsets.UTF_8.newDecoder()
+                .onMalformedInput(CodingErrorAction.REPLACE).onUnmappableCharacter(CodingErrorAction.REPLACE);
+            ByteBuffer incoming=ByteBuffer.allocate(16384);
+            CharBuffer decoded=CharBuffer.allocate(16384);
+            try{
+                while(true){
+                    byte[] bytes=nativeShellRead(handle);
+                    if(bytes==null)break;
+                    if(bytes.length==0)continue;
+                    incoming.put(bytes);
+                    incoming.flip();
+                    decoder.decode(incoming,decoded,false);
+                    incoming.compact();
+                    decoded.flip();
+                    String segment=decoded.toString();decoded.clear();
+                    runOnUiThread(()->{if(terminalView!=null&&shellHandle==handle)terminalView.append(segment);});
+                }
+            }finally{
+                nativeShellStop(handle);
+                runOnUiThread(()->{
+                    if(shellHandle==handle){shellHandle=0;returnWorld();}
+                    nativeShellDispose(handle);
                 });
-            terminalSession=new TerminalSession("/system/bin/sh",getFilesDir().getAbsolutePath(),
-                new String[]{"sh","-i"},env,2000,sessionClient);
-            terminalView=new TerminalView(this,null);
-            terminalView.setTerminalViewClient((TerminalViewClient)Proxy.newProxyInstance(
-                TerminalViewClient.class.getClassLoader(),new Class[]{TerminalViewClient.class},(proxy,m,args)->{
-                    String name=m.getName();
-                    if(name.equals("isTerminalViewSelected"))return true;
-                    if(name.equals("onScale"))return args!=null&&args.length>0?args[0]:1.0f;
-                    if(name.equals("onSingleTapUp")){
-                        runOnUiThread(()->((InputMethodManager)getSystemService(INPUT_METHOD_SERVICE)).showSoftInput(terminalView,InputMethodManager.SHOW_IMPLICIT));
-                    }
-                    if(m.getReturnType()==boolean.class)return false;
-                    if(m.getReturnType()==float.class)return 1.0f;
-                    if(m.getReturnType()==int.class)return 0;
-                    return null;
-                }));
-            terminalView.setTextSize(17);
-            terminalView.setBackgroundColor(Color.rgb(1,9,19));
-            root.addView(terminalView,new FrameLayout.LayoutParams(-1,-1));
-            terminalView.attachSession(terminalSession);
-            terminalView.setFocusableInTouchMode(true);
-            terminalView.requestFocus();
-            ((InputMethodManager)getSystemService(INPUT_METHOD_SERVICE)).showSoftInput(terminalView,InputMethodManager.SHOW_IMPLICIT);
-        }catch(Throwable error){
-            showingShell=false;
-            world.lastResult="⊣ SHELL UNAVAILABLE: "+error.getClass().getSimpleName();
-            returnWorld();
-        }
+            }
+        },"GLASS-PTY");
+        reader.setDaemon(true);reader.start();showKeyboard();
     }
     private void returnWorld(){
         showingShell=false;
+        long handle=shellHandle;shellHandle=0;
+        if(handle!=0)nativeShellStop(handle);
         if(terminalView!=null){root.removeView(terminalView);terminalView=null;}
-        if(terminalSession!=null){terminalSession.finishIfRunning();terminalSession=null;}
         if(world!=null){world.lastResult="۞ SHELL RETURNED · UNISON CONTINUITY";world.invalidate();}
     }
     @Override public void onBackPressed(){if(showingShell){returnWorld();return;}super.onBackPressed();}
@@ -154,7 +153,7 @@ public final class MainActivity extends Activity {
         private final String[] letters={"0","1","Λ","Ω","Γ","τ","Π","⊕","۞","ج","α","λ","◉","⟐"};
         NativeWorld(Context context){super(context);fg.setTypeface(Typeface.create("monospace",Typeface.NORMAL));setFocusable(true);setContentDescription("GLASS immersive terminal. Tap to type. Type colon shell to open terminal.");}
         @Override protected void onDraw(Canvas canvas){
-            if(showingShell || engine==0)return;
+            if(engine==0)return;
             int w=getWidth(),h=getHeight();if(w==0||h==0)return;
             int pw=Math.min(480,Math.max(1,w/2)),ph=Math.min(960,Math.max(1,h/2));
             if(bitmap==null || pixelWidth!=pw||pixelHeight!=ph){

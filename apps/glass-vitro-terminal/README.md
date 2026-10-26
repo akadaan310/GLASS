@@ -1,6 +1,6 @@
 # ⟦ GLASS / UNISON / VITROMATON TERMINAL 0.1 ⟧
 
-**Native first.** C++20 deterministic symbolic runtime + finite-state clock + real PTY shell, native pixel renderer, ANSI celestial terminal scene, and Android ARM64 NDK application. Built on the open-source Termux `terminal-view` and `terminal-emulator` libraries (Apache 2.0 exemptions of a GPLv3 app).
+**Native first.** C++20 deterministic symbolic runtime + finite-state clock + real PTY shell, native pixel renderer, ANSI celestial terminal scene, and Android ARM64 NDK application. The Android APK now uses a self-contained JNI PTY and ANSI-subset console; Termux was reviewed as an open-source reference but isn't bundled.
 
 ## Native CLI, on Linux or Termux
 
@@ -28,7 +28,7 @@ Termux installation: `pkg install clang cmake ninja` and compile inside your Ter
 
 ### Android APK
 
-The `android/` project provides a native C++/JNI full-screen scene, keyboard input, and Termux's real PTY terminal component. Type `:shell` to switch into an embedded Android `/system/bin/sh` session; press Back to return. No access to arbitrary private app sessions, rooted features, or system-wide telemetry. The native field is rasterized in `core/pixels.cpp`; Android canvas overlays typed text/glyphs and Termux handles terminal semantics. This architecture doesn't require browser HTML or WebView.
+The `android/` project provides a native C++/JNI full-screen scene, keyboard input, and a self-contained POSIX PTY terminal. Type `:shell` to switch into an embedded Android `/system/bin/sh` session; press Back to return. No access to arbitrary private app sessions, rooted features, or system-wide telemetry. The native field is rasterized in `core/pixels.cpp`; Android canvas overlays typed text/glyphs and ShellPane handles a basic ANSI subset; full VT emulation is not yet implemented. This architecture doesn't require browser HTML or WebView.
 
 A GitHub Actions workflow builds an ARM64 debug APK on pushes to `main`. **Only download the APK after the Actions build completes successfully.** Android APK signing in CI uses an automatically generated *debug key*, not a Play Store release key. Packaging is not equivalent to device-level execution testing.
 
@@ -56,3 +56,8 @@ A GitHub Actions workflow builds an ARM64 debug APK on pushes to `main`. **Only 
 5. Production artifact signing, UI accessibility verification, performance/backpressure, cross-client state replay, and secure authorized agent transport.
 
 Source provenance: https://github.com/termux/termux-app (Terminal emulator and TerminalView libraries Apache-2.0; entire Termux app GPLv3-only). Respect redistribution/attribution and actual library versions.
+
+
+## APK Build v0.2
+
+The unresolved Termux Maven dependency was removed. The APK's local /system/bin/sh is spawned by a C++ PTY bridge on explicit `:shell`; typing uses Android's keyboard, Go sends Enter, Back returns to GLASS. No root or third-party app access. The native PTY implementation was validated on a Linux JNI smoke test, not yet on-device. GitHub Actions artifact is available only after successful Android SDK/NDK build; failed zero-step jobs do not produce APKs.

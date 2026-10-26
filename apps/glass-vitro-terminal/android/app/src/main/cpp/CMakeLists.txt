@@ -6,6 +6,7 @@ add_library(unison_bridge SHARED
     ../../../../../core/unison.cpp
     ../../../../../core/pixels.cpp
     bridge.cpp
+    pty.cpp
 )
 target_include_directories(unison_bridge PRIVATE ../../../../../core)
 find_library(log-lib log)
