@@ -48,4 +48,18 @@ let points=Array.from({length:900},(_,i)=>{let r=hash('UNISON:'+i);return{x:(r%1
 function draw(time){if(document.hidden){requestAnimationFrame(draw);return}ticks++;ctx.fillStyle='#020611';ctx.fillRect(0,0,W,H);let t=time*.00015;for(const p of points){let z=p.z,theta=t*(.07+z*.13),x=(p.x-.5),y=(p.y-.5),cs=Math.cos(theta),sn=Math.sin(theta),px=(x*cs-y*sn)*W*(.7+z*.6)+W/2,py=(x*sn+y*cs)*H*(.7+z*.6)+H/2;if(px<0||px>W||py<0||py>H)continue;let a=.2+.55*(1+Math.sin(time*.0007*(.4+z)+p.p))/2;ctx.fillStyle='rgba(136,218,242,'+(a*p.b)+')';ctx.beginPath();ctx.arc(px,py,Math.max(.35,z*1.8),0,Math.PI*2);ctx.fill()}const cx=W/2,cy=H*.45,sz=Math.min(W,H),n=4;for(let j=0;j<n;j++){let rad=sz*(.1+j*.063),spin=time*.00012*(j%2?-1:1);ctx.beginPath();ctx.ellipse(cx,cy,rad,rad*.48,spin,0,Math.PI*2);ctx.strokeStyle='rgba(80,227,217,'+(.075+j*.03)+')';ctx.lineWidth=.7;ctx.stroke()}clock.textContent='⊙ '+String(ticks).padStart(8,'0');requestAnimationFrame(draw)}requestAnimationFrame(draw);
 document.addEventListener('keydown',e=>{if(document.activeElement!==inp&&e.key.length===1&&!e.ctrlKey&&!e.metaKey){inp.focus()}});cv.addEventListener('pointerdown',()=>inp.focus());
 refresh();
+</script><script type="module">
+import {bitGate,hash,tape,youtubeId} from "./bit-oracles.mjs";
+const tickerStyle=document.createElement("style");
+tickerStyle.textContent=".unison-edge{position:fixed;pointer-events:none;color:#69cfd095;font:10px monospace;letter-spacing:3px;overflow:hidden;white-space:nowrap;z-index:2}.u-top,.u-bottom{left:11%;right:11%;height:14px}.u-top{top:3%}.u-bottom{bottom:3%}.u-left,.u-right{top:19%;bottom:21%;width:30px;writing-mode:vertical-rl}.u-left{left:1%}.u-right{right:1%}.u-projection{position:fixed;inset:18% 9% 23%;background:#000e;border:1px solid #50cfcf75;box-shadow:0 0 50px #28999945;z-index:5;display:none}.u-projection iframe{width:100%;height:100%;border:0}.u-projection.active{display:block}";
+document.head.appendChild(tickerStyle);
+const edges=["u-top","u-right","u-bottom","u-left"].map(cls=>{let e=document.createElement("div");e.className="unison-edge "+cls;document.body.appendChild(e);return e});
+const projection=document.createElement("div");projection.className="u-projection";document.body.appendChild(projection);
+const field=document.querySelector("#q");
+let s=0;
+setInterval(()=>{let charset="ΛΩΓτΠ۞∅⊕∧∨↻جبحف0123456789";let sequence=Array.from({length:38},(_,i)=>charset[(s+i*7)%charset.length]).join(" ⟐ ");edges.forEach((e,i)=>e.textContent=sequence.slice(i*9,i*9+135));s++;},190);
+if(field){field.addEventListener("input",()=>{const text=field.value.trim();const video=youtubeId(text);const glyph=document.querySelector("#glyph");const info=document.querySelector("#meaning");if(text&&glyph&&info){const bits=tape(text);info.textContent="Λ "+bits.length+" · ⊕ "+bits.map(b=>b.bits.join("")).join(" ").slice(0,90)+" · Π "+hash(text)}if(video){if(!projection.classList.contains("active")||projection.dataset.video!==video){projection.replaceChildren();const frame=document.createElement("iframe");frame.src="https://www.youtube-nocookie.com/embed/"+video;frame.title="Video requested by the user";frame.allow="encrypted-media; picture-in-picture; web-share";frame.allowFullscreen=true;projection.append(frame);projection.dataset.video=video}projection.classList.add("active")}else{projection.classList.remove("active");projection.replaceChildren()}});field.addEventListener("keydown",e=>{if(e.key==="Escape"){field.value="";field.dispatchEvent(new Event("input"))}})}
+// Fixed-width 32-bit gate: one O(1) operation; whole-frame drawing remains O(pixels).
+const witness=bitGate(0x00000000,0x00000001,"xor");
+document.documentElement.dataset.unisonBitWitness=String(witness);
 </script></body></html>
