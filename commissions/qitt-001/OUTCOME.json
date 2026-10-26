@@ -1,0 +1,89 @@
+{
+  "schema": "glass.commission.outcome.v1",
+  "commission_id": "glass.qitt-001",
+  "branch": "main",
+  "intent_path": "commissions/qitt-001/INTENT.json",
+  "actual_artifacts": [
+    {
+      "path": "commissions/qitt-001/INTENT.json",
+      "publish_sha": "5a84b2b5b073a93620364c83ecf091df0b3755c8",
+      "result": "source and operation intent predeclared before research artifacts"
+    },
+    {
+      "path": "atlas/qitt-register-v0.1.json",
+      "publish_sha": "ed7aa54463221e4f2512705535dd5002c12a23de",
+      "result": "28 native glyph registers, cyclical positional lift, SIFR roles, 24 numeric fixture examples, word models"
+    },
+    {
+      "path": "docs/QITT-0.1.ebnf",
+      "publish_sha": "32052c1e7b037ae5d50239efacde5938622894f3",
+      "result": "bounded typed grammar for QITT/0.1"
+    },
+    {
+      "path": "docs/QITT_CYCLIC_ARABIC_REGISTER_CALCULUS.md",
+      "publish_sha": "2493286714a67eed4b0eb263839327a0a672a419",
+      "result": "formal scientific monograph, mathematical proofs, counterexamples, topology, 4 tape forms, reference algorithms, oracle contracts"
+    },
+    {
+      "path": "README.md",
+      "publish_sha": "18710a8fca1beb83344ae3609e1f3ea730d63a3a",
+      "result": "GLASS entrypoint lists new science"
+    },
+    {
+      "path": "atlas/language-profiles.json",
+      "publish_sha": "0fe99ab2568c51dce35b05436e0f615806f9e1c8",
+      "result": "QITṬ listed as formalized, not installed interpreter"
+    },
+    {
+      "path": "atlas/qitt-topology-v0.1.json",
+      "publish_sha": "1df0223dc678870d8d248a5342eb9923ad88b2b0",
+      "result": "four finite graph invariants and 28 topical reviews"
+    }
+  ],
+  "states": {
+    "source_provenance": "selected_repo_sources_inspected",
+    "registry": "specified",
+    "grammar": "specified",
+    "operators": "specified",
+    "topology": "specified",
+    "integration": "documented_not_connected",
+    "publication": "committed_on_main"
+  },
+  "evidence": {
+    "source_type": "owner current conversation + selected exact GitHub repository file content",
+    "external_google_web_theory_validation": "not performed; prohibited by owner",
+    "source_code_tests": "not run",
+    "builds": "not run",
+    "interpreter_installation": "not performed",
+    "proof_status": "P1-P6 mathematical proof sketches; examples/negative controls are specified, not machine-checked proofs",
+    "historical_linguistic_claim_status": "not researched; no premodern attribution, natural-language semantic equivalence or novel-discovery proof",
+    "direct_git_publication": "GitHub connector returned concrete commit hashes on main for each artifact"
+  },
+  "deliverable": {
+    "science": "Cyclic Arabic Letter-Register Calculus (CALRC)",
+    "language": "QITT/0.1",
+    "profile": "arabic.qitt.cyclic-register.v0.1",
+    "complete_base_alphabet_size": 28,
+    "topological_review_subjects": 28,
+    "canonically_specified_numeral_fixtures": 24,
+    "compatibility": [
+      "GLASS",
+      "PolyIA",
+      "PURL",
+      "SEURL",
+      "SURFACE",
+      "CGT",
+      "Grammar in Numbers",
+      "SubstrateIO",
+      "SNAD"
+    ],
+    "missing": [
+      "native QITT interpreter",
+      "source-backed linguistic adjudication",
+      "independently replayed runtime fixtures",
+      "approved upstream bridge adaptations"
+    ]
+  },
+  "next_enabled_unit": "Native QITṬ compiler/interpreter from the immutable formal registry and grammar, with bounded property tests and source-linked execution receipts when explicitly commissioned.",
+  "publication_note": "This outcome is itself a later new main commit; actual post-outcome head must be read back independently."
+}
