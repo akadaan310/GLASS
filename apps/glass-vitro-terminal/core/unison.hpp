@@ -1,6 +1,7 @@
 #pragma once
 #include <array>
 #include <cstdint>
+#include <complex>
 #include <map>
 #include <string>
 #include <vector>
@@ -65,5 +66,6 @@ private:
   uint64_t render_frames_{0};
   std::string last_digest_{64,'0'};
   std::string last_input_;
+  std::array<std::complex<double>,2> qubit_{{{1.0,0.0},{0.0,0.0}}};
 };
 } // namespace glass

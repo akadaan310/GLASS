@@ -93,7 +93,7 @@ Result Engine::dispatch(const std::string& original){
  if(op=="halt"){record("HALT","τ","logical clock frozen");halted_=true;return {true,"HALTED","Finite-state clock stopped; view remains observable.","∅",clock_};}
  if(op=="resume"){halted_=false;clock_++;return report("RESUMED","Logical clock permits transitions.","τ");}
  if(op!="state"&&op!="clock"&&op!="trace"&&op!="help")clock_++;
- if(op=="help")return {true,"UNISON LANGUAGE","help · clock · halt · resume · xor 1 0 · and 3 1 · rot 1 4 · matrix · tape diagonal · space 5 · move 0 1 · spin 0 1 .2 · energy 0 1 · alphabet · protocol · url Λ · :shell (CLI)","Λ",clock_};
+ if(op=="help")return {true,"UNISON LANGUAGE","help · clock · halt · resume · xor 1 0 · and 3 1 · rot 1 4 · matrix · tape diagonal · space 5 · move 0 1 · spin 0 1 .2 · energy 0 1 · qubit h · alphabet · protocol · url Λ · :shell (CLI)","Λ",clock_};
  if(op=="clock"||op=="state")return {true,"VITROMATON",snapshot(),"τ",clock_};
  if(op=="trace")return {true,"PROVENANCE",std::to_string(events_.size())+" journal events; SHA256 chain "+(verify()?"VALID":"INVALID")+" · last "+last_digest_.substr(0,16),"Π",clock_};
  if(op=="alphabet")return report("Λ ARABIC / 28","هجائي: ابتثجحخدذرزسشصضطظعغفقكلمنهوي · أبجدي: أبجدهوزحطيكلمنسعفصقرشتثخذضظغ","Λ");
@@ -116,6 +116,28 @@ Result Engine::dispatch(const std::string& original){
  if(op=="dimensions")return {true,"DIMENSIONS","Current space: ℝ^"+std::to_string(space.coordinates.size())+" · radius "+fmt(space.radius()),"Λ",clock_};
  if(op=="move"||op=="spin"){
    try{bool ok=false;if(op=="move"&&v.size()==3)ok=space.translate(std::stoul(v[1]),std::stod(v[2]));if(op=="spin"&&v.size()==4)ok=space.rotate(std::stoul(v[1]),std::stoul(v[2]),std::stod(v[3]));if(!ok)return {false,"COORDINATE REFUSED","Axis out of range or nonfinite parameter.","⊣",clock_};return report("N-DIMENSIONAL ORBIT","D="+std::to_string(space.coordinates.size())+" |x|="+fmt(space.radius())+" (Euclidean norm)","↻");}catch(...){return {false,"COORDINATE REFUSED","move axis delta / spin axis axis radians","⊣",clock_};}
+ }
+ if(op=="qubit"||op=="quantum"){
+   std::string action=v.size()>1?lowercase(v[1]):"state";
+   auto a=qubit_[0],b=qubit_[1];
+   if(action=="reset")qubit_={std::complex<double>(1,0),std::complex<double>(0,0)};
+   else if(action=="x")qubit_={b,a};
+   else if(action=="z")qubit_={a,-b};
+   else if(action=="h"){
+     double scale=std::sqrt(.5);
+     qubit_={(a+b)*scale,(a-b)*scale};
+   }
+   else if(action=="measure"){
+     // Reproducible pseudorandom simulation, NOT observation of physical hardware.
+     auto signature=digest(std::to_string(clock_)+"/qubit/");
+     uint32_t draw=static_cast<uint32_t>(std::stoul(signature.substr(0,8),nullptr,16));
+     int outcome=double(draw)/double(UINT32_MAX)<std::norm(a)?0:1;
+     qubit_={std::complex<double>(outcome==0?1:0,0),std::complex<double>(outcome==1?1:0,0)};
+     return report("QUANTUM SIMULATOR","projective Z measurement = "+std::to_string(outcome)+" (deterministic pseudorandom seed; not hardware)","Ω");
+   }
+   else if(action!="state")return {false,"QUANTUM OPERATOR","qubit reset | x | z | h | measure | state","⊣",clock_};
+   double p0=std::norm(qubit_[0]),p1=std::norm(qubit_[1]);
+   return report("QUANTUM / CLASSICAL SIM","P(0)="+fmt(p0)+" P(1)="+fmt(p1)+"; norm="+fmt(p0+p1)+"; gate="+action,"Ω");
  }
  if(op=="matrix"){
    std::array<int32_t,100>a{},b{};for(int i=0;i<100;i++){a[i]=(i*7+3)%11;b[i]=(i%11==0)?1:0;}

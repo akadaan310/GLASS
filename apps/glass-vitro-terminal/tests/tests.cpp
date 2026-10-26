@@ -35,6 +35,14 @@ int main(){
  check(e.dispatch("مرحبا").detail.find("UNKNOWN SEMANTICS")!=std::string::npos,"unmapped input never pretends understanding");
  check(e.dispatch("url Λ").detail.find("%CE%9B")!=std::string::npos,"sterile URL generation");
  check(e.verify(),"SHA chained provenance");
+ Engine quantum;
+ auto qh=quantum.dispatch("qubit h");
+ check(qh.accepted&&qh.detail.find("P(0)=0.50000")!=std::string::npos,"Hadamard fair probability");
+ auto qhh=quantum.dispatch("qubit h");
+ check(qhh.detail.find("P(0)=1.00000")!=std::string::npos,"Hadamard squared identity");
+ quantum.dispatch("qubit reset");
+ check(quantum.dispatch("qubit x").detail.find("P(1)=1.00000")!=std::string::npos,"Pauli X inversion");
+ check(!quantum.dispatch("qubit invalid").accepted,"unknown quantum gate refused");
  Engine autonomous;auto initialTick=autonomous.tick();for(int i=0;i<24;i++)autonomous.render_step();
  check(autonomous.tick()==initialTick+1&&autonomous.events().back().kind=="GENERATOR_STEP","autonomous oracle transition");
  autonomous.dispatch("halt");auto haltTick=autonomous.tick();for(int i=0;i<48;i++)autonomous.render_step();

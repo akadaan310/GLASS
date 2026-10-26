@@ -16,6 +16,7 @@ Termux installation: `pkg install clang cmake ninja` and compile inside your Ter
 ## English and Unison instructions
 
 - `xor 0xff 0x34`, `and 3 1`, `rot 1 4`, `energy 0 15`
+- `qubit h`, `qubit x`, `qubit z`, `qubit measure` (single-qubit classical quantum-state simulation)
 - `matrix` or `multiply matrices` — exact 10×10 row/column product, 1000 MAC trace steps
 - `tape row`, `tape column`, `tape diagonal`, `tape anti-diagonal`, `tape perimeter`, `tape snake`
 - `space 6`, `move 0 2`, `spin 0 1 1.57` — typed ℝⁿ coordinates and rotation
@@ -31,6 +32,8 @@ The `android/` project provides a native C++/JNI full-screen scene, keyboard inp
 
 A GitHub Actions workflow builds an ARM64 debug APK on pushes to `main`. **Only download the APK after the Actions build completes successfully.** Android APK signing in CI uses an automatically generated *debug key*, not a Play Store release key. Packaging is not equivalent to device-level execution testing.
 
+[Typed UNISON operator semantics](docs/UNISON_PROTOCOL.md).
+
 ## Exact current contract
 
 - Every controlled **32-bit** Boolean gate is O(1); computing N arbitrary pixels requires at least Ω(N) outputs.
@@ -41,6 +44,7 @@ A GitHub Actions workflow builds an ARM64 debug APK on pushes to `main`. **Only 
 - Multilingual fallback categorizes Unicode code points without inventing semantics; CLDR/ICU full grapheme normalization is a follow-up.
 - Autonomous letter events are emitted every 24 display frames while the local scene is running, bounded at 10k in-memory event objects; append-only journal file may grow without rotation in v0.1.
 - The universe is a **synthetic** celestial scene; actual Gaia positions and genuine astronomical telemetry require sourced catalog adapters.
+- One-qubit H/X/Z and Z measurement are **classical numerical quantum simulation**; no quantum processor or quantum speedup is claimed.
 - The SDK is not an embedded ChatGPT model or autonomous coding agent. Further agent connection requires an authorized API and declared transport/permissions.
 
 ## Research succession

@@ -23,7 +23,11 @@ PASS heat is switching proxy
 PASS unmapped input never pretends understanding
 PASS sterile URL generation
 PASS SHA chained provenance
+PASS Hadamard fair probability
+PASS Hadamard squared identity
+PASS Pauli X inversion
+PASS unknown quantum gate refused
 PASS autonomous oracle transition
 PASS autonomous transition obeys HALT
 PASS Euclidean origin norm
-ALL 28 tests passed
+ALL 32 tests passed
