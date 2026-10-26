@@ -1,0 +1,25 @@
+{
+  "schema": "glass.source-custody-receipt.v1",
+  "volumes": [
+    {
+      "filename": "GLASS_CUSTODY_01.zip",
+      "bytes": 8771616,
+      "sha256": "fa66ed8bab564e7002fa34d9921babf04e147dc82794db2acb0bb97a3ba8d82c"
+    },
+    {
+      "filename": "GLASS_CUSTODY_02.zip",
+      "bytes": 8325268,
+      "sha256": "436cb15373e851ed8c7a1313e7af1cdbce285c3583cbf8d7c0e5a4c2f71a35a5"
+    }
+  ],
+  "original_count": 9,
+  "recursive_records": 814,
+  "verification": [
+    "both volume ZIP CRC checks passed",
+    "eight direct original SHA256 comparisons passed",
+    "reconstructed Quantum Oracle original SHA256 comparison passed"
+  ],
+  "runtime_commit": "e4d1fc96e79fee03b36d35fce1e46c272693451e",
+  "private_source_custody": "saved two-volume package",
+  "deployment_frontier": "Oracle connection and service installation"
+}

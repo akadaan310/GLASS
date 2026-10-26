@@ -46,5 +46,5 @@ Each source-origin hypothesis, deterministic observation, mathematical derivatio
 Describe the exact work completed and the exact next commission. Preserve all original conclusions and all authored terminology with their source provenance.
 
 ## Portable execution
-The complete source-custody ZIP contains supplied originals plus acquired upstream content. GitHub holds the public native implementation, detailed commission, reviewed atlas projections, source inventories, and continuation.
+The two source-custody volumes preserve all nine supplied originals through exact reconstruction, along with the recursive inventory and section index. Extract both volumes into one folder and follow START.md. GitHub holds the public native implementation, detailed commission, reviewed atlas projections, source inventories, and continuation. A fresh worker acquires upstream source bytes from the pinned repository commits in those inventories.
 Compile for the Oracle machine architecture from native C++ source. Keep host-specific build artifacts in build/.
