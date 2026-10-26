@@ -1,0 +1,92 @@
+{
+  "schema": "glass.commission.intent.v1",
+  "id": "glass.encycled-002",
+  "owner_thesis": "Clock-aware computational mechanics, mechanical computation, continuous and discrete event cycles, a Four-Tilde calculus, real-time visual bit phase/lifetime observatory, bounded LLM+automaton commissioning terminal, and synthetic HOMELESS opportunity-cost/housing transitions.",
+  "mandate": "Construct a mathematical specification and a real, inspectable local implementation with native deterministic core and full-screen web instrument. Commit additive GLASS work on main, with explicit source and truth boundaries.",
+  "source_inputs": [
+    "akadaan310/GLASS@main:AGENTS.md;docs/GLASS_COMMISSION.md;docs/CONTINUE.md;docs/ATLAS.md;runtime/glass.hpp",
+    "akadaan310/HOMELESS@main:AGENTS.md;README.md;HOMELESS_DARK_CONSTITUTIONAL_COMMISSION.md;governance/checkpoint.json;evidence/ACCEPTANCE.md",
+    "akadaan310/SURFACE@main:docs/ARCHITECTURE_AND_HARNESSES.md",
+    "akadaan310/GLASS@main:docs/QITT_CYCLIC_ARABIC_REGISTER_CALCULUS.md"
+  ],
+  "analysis_policy": {
+    "external_theory_search": "PROHIBITED by owner; do not use web/Google for validating theory",
+    "simulation_vs_measurement": "Always label",
+    "interpretation": "Establish defined constructions without claiming historical novelty, physics beyond model, or observed transistor clocks."
+  },
+  "target_paths": [
+    "docs/ENCYCLED_CALCULUS.md",
+    "atlas/encycled-calculus-v0.1.json",
+    "runtime/encycled.hpp",
+    "runtime/encycled_cli.cpp",
+    "tests/encycled_test.cpp",
+    "apps/clockworld/index.html",
+    "apps/clockworld/README.md",
+    "commissions/encycled-002/OUTCOME.json"
+  ],
+  "concurrent_regions": {
+    "provenance": "inspected",
+    "mathematics": "planned",
+    "mechanics": "planned",
+    "visualization": "planned",
+    "harness": "planned",
+    "game_model": "planned",
+    "publication": "queued"
+  },
+  "allowed_transitions": [
+    {
+      "event": "specification-authored",
+      "region": "mathematics",
+      "from": "planned",
+      "to": "specified"
+    },
+    {
+      "event": "native-runtime-authored",
+      "region": "mechanics",
+      "from": "planned",
+      "to": "implemented"
+    },
+    {
+      "event": "visual-runtime-authored",
+      "region": "visualization",
+      "from": "planned",
+      "to": "implemented"
+    },
+    {
+      "event": "harness-contract-authored",
+      "region": "harness",
+      "from": "planned",
+      "to": "specified"
+    },
+    {
+      "event": "game-adapter-authored",
+      "region": "game_model",
+      "from": "planned",
+      "to": "simulated"
+    },
+    {
+      "event": "main-readback-confirmed",
+      "region": "publication",
+      "from": "queued",
+      "to": "published"
+    }
+  ],
+  "controls": [
+    "Keep HOMELESS Unity native mission authoritative; GLASS browser science visualization does not replace playable native Unity product",
+    "A bit can flip via logical write as well as fault; no physical bit-level chip monitoring without sensor/hardware evidence",
+    "C++ pointer variables do not own object lifetime by declaration alone; instrument explicit scopes/allocations and distinguish pointer identity from pointee",
+    "Synthetic population agents only; no identifiable living-person records or unsourced hospital-based global estimates",
+    "LLM proposals never mutate runtime without admitted finite DSL and independent guard; demo does not contact an LLM",
+    "Bound time/step count, output, and event logs; automatic recovery on pause/stop",
+    "Produce measured local test receipts separately from mathematical derivations"
+  ],
+  "recovery": "Preserve intent and unfinished artifact lists; all publication on main by version-bound non-forced GitHub connector writes; audit readback.",
+  "execution_budget": {
+    "max_compiler_seconds": 20,
+    "max_simulation_events": 4096,
+    "max_ui_history": 1200
+  },
+  "idempotency_key": "glass.encycled-002.v0.1",
+  "authoring_time": "2026-10-26",
+  "visibility": "public documentation and synthetic fixture only"
+}
