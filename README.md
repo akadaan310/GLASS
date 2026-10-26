@@ -34,3 +34,9 @@ SURFACE and PolyIA source-tree maps preserve existing commission machinery, PHAN
 Kernel and publisher focused tests pass on the local Linux host. A local bare Git remote fixture exercised main publication and queued transport recovery.
 GitHub main publication uses the connected GitHub adapter in this session.
 Oracle deployment, continuously running synchronization, HTTP/MCP transport, morphology-profile acquisition, full corpus interpretation, and general generator promotion have their next commissions in docs/CONTINUE.md.
+
+## QITṬ — Cyclic Arabic Register Calculus
+
+The owner's Arabic computational-addressing commission is now specified as **QITṬ/0.1**: a 28-letter numeric registry with typed ṢIFR holding states, ALIF/LIFF turning, Ghayn returns, the three-phase high-order register lift, grammar and topology.
+
+Read the [formal science dossier](docs/QITT_CYCLIC_ARABIC_REGISTER_CALCULUS.md), [28-register machine-readable table](atlas/qitt-register-v0.1.json), [syntax grammar](docs/QITT-0.1.ebnf), and [predeclared commission](commissions/qitt-001/INTENT.json). Scope: formalization from the owner's proposal and repository source; no external theory search, execution test, or historical verification was performed. This new language is **specified, not yet an installed interpreter**.
