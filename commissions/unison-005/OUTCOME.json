@@ -11,7 +11,7 @@
     "market": "synthetic_swift",
     "browser": "fixture_verified_Chromium",
     "glyph": "roundtrip_verified",
-    "publication": "awaiting_commit_readback"
+    "publication": "source_published_and_readback_confirmed"
   },
   "artifacts": [
     "apps/unison-studio",
@@ -36,5 +36,6 @@
     "no guarantee of production browser security"
   ],
   "publication_receipt": "commissions/unison-005/PUBLISH_RECEIPT.json (written after remote main readback)",
-  "future": "Swift Android package, Wasm binary, Kotlin/LLVM adapters, market licensed connectors, instrumented runtime equivalence tests"
+  "future": "Swift Android package, Wasm binary, Kotlin/LLVM adapters, market licensed connectors, instrumented runtime equivalence tests",
+  "published_source_commit": "49d863621cc8b6dc2baa69491f87744d1362e3be"
 }
