@@ -1,0 +1,82 @@
+{
+  "schema": "glass.encycled.evidence/0.1",
+  "date": "2026-10-26",
+  "work_unit": "glass.encycled-002",
+  "environment": {
+    "runtime": "isolated Linux build container",
+    "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+    "javascript": "Node v22.16.0"
+  },
+  "local_runs": [
+    {
+      "command": "g++ -std=c++20 -O2 -Wall -Wextra -pedantic tests/encycled_test.cpp -o tests/encycled_test && tests/encycled_test",
+      "result": "PASS",
+      "stdout": "PASS enCycled/0.1 native fixture: trace, replay, lifetimes, integration, guards",
+      "checks": [
+        "5 bit changes in 4 logical transactions",
+        "last two changes share tx",
+        "word replay equality",
+        "lifetime=4 ticks",
+        "double close rejected",
+        "out-of-width bit rejected",
+        "zero clock-step rejected",
+        "integrate_step=2.0",
+        "phase turns 1.0",
+        "atomic refusal on event budget"
+      ]
+    },
+    {
+      "command": "g++ -std=c++20 -O2 -Wall -Wextra -pedantic runtime/encycled_cli.cpp -o runtime/encycled_cli && runtime/encycled_cli trace",
+      "result": "PASS",
+      "parsed_json": {
+        "schema": "glass.encycled.trace/0.1",
+        "model": "synthetic-bit-control",
+        "tick": 4,
+        "word": 8,
+        "verified_replay": true,
+        "duration": 4,
+        "event_count": 5
+      }
+    },
+    {
+      "command": "node --check extracted_inline_clockworld_script.js",
+      "result": "PASS",
+      "note": "Parser/syntax check only; no DOM/runtime assertion."
+    },
+    {
+      "command": "chromium --headless --no-sandbox --disable-gpu --screenshot ...",
+      "result": "BLOCKED_TIMED_OUT",
+      "note": "Headless Chromium invocation timed out; a minimal html page also timed out. No screenshot/browser acceptance claimed."
+    }
+  ],
+  "fixtures": {
+    "bit_sequence": [
+      "0000",
+      "1000",
+      "1100",
+      "1110",
+      "1000"
+    ],
+    "clock_ticks": 4,
+    "bit_changes": 5,
+    "final_word": 8,
+    "fictional_household_seed": 24681357,
+    "households": 68,
+    "population": 167,
+    "under18": 56,
+    "housing_initial": {
+      "housed": 134,
+      "sheltered": 17,
+      "unsheltered": 16
+    }
+  },
+  "limits": [
+    "Local synthetic event inputs only; not physical silicon measurements",
+    "No production traffic, external LLM invocation, global population, hospital records or actual homeless persons",
+    "No Unity build/device-tested gameplay",
+    "Browser and native kernel parity not independently tested; event schemas differ"
+  ],
+  "publication_scope": "GitHub GLASS main commits are independently read back for destination only; local test source may vary in comment formatting from GitHub source",
+  "source_model": "owner-proposed theory, developed with established mathematics without external theory web searches",
+  "status": "bounded implementation and test evidence; neither complete science nor product certified"
+}
