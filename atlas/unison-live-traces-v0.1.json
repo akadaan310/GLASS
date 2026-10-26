@@ -1,0 +1,293 @@
+{
+  "schema": "glass.unison.live-trace-registry/0.1",
+  "commission": "2026-10-26-unison-live",
+  "owner_instructions": "real-time local recitation/language detection; Surface reactive to actual traces; stream sanitized I/O events; no automatic audio playback",
+  "inspected_sources": [
+    "akadaan310/muqri/app/analysis.py",
+    "app/rule_bind.py",
+    "app/waqf.py",
+    "app/ghunnah.py",
+    "app/tafkhim.py",
+    "app/letters.py",
+    "app/verse_detect.py",
+    "app/engine.py",
+    "app/measurements.py",
+    "GRAPH.md",
+    "akadaan310/SURFACE/docs/ARCHITECTURE_AND_HARNESSES.md"
+  ],
+  "truth_contract": {
+    "live_dsp": "Computed on PCM from Android AudioRecord; not validated as language/phoneme recognition.",
+    "language_clock": "Manual confirmed labels plus optional OS on-device language detection; abstains when evidence insufficient.",
+    "muqri_model": "MUQRI's full CTC/posterior, Arabic Tajwid, and graph not packaged in initial Glass APK.",
+    "stream": "Numerical/categorical derived events with opt-in HTTPS, no PCM/transcript/biometrics.",
+    "no_audio_playback_default": true,
+    "offline_first": true,
+    "background_capture": false
+  },
+  "traces": [
+    {
+      "id": "audio.rms",
+      "source": "app/audio.py",
+      "availability": "glass-local-live",
+      "units": "dimensionless_amplitude",
+      "meaning": "RMS(s[n])",
+      "channel": "audio.trace"
+    },
+    {
+      "id": "audio.peak",
+      "source": "app/audio.py",
+      "availability": "glass-local-live",
+      "units": "dimensionless_amplitude",
+      "meaning": "max(|s[n]|)",
+      "channel": "audio.trace"
+    },
+    {
+      "id": "audio.zero_cross",
+      "source": "app/audio.py",
+      "availability": "glass-local-live",
+      "units": "fraction_per_sample",
+      "meaning": "N^{-1} sum(sign_flip)",
+      "channel": "audio.trace"
+    },
+    {
+      "id": "audio.spectral_centroid_proxy",
+      "source": "app/audio.py",
+      "availability": "glass-local-live",
+      "units": "Hz",
+      "meaning": "sum(E_k*f_k)/sum(E_k), selected Goertzel bins",
+      "channel": "audio.trace"
+    },
+    {
+      "id": "audio.flux_proxy",
+      "source": "app/audio.py",
+      "availability": "glass-local-live",
+      "units": "0..1",
+      "meaning": "sum(max(E_k(t)-E_k(t-1),0))/sum(E_k)",
+      "channel": "audio.trace"
+    },
+    {
+      "id": "audio.band_low",
+      "source": "app/audio.py",
+      "availability": "glass-local-live",
+      "units": "fraction",
+      "meaning": "E(180Hz)+E(400Hz) normalized",
+      "channel": "audio.trace"
+    },
+    {
+      "id": "audio.band_mid",
+      "source": "app/audio.py",
+      "availability": "glass-local-live",
+      "units": "fraction",
+      "meaning": "E(850Hz)+E(1750Hz) normalized",
+      "channel": "audio.trace"
+    },
+    {
+      "id": "audio.band_high",
+      "source": "app/audio.py",
+      "availability": "glass-local-live",
+      "units": "fraction",
+      "meaning": "E(3350Hz) normalized",
+      "channel": "audio.trace"
+    },
+    {
+      "id": "audio.pitch_proxy",
+      "source": "app/analysis.py",
+      "availability": "glass-local-live",
+      "units": "Hz",
+      "meaning": "max-lag normalized autocorrelation proxy",
+      "channel": "audio.trace"
+    },
+    {
+      "id": "audio.adaptive_noise_floor",
+      "source": "app/audio.py",
+      "availability": "glass-local-live",
+      "units": "dimensionless_amplitude",
+      "meaning": "quiet-time EWMA",
+      "channel": "audio.trace"
+    },
+    {
+      "id": "audio.onset_candidate",
+      "source": "app/waqf.py",
+      "availability": "glass-local-live",
+      "units": "Boolean",
+      "meaning": "adaptive amplitude threshold transition",
+      "channel": "audio.trace"
+    },
+    {
+      "id": "audio.pause_candidate",
+      "source": "app/waqf.py",
+      "availability": "glass-local-live",
+      "units": "Boolean",
+      "meaning": "5 quiet frames after voiced segment; not a Quran stop verdict",
+      "channel": "audio.trace"
+    },
+    {
+      "id": "language.switch_clock",
+      "source": "none/original",
+      "availability": "glass-local-live",
+      "units": "categorical_ar_en_other_unknown",
+      "meaning": "30 manual confirmations and optional OS on-device recognition",
+      "channel": "language.candidate"
+    },
+    {
+      "id": "language.manual_confirmation",
+      "source": "none/original",
+      "availability": "glass-local-live",
+      "units": "categorical_label",
+      "meaning": "explicit human feedback, switch count",
+      "channel": "language.confirmed"
+    },
+    {
+      "id": "language.speech_recognizer",
+      "source": "android.SpeechRecognizer",
+      "availability": "optional-installed-os-service",
+      "units": "categorical_locale_hint",
+      "meaning": "onDeviceSpeechRecognizer, Android API>=31; language detection API>=34",
+      "channel": "language.candidate"
+    },
+    {
+      "id": "quran.exact_reference",
+      "source": "app/quran_text.py",
+      "availability": "requires-verified-muqri-text",
+      "units": "source_spans",
+      "meaning": "Uthmani text and basmala context",
+      "channel": "none_private"
+    },
+    {
+      "id": "quran.disconnected_names",
+      "source": "app/tajweed_rules/parser.py",
+      "availability": "available-source-only",
+      "units": "phoneme_letter_name_targets",
+      "meaning": "_LETTER_NAMES, MUQATTAAT; context-dependent durations",
+      "channel": "none_private"
+    },
+    {
+      "id": "quran.tajweed_rules",
+      "source": "app/tajweed_rules/parser.py",
+      "availability": "deferred-trained-model",
+      "units": "per_letter_rule_instances",
+      "meaning": "contextual tajweed expectations",
+      "channel": "none_private"
+    },
+    {
+      "id": "phoneme.ctc_viterbi",
+      "source": "app/analysis.py",
+      "availability": "deferred-trained-model",
+      "units": "40_ms_acoustic_frames",
+      "meaning": "ctc_viterbi posterior decode",
+      "channel": "none_private"
+    },
+    {
+      "id": "phoneme.posterior",
+      "source": "app/engine.py",
+      "availability": "deferred-trained-model",
+      "units": "categorical_distribution",
+      "meaning": "muaalem posterior and phonetizer",
+      "channel": "none_private"
+    },
+    {
+      "id": "letter.identity_margin",
+      "source": "app/analysis.py",
+      "availability": "deferred-trained-model",
+      "units": "nats",
+      "meaning": "log-likelihood identity competitor",
+      "channel": "none_private"
+    },
+    {
+      "id": "letter.sifat_heads",
+      "source": "app/analysis.py",
+      "availability": "deferred-trained-model",
+      "units": "nats",
+      "meaning": "ten characteristic heads",
+      "channel": "none_private"
+    },
+    {
+      "id": "letter.makhraj_neighbors",
+      "source": "app/letters.py",
+      "availability": "deferred-trained-model",
+      "units": "nats",
+      "meaning": "neighbour identity margin with declared articulation profiles",
+      "channel": "none_private"
+    },
+    {
+      "id": "tajweed.madd_counts",
+      "source": "app/mudud.py",
+      "availability": "deferred-trained-model",
+      "units": "harakat",
+      "meaning": "phoneme duration normalized by reciter haraka",
+      "channel": "none_private"
+    },
+    {
+      "id": "tajweed.ghunnah",
+      "source": "app/ghunnah.py",
+      "availability": "deferred-trained-model",
+      "units": "harakat",
+      "meaning": "nasal grades and measured hold",
+      "channel": "none_private"
+    },
+    {
+      "id": "tajweed.tafkhim",
+      "source": "app/tafkhim.py",
+      "availability": "deferred-trained-model",
+      "units": "class_margin",
+      "meaning": "heaviness grade with vowel context",
+      "channel": "none_private"
+    },
+    {
+      "id": "tajweed.waqf_sakt",
+      "source": "app/waqf.py",
+      "availability": "deferred-trained-model",
+      "units": "seconds",
+      "meaning": "audio stop detection aligned to verse boundaries",
+      "channel": "none_private"
+    },
+    {
+      "id": "tajweed.rule_bind",
+      "source": "app/rule_bind.py",
+      "availability": "deferred-trained-model",
+      "units": "word_index",
+      "meaning": "join located rule to observed phoneme units",
+      "channel": "none_private"
+    },
+    {
+      "id": "learner.posterior",
+      "source": "app/knowledge.py",
+      "availability": "deferred-trained-model",
+      "units": "confidence_interval",
+      "meaning": "learner skill posterior / uncertainty",
+      "channel": "none_private"
+    },
+    {
+      "id": "voice.reciter_embedding",
+      "source": "app/fingerprint.py",
+      "availability": "deferred-trained-model",
+      "units": "vector",
+      "meaning": "identification-sensitive; never public broadcast",
+      "channel": "never_public"
+    },
+    {
+      "id": "qitt.native_register",
+      "source": "GLASS/atlas/qitt-register-v0.1.json",
+      "availability": "research-only",
+      "units": "native_weight",
+      "meaning": "28 register additive address; not linguistic meaning",
+      "channel": "none_private"
+    },
+    {
+      "id": "surface.physical_field",
+      "source": "SURFACE/include/surface/physics.hpp",
+      "availability": "native_surface_separate",
+      "units": "SI_units_required",
+      "meaning": "physical field solver with its own clock/units",
+      "channel": "none_private"
+    },
+    {
+      "id": "surface.quantum_reference",
+      "source": "SURFACE/docs/ARCHITECTURE_AND_HARNESSES.md",
+      "availability": "native_surface_separate",
+      "units": "complex_amplitudes",
+      "meaning": "ideal state-vector, separate from audio/bit signals",
+      "channel": "none_private"
+    }
+  ]
+}
