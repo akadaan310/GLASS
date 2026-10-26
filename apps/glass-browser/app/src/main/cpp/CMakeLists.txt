@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.22.1)
+project(glass_native LANGUAGES C CXX)
+add_library(glass_native SHARED trace.cpp)
+set_property(TARGET glass_native PROPERTY CXX_STANDARD 20)
+find_library(log-lib log)
+target_link_libraries(glass_native ${log-lib})
