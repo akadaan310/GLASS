@@ -1,0 +1,29 @@
+{
+  "schema": "glass.commission.publish-receipt/0.1",
+  "commission": "glass.unison-005",
+  "date": "2026-10-26",
+  "source_commit": "49d863621cc8b6dc2baa69491f87744d1362e3be",
+  "tree": "1dc2e46e0c79a7747a2e59944e376717818e980f",
+  "files": 44,
+  "branch": "main",
+  "mode": "atomic git tree + commit; fast forward with expected head; no force push",
+  "readback": "main ref independently fetched at source commit; 9 representative files read from remote main",
+  "checked_paths": [
+    "apps/unison-studio/README.md",
+    "apps/unison-studio/server/main.swift",
+    "apps/unison-studio/public/index.html",
+    "apps/unison-studio/compiler/unison_ir.py",
+    "apps/unison-studio/swift-core/Sources/UnisonCore/UnisonCore.swift",
+    "apps/unison-studio/evidence/host.json",
+    "docs/UNISON_UNIFIED_RUNTIME.md",
+    "atlas/unison-ast-v0.1.json",
+    ".github/workflows/unison-studio.yml"
+  ],
+  "host_status": "14 local Python/integration tests, 4 Swift XCTest checks, Swift server compiled and queried; fixture-intercept Chromium checks across 8 screens",
+  "unverified": [
+    "no website deployment or public DNS",
+    "no Android SDK, Swift Wasm SDK or iOS emulator",
+    "no live exchange data or broker connection"
+  ],
+  "status": "SOURCE_PUBLISHED_AND_REMOTE_READBACK_CONFIRMED"
+}
