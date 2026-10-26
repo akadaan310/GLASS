@@ -7,6 +7,17 @@
   <meta name="color-scheme" content="dark">
   <meta name="description" content="GLASS — a living terminal of the Unison alphabet. Type, tap, and observe the operators unfold.">
   <title>GLASS — The Unison Terminal</title>
+  <script>
+  /* SON/0.1 typed address dispatch: internal static route, no provider request. */
+  (() => {
+    const p = new URLSearchParams(location.search).get('son');
+    if (p !== null && /^s1\.[A-Za-z0-9_-]{1,24000}$/.test(p)) {
+      const next = new URL('son.html', location.href);
+      next.searchParams.set('son', p);
+      location.replace(next.href);
+    }
+  })();
+  </script>
   <style>
 :root {--ink:#050910;--gold:#d4b47d;--gold-bright:#f6d8a1;--tarnish:#827459;--mute:#86909c;--white:#e9e7e4;--margin:clamp(21px,3.5vw,62px);--arabic:"Amiri","Amiri Quran","Noto Naskh Arabic","Scheherazade New","Times New Roman",serif}
 *{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;background:var(--ink);color:var(--white);overscroll-behavior:none}body{font-family:"Avenir Next","Segoe UI",system-ui,sans-serif;-webkit-font-smoothing:antialiased;font-weight:350}button{display:none!important}::selection{color:#0d1119;background:#e3bd79}input{font:inherit}
