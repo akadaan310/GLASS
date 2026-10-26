@@ -6,13 +6,40 @@
 <script>
 'use strict';
 const cv=document.querySelector('#sky'),ctx=cv.getContext('2d',{alpha:false}),inp=document.querySelector('#q'),glyph=document.querySelector('#glyph'),meaning=document.querySelector('#meaning'),clock=document.querySelector('#clock'),status=document.querySelector('#status');
-const alphabet=new Map();let W=0,H=0,dpr=1,ticks=0,angle=0,stamp=0;
+const alphabet=new Map();let W=0,H=0,dpr=1,ticks=0,angle=0,stamp=0;const engine={step:0,cursor:0,last:'',states:[],family:0};
 const seg=s=>typeof Intl.Segmenter==='function'?[...new Intl.Segmenter('und',{granularity:'grapheme'}).segment(s)].map(v=>v.segment):Array.from(s);
 function hash(s){let h=2166136261;for(const ch of s){h^=ch.codePointAt(0);h=Math.imul(h,16777619)}return h>>>0}
 function script(c){for(const [n,re] of [['ARABIC',/\p{Script=Arabic}/u],['LATIN',/\p{Script=Latin}/u],['GREEK',/\p{Script=Greek}/u],['CYRILLIC',/\p{Script=Cyrillic}/u],['HAN',/\p{Script=Han}/u],['HEBREW',/\p{Script=Hebrew}/u],['DEVANAGARI',/\p{Script=Devanagari}/u]])if(re.test(c))return n;return /\p{Number}/u.test(c)?'NUMBER':'UNISON'}
 function observe(s){const a=seg(s);for(const c of a){const k=script(c)+':'+c,old=alphabet.get(k);alphabet.set(k,{glyph:c,script:script(c),oracle:'Ω'+hash(k).toString(16).padStart(8,'0'),visits:(old?.visits||0)+1})}return a}
 function solve(s){let v=s.trim(),a=observe(v);if(!v)return ['Λ → Ω → Γ → ۞','EACH LETTER OPENS AN ORACLE'];if(/^(clock|time|وقت|الوقت)$/iu.test(v))return ['⊙ '+new Date().toLocaleTimeString(),'CLOCK · UNIVERSAL INTERVAL'];const m=v.match(/^\/(mirror|rotate|signature|classify|interleave)\s+(.+)$/iu);if(m){const g=seg(m[2]),op=m[1].toLowerCase();let r=op==='mirror'?g.reverse().join(''):op==='rotate'?g.slice(1).concat(g[0]||'').join(''):op==='classify'?g.map(x=>x+':'+script(x)).join(' ∿ '):op==='signature'?g.map(x=>hash(x+script(x)).toString(16).slice(0,4)).join('·'):g.map((x,i)=>x+g[g.length-1-i]).join('');return [r,'Γ '+op.toUpperCase()+' · DETERMINISTIC GENERATOR']}return [a.slice(-24).map(c=>alphabet.get(script(c)+':'+c)?.oracle).join('  '),'Λ '+a.length+' GRAPHEMES · '+new Set(a.map(script)).size+' FAMILIES · ⟐ '+hash(v).toString(16)]}
-function refresh(){let [g,m]=solve(inp.value);glyph.textContent=g;meaning.textContent=m;status.textContent='∿ LIVE · Ω '+alphabet.size+' · SOURCE → AST'}
+const ROOTS=[
+['ARABIC','ابتثجحخدذرزسشصضطظعغفقكلمنهوي'],
+['LATIN','ABCDEFGHIJKLMNOPQRSTUVWXYZ'],
+['GREEK','ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ'],
+['HEBREW','אבגדהוזחטיכלמנסעפצקרשת'],
+['CYRILLIC','АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЭЮЯ'],
+['DEVANAGARI','अआइईउऊऋएऐओऔकखगघङचछजझञटठडढणतथदधनपफबभमयरलवशषसह'],
+['BINARY','01'],['LOGIC','∧∨¬⊕⊗∃∀≡≠≤≥'],
+['UNISON','◉⟐۞ΩΛΓ∿⌁⋈⟲⊙∅⟁']
+];
+const OPS=['mirror','rotate','interleave','signature','classify','pair','conjugate','weave'];
+for(const [,letters] of ROOTS)observe(letters);
+function generation(seed){
+ const family=ROOTS[seed%ROOTS.length],g=seg(family[1]),op=OPS[Math.floor(seed/ROOTS.length)%OPS.length],
+ a=g[(seed*7+3)%g.length],b=g[(seed*13+5)%g.length],c=g[(seed*17+9)%g.length];
+ let expression=op==='mirror'?a+b+a:op==='rotate'?b+c+a:op==='interleave'?a+'⋈'+b+'⋈'+c:op==='signature'?('⟐'+hash(a+b+c).toString(16).slice(0,7)):op==='classify'?'⟦'+family[0]+'⟧'+a:op==='pair'?a+'↔'+b:op==='conjugate'?a+'⊗'+b+'⇌'+c:a+'∿'+b+'∿'+c;
+ let event={index:seed,alphabet:family[0],operator:op,letters:[a,b,c],expression,signature:hash(family[0]+op+expression).toString(16)};
+ engine.states.push(event);if(engine.states.length>160)engine.states.shift();engine.cursor++;observe(expression);return event
+}
+function autonomous(){
+ let event=generation(engine.step++);engine.last=event.expression;
+ if(!inp.value.trim()){glyph.textContent=event.expression;meaning.textContent='Ω '+event.alphabet+' · Γ '+event.operator.toUpperCase()+' · ⟐ '+event.signature}
+ status.textContent='∿ AUTO · Ω '+alphabet.size+' · Γ '+engine.cursor+' · '+event.alphabet;
+}
+function refresh(){if(!inp.value.trim()){let e=engine.states[engine.states.length-1];if(e){glyph.textContent=e.expression;meaning.textContent='Ω '+e.alphabet+' · Γ '+e.operator.toUpperCase()+' · ⟐ '+e.signature}return}let [g,m]=solve(inp.value);glyph.textContent=g;meaning.textContent=m}
+setInterval(autonomous,220);
+for(let i=0;i<12;i++)autonomous();
+
 inp.addEventListener('input',refresh);
 inp.addEventListener('keydown',e=>{if(e.key!=='Enter')return;let s=inp.value.trim();if(/^(https?:\/\/|[\w-]+(?:\.[\w-]+)+)/i.test(s)){location.href=/^https?:\/\//i.test(s)?s:'https://'+s;return}if(/^search\s+/i.test(s)){location.href='https://www.google.com/search?q='+encodeURIComponent(s.replace(/^search\s+/i,''))}});
 function resize(){dpr=Math.min(devicePixelRatio||1,2);W=innerWidth;H=innerHeight;cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);ctx.setTransform(dpr,0,0,dpr,0,0)}
