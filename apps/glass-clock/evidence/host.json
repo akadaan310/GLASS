@@ -1,0 +1,56 @@
+{
+  "schema": "glass.clock.host-evidence/0.1",
+  "date": "2026-10-26",
+  "host": {
+    "python": "3.13.5",
+    "platform": "Linux",
+    "known_iana_zones": 599
+  },
+  "results": {
+    "python_unittest_count": 25,
+    "status": "PASS",
+    "js_source_syntax": "PASS Node 22",
+    "browser": {
+      "schema": "glass.clock.browser-evidence/0.1",
+      "screens": [
+        {
+          "layout": "desktop",
+          "mode": "isolated_web_renderer_backend_mock",
+          "width": 1440,
+          "source_operator_count": 3,
+          "clock": "11:22:24",
+          "server": "11:22:24"
+        },
+        {
+          "layout": "mobile",
+          "mode": "isolated_web_renderer_backend_mock",
+          "width": 390,
+          "source_operator_count": 3,
+          "clock": "11:22:26",
+          "server": "11:22:26"
+        }
+      ],
+      "status": "PASS",
+      "limitations": "HTTP server separately exercised; if mode=mock, browser renderer used backend fixtures rather than live HTTP"
+    },
+    "shell_generation": [
+      "λ⊕",
+      "λ◷",
+      "λ⟳[Asia/Dubai,Asia/Kathmandu]",
+      "λ⌖[0,45]",
+      "λϕ[60]"
+    ],
+    "shell_execution": "PASS for 5 project-generated controlled reference snippets on isolated host; never executed from website user input"
+  },
+  "unverified": [
+    "Termux Android device acceptance",
+    "user custom terminal instance not connected",
+    "remote host HTTPS deployment",
+    "actual NTP/PTP synchronization",
+    "physical astronomical observations"
+  ],
+  "provenance": {
+    "source": "local source, standardized IANA rules and NOAA reference calculations",
+    "raw_browser_backend": "Browser rendering used injected fixtures because Chromium localhost navigation was blocked; same Python server API separately exercised"
+  }
+}

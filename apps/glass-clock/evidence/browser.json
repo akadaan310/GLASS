@@ -1,0 +1,23 @@
+{
+  "schema": "glass.clock.browser-evidence/0.1",
+  "screens": [
+    {
+      "layout": "desktop",
+      "mode": "isolated_web_renderer_backend_mock",
+      "width": 1440,
+      "source_operator_count": 3,
+      "clock": "11:24:15",
+      "server": "11:24:15"
+    },
+    {
+      "layout": "mobile",
+      "mode": "isolated_web_renderer_backend_mock",
+      "width": 390,
+      "source_operator_count": 3,
+      "clock": "11:24:17",
+      "server": "11:24:17"
+    }
+  ],
+  "status": "PASS",
+  "limitations": "HTTP server separately exercised; if mode=mock, browser renderer used backend fixtures rather than live HTTP"
+}

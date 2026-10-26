@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="theme-color" content="#080d16"/><meta name="color-scheme" content="dark"/>
+<meta name="description" content="GLASS — clock-bearing Unison alphabet. Type symbolic operators to explore clocks, Earth wedges, solar geometry and shell code."/>
+<meta name="referrer" content="no-referrer"/>
+<title>GLASS — Clock Oracle</title>
+<link rel="stylesheet" href="style.css"/>
+<script defer src="client.js"></script>
+</head><body>
+<div class="app" id="app">
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="silk" aria-hidden="true"></div>
+  <header class="masthead">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">۞</span>
+      <div><div class="brand-title">G L A S S <span class="reg">®</span></div><div class="brand-sub">UNISON <i>✧</i> CLOCK ORACLE</div></div>
+    </div>
+    <div class="mast-status" aria-label="Clock connection status">
+      <span class="status-glow" id="statusDot"></span><span id="statusText">LOCAL INSTRUMENT</span><span class="status-divider">|</span><span id="frameEpoch">⟦ 000001 ⟧</span>
+    </div>
+  </header>
+  <main>
+    <section class="lead">
+      <div class="lead-kicker">COMPUTATIONAL TIME / THE EARTH AS A CLOCK</div>
+      <h1>Every second,<br/><em>a different world.</em></h1>
+      <p>One instant. Many civil zones. Twenty-four geometric wedges.<br/>An alphabet of clocks that teaches itself through the symbols you type.</p>
+      <div class="readings" aria-label="Three independent clock observations">
+        <div class="read"><div class="read-title">۞ DEVICE WALL</div><strong id="localTime">--:--:--</strong><small id="localZone">LOCAL OBSERVATION</small></div>
+        <div class="read"><div class="read-title">⊕ UTC ORIGIN</div><strong id="utcTime">--:--:--</strong><small id="utcDate">UTC INSTANT</small></div>
+        <div class="read"><div class="read-title">⌛ SERVER WALL</div><strong id="serverTime">UNKNOWN</strong><small id="serverAge">AWAITING TERMINAL</small></div>
+      </div>
+      <div class="delta-line"><span class="delta-label">◷ MONOTONIC</span><span id="monoTime">0.000s</span><span class="delta-separator">/</span><span class="delta-label">≋ HOST OFFSET</span><span id="skewTime">UNKNOWN</span></div>
+    </section>
+
+    <section class="globe-section" aria-label="Earth 24-wedge solar-time model">
+      <canvas id="globe" aria-hidden="true"></canvas>
+      <div class="equator-label label-north">90° N <span>⊕</span></div>
+      <div class="equator-label label-west">180° W</div>
+      <div class="equator-label label-east">180° E</div>
+      <div class="orbital-center">
+        <div class="big-glyph" id="centerGlyph" aria-hidden="true">۞</div>
+        <div class="orbital-word">THE WORLD CLOCK</div>
+        <div class="orbital-number">24 × 15° <span>·</span> 360°</div>
+      </div>
+      <div class="orbit-inscription">λ · ANGLE → PERIOD → CLOCK <span>⟶</span> ψ</div>
+    </section>
+
+    <aside class="zone-panel" aria-label="Current times in multiple IANA time zones">
+      <div class="section-small">⟳ THE ROLLING TIME REGISTER <span class="muted">/ 012</span></div>
+      <div class="zones" id="zoneList"></div>
+      <div class="zone-foot">CIVIL TIME ≠ LONGITUDE ALONE<br/>IANA RULES · OFFSETS MAY CHANGE</div>
+    </aside>
+
+    <section class="console" aria-label="GLASS symbolic time terminal">
+      <div class="console-heading"><span>01 <i>—</i> LETTERS THAT MEASURE</span><span class="console-heading-detail" id="parserMode">SYMBOL GRAMMAR / LIVE</span></div>
+      <div class="operator-rail" id="operators" aria-label="Tap a Unison time symbol to insert it into the terminal"></div>
+      <div class="line-frame">
+        <div class="prompt-glyph" aria-hidden="true">⟦۞⟧</div>
+        <textarea id="expression" rows="2" maxlength="2048" aria-label="Type Unison clock symbols. For example, ۞ ⊕ ⟳[Asia/Dubai]" aria-describedby="grammarHelp" spellcheck="false" autocorrect="off" autocapitalize="off" placeholder="۞  ⊕  ⌛  ◷  ⟳[America/New_York,Asia/Dubai]  ☼[0,45]"></textarea>
+        <div class="terminal-live" id="terminalLive">LIVE <span aria-hidden="true">│</span></div>
+      </div>
+      <div class="grammar-help" id="grammarHelp">Tap a glyph or type the symbols. Words and numbers go inside [ ]. No shell is executed. <span>λ generates its shell translation.</span></div>
+      <div class="explain" id="lessons" role="status" aria-live="polite">
+        <div class="lesson-placeholder">⟦ ◉ ⟧ <span>YOUR FIRST OPERATOR IS READY.</span></div>
+      </div>
+      <div class="console-foot"><span>LOCAL CODE · FINITE EFFECTS · EXACT SOURCE · NAMED CLOCK DOMAINS</span><span id="traceLabel">EVENTS 0000</span></div>
+    </section>
+  </main>
+  <footer><span>GLASS CLOCK 0.1 <b>✧</b> QITṬ / ENCYCLED / UNISON</span><span>NO GEOLOCATION · NO SEARCH · NO ARBITRARY EXECUTION</span><span>۞  ↺  ۞</span></footer>
+</div>
+</body></html>

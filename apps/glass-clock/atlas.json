@@ -1,0 +1,148 @@
+{
+  "schema": "glass.clock.operators/0.1",
+  "date": "2026-10-26",
+  "source": "GLASS Encycled/QITT original owner research; standard IANA/NOAA/time system calculators",
+  "profile": "GLASS CLOCK / UNISON; one symbol is a typed operation",
+  "operators": [
+    {
+      "glyph": "۞",
+      "name": "DEVICE CLOCK",
+      "role": "clock_device",
+      "description": "Client-reported wall-clock reading; if unavailable, UNKNOWN.",
+      "requires_brackets": false,
+      "effect": "PURE_PROJECTION"
+    },
+    {
+      "glyph": "⊕",
+      "name": "UTC ORIGIN",
+      "role": "clock_utc",
+      "description": "A sampled server UTC instant; POSIX timestamp ignores leap-second labels.",
+      "requires_brackets": false,
+      "effect": "PURE_PROJECTION"
+    },
+    {
+      "glyph": "⌛",
+      "name": "SERVER CLOCK",
+      "role": "clock_server",
+      "description": "Server wall time sampled near this response; clock synchronization not assumed.",
+      "requires_brackets": false,
+      "effect": "PURE_PROJECTION"
+    },
+    {
+      "glyph": "◷",
+      "name": "MONOTONIC CLOCK",
+      "role": "clock_monotonic",
+      "description": "Elapsed time since GLASS Python process start; arbitrary epoch, never civil time.",
+      "requires_brackets": false,
+      "effect": "PURE_PROJECTION"
+    },
+    {
+      "glyph": "∅",
+      "name": "NON-TIME",
+      "role": "clock_unknown",
+      "description": "An explicitly unobserved interval or unavailable clock value, not mathematical zero.",
+      "requires_brackets": false,
+      "effect": "PURE_PROJECTION"
+    },
+    {
+      "glyph": "⟳",
+      "name": "CIVIL ZONE ROTOR",
+      "role": "zones",
+      "description": "IANA political zone rules including DST and historical changes; not derived from longitude.",
+      "requires_brackets": true,
+      "effect": "PURE_PROJECTION"
+    },
+    {
+      "glyph": "⌖",
+      "name": "EARTH COORDINATE",
+      "role": "geo",
+      "description": "Latitude/longitude point, unit-sphere vector and its 15° geometric wedge.",
+      "requires_brackets": true,
+      "effect": "PURE_PROJECTION"
+    },
+    {
+      "glyph": "☼",
+      "name": "SOLAR TIME",
+      "role": "solar",
+      "description": "Mean solar time from longitude plus NOAA approximate equation of time and elevation.",
+      "requires_brackets": true,
+      "effect": "PURE_PROJECTION"
+    },
+    {
+      "glyph": "∆",
+      "name": "OFFSET DIFFERENCE",
+      "role": "difference",
+      "description": "Difference between legal UTC offsets of two IANA zones at one instant.",
+      "requires_brackets": true,
+      "effect": "PURE_PROJECTION"
+    },
+    {
+      "glyph": "ϕ",
+      "name": "CYCLE PHASE",
+      "role": "phase",
+      "description": "Phase 2π·((monotonic elapsed mod period)/period); logical periodic observable.",
+      "requires_brackets": true,
+      "effect": "PURE_PROJECTION"
+    },
+    {
+      "glyph": "λ",
+      "name": "SHELL GENERATOR",
+      "role": "script",
+      "description": "Compiles the following admitted clock operator into a safe teaching shell script; never runs it.",
+      "requires_brackets": false,
+      "effect": "PURE_CODE_GENERATOR_NOT_EXECUTED"
+    },
+    {
+      "glyph": "⟦",
+      "name": "FRAME BEGIN",
+      "role": "frame_open",
+      "description": "Explicit group boundary; does not change clock values.",
+      "requires_brackets": false,
+      "effect": "PURE_PROJECTION"
+    },
+    {
+      "glyph": "⟧",
+      "name": "FRAME END",
+      "role": "frame_close",
+      "description": "Closes a source-linked group.",
+      "requires_brackets": false,
+      "effect": "PURE_PROJECTION"
+    }
+  ],
+  "reference_zones": [
+    "UTC",
+    "America/Los_Angeles",
+    "America/New_York",
+    "Europe/London",
+    "Africa/Cairo",
+    "Asia/Dubai",
+    "Asia/Kolkata",
+    "Asia/Kathmandu",
+    "Asia/Tokyo",
+    "Australia/Sydney",
+    "Pacific/Auckland",
+    "Pacific/Chatham"
+  ],
+  "grammar": "docs/GLASS_CLOCK_GRAMMAR.md",
+  "code": "apps/glass-clock/oracle.py",
+  "geometric_wedges": {
+    "count": 24,
+    "longitude_span_degrees": 15,
+    "solar_minutes_per_degree": 4,
+    "longitudinal_time_offset_not_legal_UTC_offset": true
+  },
+  "clock_domains": {
+    "۞": "browser client reported wall UTC millisecond epoch",
+    "⊕": "Python host UTC wall instant",
+    "⌛": "Python host wall clock sample (server)",
+    "◷": "Python process monotonic time since startup",
+    "∅": "unobserved/unknown typed condition"
+  },
+  "research_boundary": "No device clock takeover, exact physical solar ephemeris, geographical legal-zone reverse lookup or shell execution claimed",
+  "source_refs": [
+    "docs/ENCYCLED_CALCULUS.md",
+    "docs/QITT_CYCLIC_ARABIC_REGISTER_CALCULUS.md",
+    "https://www.iana.org/time-zones",
+    "https://gml.noaa.gov/grad/solcalc/solareqns.PDF"
+  ]
+}
