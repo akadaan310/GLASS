@@ -201,6 +201,23 @@ Events such as loss of housing, entry to a shelter, move to temporary accommodat
 
 The browser demonstration generates **deterministic fictional households** and currently uses a simpler three-state projection (unsheltered, sheltered, housed) with illustrative transition probabilities. It is not populated from hospitals, census data or phone contacts. Hospital encounters are not a complete demographic census. Any future geographically representative population requires independently sourced, dated data, privacy constraints, eligibility/coverage definitions, uncertainty and conservation accounting (births, deaths, migration, households), none of which is claimed in the prototype.
 
+
+### Encounter memory and “Have I met this person?”
+
+A simulated actor may ask another actor whether an encounter happened. A binary acquaintance flag is not enough to answer honestly when event history is incomplete. Define a source-aware relation
+
+\[
+\operatorname{Met}(i,j,[t_a,t_b],P)\in
+\{\mathrm{WITNESSED},\mathrm{NOT\ OBSERVED},\mathrm{UNKNOWN}\},
+\]
+
+with encounter event \((\mathrm{id}_i,\mathrm{id}_j,t,\mathrm{location},\mathrm{observer},\mathrm{source},\mathrm{confidence})\). A **witnessed** event proves that the finite model recorded an encounter; absence from an incomplete log does **not** establish non-encounter. NOT_OBSERVED is explicitly scoped to the instrument's observation interval, and any claim about time before its epoch is UNKNOWN.
+
+The Clockworld console adds **MEET a b** to record a synthetic encounter between two distinct cohort IDs and **MET a b** to ask whether that exact pair was witnessed in the current epoch. Reset clears this synthetic record, making prior history unknown rather than inventing a negative history. No device location, camera, contacts or real person identification is used.
+
+Under game theory, an encounter is a state transition with attention/time cost and possible information gain, not necessarily a beneficial or harmful outcome. The alternative action foregone is part of opportunity cost only after the relevant utilities and constraints are declared.
+
+
 ### Action value and foregone alternatives
 
 At world state \(s\), actor \(i\) has feasible actions \(A_i(s)\). With model reward \(r_i\), future policy \(\pi\) and discount factor \(0<\gamma\le1\), define horizon-\(T\) action value:
