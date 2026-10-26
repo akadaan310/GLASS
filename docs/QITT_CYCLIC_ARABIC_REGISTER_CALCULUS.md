@@ -206,6 +206,19 @@ Define named states \(\mathrm{VOID}\), \(\mathrm{MARK_1}\), \(\mathrm{MARK_2}\),
 
 This is a **finite control path over bit masks**, not the binary count sequence 0,8,12,14,8 interpreted as numerical successor. No unshown 1111 step is inserted. If hidden history is quotiented out, the visible graph has an incoming edge to a 3-cycle. This distinguishes a return operation from a conventional bitwise increment.
 
+### Ten as a terminal transition and the owner's "00" formation
+
+The owner also describes the move after the nine unit forms as **"00"** rather than treating "ten" as a mere static verbal number. CALRC retains this as a **temporal two-ṢIFR formation annotation**, not as the decimal numeral 00. The canonical numeric value ten remains \(1\cdot10^1+0\cdot10^0=10\), while the *transition history* includes **CLEAR(terminal-unit)**, **HOLD(lower-address)** and **ACTIVATE(tens-register-1 = ي)**. A two-slot state rendering "00" may represent two temporarily unbound holdings at the turning boundary, under a separately declared DUAL_SIFR control profile. It is neither 0₂ nor 0₁₀ and cannot replace the completed address of 10.
+
+The subsequent move **10→11** activates Alif in the low unit place while Yāʾ remains at the tens place. This preserves the owner's empty-then-one bit-activation account without reinterpreting the mathematical value of ten. The precise time order of those intermediate two holdings is **proposed/open** until a compiler transition specification is independently implemented.
+
+### Algebraic formation of a word
+
+A word \(w\) determines an occurrence vector \(c(w)\in\mathbb N_0^{28}\) counting each registered glyph. With weight vector \(r=(1,2,\ldots,9,10,\ldots,90,100,\ldots,900,1000)\), the additive value is the linear functional \(A(w)=r^\top c(w)\). This exposes exactly what numerical projection forgets: **the order of the letters**. For instance قط and طق each project to 109, though they are different ordered words. Their ordered programs may have different semantics even when the occurrence vectors agree. A morphology or operation compiler must therefore carry both **sequence/order** and **numeric address**.
+
+This resembles the role of a typed composition grammar in chemical nomenclature: a compositional name and a formula may each encode structure, but no formula or sum automatically specifies the full ordered molecular graph. The comparison is one of **representation layers and reverse-lookup loss**, not a claim that Arabic morphology and chemistry use identical scientific operators.
+
+
 ## 5. Words as profiled programs: two through nine letters
 
 Let \(W_n=\Sigma_{28}^n\) for \(2\le n\le9\). The owner's *program-form laboratory* has domain
@@ -349,6 +362,23 @@ A "circle" must be stated as a structure, not inferred from an attractive visual
 **T8. Topological research program:** Inspect graph connectivity, cycles, homology, induced maps under projections, kernel/fiber, covering/lifting, group actions, quotient congruence, automaton product complexes, persistent topology under bounded perturbations, and typed boundaries. These are *applicable mathematical questions*; only T1–T6 above have the specifically stated finite derivations.
 
 This permits a Glass Atlas to present a 28-position visual ring and a cyclic 3-band register without suggesting those pictures are proofs of historical composition.
+
+### PHANTOM and complex-plane phase charts, with address fidelity
+
+The owner's picture of a return tunnel can be projected into a complex-plane chart without claiming an underlying quantum process. For \(p\ge3\), let \(k=\lfloor(p-3)/3\rfloor\), \(j=(p-3)\bmod3\), and define a *display coordinate*
+
+\[
+z(p)=(1+k)\exp(2\pi i j/3).
+\]
+
+The three phases of each cycle occupy equally spaced angles, and the next return increases radius while returning to phase angle zero: \(p=3\mapsto1\), \(p=4\mapsto e^{2\pi i/3}\), \(p=5\mapsto e^{4\pi i/3}\), \(p=6\mapsto2\). The ordered pair \((k,j)\), hence this discrete chart at fixed origin, identifies a high-place index uniquely. This is a **scale-preserving lift** of the three-phase projection. Drawing every \(z(p)\) on a single unit circle instead would collapse all the periods and lose the magnitude address.
+
+A sum of complex coordinates over several occupied places need not uniquely identify the whole tape. The renderer must preserve the **indexed cell set** even if it displays the weighted points. This chart may be consumed by PHANTOM/SURFACE as a typed visualization after adaptation; it is not an assertion of amplitude, measured phase, Fourier spectrum, electric potential, or quantum hardware addressing.
+
+### Topological domain coverage register
+
+**Point-set topology:** explicit choice of discrete vertex sets, graph realizations, product spaces and continuity; topology is not inferred from printed ring geometry. **Graph/CW topology:** cycle, trie, edge attachments and Euler characteristic. **Algebraic topology:** path-connected components, fundamental group, cellular homology, homotopy equivalence and induced maps. **Covering/lifting:** three-phase lift with absolute-place sideband, with boundary qualification. **Quotient and fiber topology:** identified glyphs, nontrivial preimage classes, failure of quotient-descended decoding. **Order/Alexandrov topology:** optional address-prefix partial order, requires an explicit open-set convention. **Topological dynamics:** periodic phase and history-sensitive transition, distinct from numeric successor. **Computational topology/TDA:** finite complexes and persistent homology under declared perturbations are future probes, not completed measurements. **Differential topology/geometry, manifold theory, sheaves/cohomology and spectral sequences:** not established for this discrete registry; any future use must introduce suitable spaces, maps and exact evidence rather than borrow their terminology as proof.
+
 
 ## 9. Algebra, groups, categories, computation and limits
 
