@@ -1,0 +1,290 @@
+{
+  "schema": "glass.encycled.atlas/0.1",
+  "title": "GLASS Ω — Encycled Calculus and Four-Tilde Computational Mechanics",
+  "owner_directive": "2026-10-26: clock-aware bit-level systems, cyclic calculus, mechanical computation, terminal-harness, synthetic HOMELESS population, opportunity costs, full-screen visual science",
+  "epistemic_status": "formalized integration, native bounded proof-of-behavior fixtures observed locally, browser code syntax checked; not scientific discovery or physical-measurement proof",
+  "scientific_name": "Encycled Calculus",
+  "symbol": "M-tilde-4",
+  "notation_latex": "\\widetilde{\\mathcal M}^{(4)} = (\\widetilde V,\\widetilde L,\\widetilde K,\\widetilde O)",
+  "four_tilde": [
+    {
+      "id": "value",
+      "name": "Value",
+      "state": "bits or typed values",
+      "invariant": "declared machine semantics"
+    },
+    {
+      "id": "lifetime",
+      "name": "Lifetime",
+      "state": "identity and open/close intervals",
+      "invariant": "end >= begin when closed"
+    },
+    {
+      "id": "clock",
+      "name": "Clock",
+      "state": "logical ticks, epoch, time-domain converter",
+      "invariant": "monotone ticks; conversions declared"
+    },
+    {
+      "id": "observation",
+      "name": "Observation",
+      "state": "event origin, provenance, resolution, replay",
+      "invariant": "no simulated-to-physical elevation"
+    }
+  ],
+  "standard_math": [
+    "labeled transition systems",
+    "hybrid dynamical systems",
+    "event sourcing",
+    "Lamport and vector-clock causality",
+    "distributional derivatives of step functions",
+    "discrete integrals and periodicity",
+    "sampling/aliasing",
+    "game-theoretic opportunity cost"
+  ],
+  "declared_operators": [
+    {
+      "id": "BIT_WRITE",
+      "type": "word × newWord × cause → word × events",
+      "evidence": "one transaction per word write"
+    },
+    {
+      "id": "FLIP",
+      "type": "word × bitIndex → word × events",
+      "evidence": "not a hardware fault by default"
+    },
+    {
+      "id": "LIFETIME_OPEN",
+      "type": "new object identity → open interval"
+    },
+    {
+      "id": "LIFETIME_CLOSE",
+      "type": "open interval → closed interval"
+    },
+    {
+      "id": "INTEGRATE_STEP",
+      "type": "monotone finite steps × endpoint → exact piecewise-constant area"
+    },
+    {
+      "id": "ELAPSED_CYCLES",
+      "type": "frequency × period → phase turns"
+    },
+    {
+      "id": "CYCLE_DIFFERENCE",
+      "type": "signal × start × period → residual/equivalence decision"
+    },
+    {
+      "id": "POLICY_OPPORTUNITY_COST",
+      "type": "state × feasible alternatives × utility → max foregone utility"
+    },
+    {
+      "id": "PROPOSE",
+      "type": "source-backed candidate command → pending operation, no effect"
+    },
+    {
+      "id": "ADMIT",
+      "type": "pending operation × finite grammar × guards → typed executable or refusal"
+    }
+  ],
+  "model_source_type": "synthetic, local, deterministic",
+  "bit_fixture": {
+    "mask_sequence": [
+      "0000",
+      "1000",
+      "1100",
+      "1110",
+      "1000"
+    ],
+    "logical_transactions": 4,
+    "bit_flip_events": 5,
+    "final_word": 8,
+    "semantic_return": "last transaction flips two bits"
+  },
+  "world_fixture": {
+    "personas": "fictional household residents only",
+    "households": 68,
+    "population": 167,
+    "base_housing_projection": {
+      "housed": 134,
+      "sheltered": 17,
+      "unsheltered": 16
+    },
+    "people_under_18": 56,
+    "source": "apps/clockworld/index.html seeded PRNG, no city/hospital population data",
+    "age_policy": "guardianship/household grouping, not an independent minor homelessness census",
+    "actions": [
+      "housing",
+      "shelter",
+      "hold"
+    ],
+    "scale": "illustrative score, not currency, welfare measurement or historical numbers"
+  },
+  "interfaces": [
+    {
+      "path": "runtime/encycled.hpp",
+      "kind": "native",
+      "scope": "bounded pure local word-and-lifetime simulation"
+    },
+    {
+      "path": "runtime/encycled_cli.cpp",
+      "kind": "native executable reference",
+      "scope": "fixed JSON synthetic trace"
+    },
+    {
+      "path": "tests/encycled_test.cpp",
+      "kind": "native fixture",
+      "scope": "replay/carry/refusals/integration"
+    },
+    {
+      "path": "apps/clockworld/index.html",
+      "kind": "standalone browser UI",
+      "scope": "Canvas2D dynamic mechanics/world/terminal/atlas"
+    },
+    {
+      "path": "docs/ENCYCLED_CALCULUS.md",
+      "kind": "research monograph",
+      "scope": "definitions, proofs, limits, source links"
+    }
+  ],
+  "domains": [
+    {
+      "id": "logic",
+      "status": "applicable",
+      "detail": "guards, temporal predicates, causality"
+    },
+    {
+      "id": "set_theory",
+      "status": "applicable",
+      "detail": "event sets, intervals and state carriers"
+    },
+    {
+      "id": "type_theory",
+      "status": "applicable",
+      "detail": "value, object, clock, event, observation typed distinctly"
+    },
+    {
+      "id": "arithmetic",
+      "status": "applicable",
+      "detail": "bitword, atomic change mask and replay"
+    },
+    {
+      "id": "algebra",
+      "status": "applicable",
+      "detail": "transition monoid, return iterates, invariant laws"
+    },
+    {
+      "id": "order_lattices",
+      "status": "applicable",
+      "detail": "Lamport/vector causality partial order"
+    },
+    {
+      "id": "combinatorics",
+      "status": "applicable",
+      "detail": "schedule interleavings and finite resource bounds"
+    },
+    {
+      "id": "graph_theory",
+      "status": "applicable",
+      "detail": "event DAG and synthetic household graphs"
+    },
+    {
+      "id": "automata_languages",
+      "status": "applicable",
+      "detail": "finite command grammar, statechart admission"
+    },
+    {
+      "id": "information_coding",
+      "status": "applicable",
+      "detail": "sampling and provenance loss"
+    },
+    {
+      "id": "geometry",
+      "status": "applicable",
+      "detail": "wave and phase display geometry only"
+    },
+    {
+      "id": "topology",
+      "status": "applicable",
+      "detail": "cycle realization and address/trace quotient"
+    },
+    {
+      "id": "analysis_calculus",
+      "status": "applicable",
+      "detail": "step-function integral, distribution derivative and period operator"
+    },
+    {
+      "id": "differential_equations",
+      "status": "conditional",
+      "detail": "for separately declared continuous flow"
+    },
+    {
+      "id": "spectral_harmonic",
+      "status": "applicable",
+      "detail": "oscillator and sampling aliasing"
+    },
+    {
+      "id": "probability_statistics",
+      "status": "conditional",
+      "detail": "model transition sampling, never physical statistics claim"
+    },
+    {
+      "id": "optimization_control",
+      "status": "applicable",
+      "detail": "opportunity cost, resource lifetime exposure"
+    },
+    {
+      "id": "numerical_analysis",
+      "status": "applicable",
+      "detail": "sample/integration error and stability"
+    },
+    {
+      "id": "category_composition",
+      "status": "proposed",
+      "detail": "typed transforms, preservation obligations"
+    },
+    {
+      "id": "physics_units",
+      "status": "conditional",
+      "detail": "real physical counters require calibrated instruments"
+    },
+    {
+      "id": "quantum_information",
+      "status": "not_yet_applicable",
+      "detail": "no quantum channel/state in prototype"
+    },
+    {
+      "id": "computation_complexity",
+      "status": "applicable",
+      "detail": "bounded event count and per-bit transaction cost"
+    },
+    {
+      "id": "metrology_uncertainty",
+      "status": "applicable",
+      "detail": "scope each observation and unobserved interval"
+    }
+  ],
+  "invariants": [
+    "no unobserved hardware event claimed",
+    "strict typed cause/clock",
+    "deterministic record replay of admitted bit events",
+    "bounded writes are atomic on error",
+    "source and gameplay state separate",
+    "physical measurements require measurement instruments"
+  ],
+  "ongoing_questions": [
+    "causal concurrent replay",
+    "formal cycle residual on nonadditive state",
+    "timing quantization and observational aliasing",
+    "native UI frame/perf review",
+    "browser/native parity",
+    "Android acquisition",
+    "source-backed population baseline",
+    "external hardware sensor integration"
+  ],
+  "links": {
+    "glass": "https://github.com/akadaan310/GLASS",
+    "homeless": "https://github.com/akadaan310/HOMELESS",
+    "surface": "https://github.com/akadaan310/surface",
+    "qitt": "docs/QITT_CYCLIC_ARABIC_REGISTER_CALCULUS.md"
+  }
+}
