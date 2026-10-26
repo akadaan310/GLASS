@@ -1,0 +1,21 @@
+{
+  "schema": "glass.commission.intent.v1",
+  "id": "unison-003",
+  "date": "2026-10-26",
+  "source": "user's current directive and inherited GLASS/QITT/Encycled/SURFACE/SNAD",
+  "hypothesis": "14/14 muqattaat-oriented lexical classification as a new computational projection, not historical Arabic uppercase or intrinsic sacred mathematical property",
+  "artifacts": [
+    "docs/UNISON_SCIENCE.md",
+    "atlas/unison-14x14-v0.1.json",
+    "commissions/unison-003/OUTCOME.json"
+  ],
+  "guardrails": [
+    "no Google/web used to validate theory",
+    "separate lexemes/glosses/corpus text and numeric profiles",
+    "license source Quran corpus",
+    "no proof of P=NP or perfect SHA hash reverse",
+    "security tests only in owned or in-scope environments"
+  ],
+  "publication": "main after durable unit",
+  "status": "predeclared"
+}
