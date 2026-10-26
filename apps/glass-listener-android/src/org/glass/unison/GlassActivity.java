@@ -60,7 +60,7 @@ public final class GlassActivity extends Activity {
         publisher=new EventPublisher(s->runOnUiThread(()->setNetwork(s)));
         offline=new OfflineRecognizer(this,new OfflineRecognizer.Listener(){
             public void status(String text){runOnUiThread(()->setStatus(text));}
-            public void energy(double hint){runOnUiThread(()->ink.setStatus("OFFLINE OS RMS HINT "+format(hint)));}
+            public void energy(double hint){runOnUiThread(()->ink.ingestOsRms(hint));}
             public void language(String detected,double quality){
                 asrDetected=detected;asrQuality=quality;
                 runOnUiThread(()->ink.setLanguage(detected+" / on-device hint"));
