@@ -65,11 +65,15 @@ Official references: [IANA time-zone data](https://www.iana.org/time-zones), [Py
 ## Code / tests
 
 ```sh
-python3 -m unittest discover -s tests -p 'test_*.py' -v
+# Core and HTTP acceptance (works with Python standard library only):
+python3 -m unittest discover -s tests -p 'test_clock.py' -v
+python3 -m unittest discover -s tests -p 'test_http.py' -v
+# Optional Chromium tests require Python Playwright + a working Chromium binary:
+python3 -m unittest discover -s tests -p 'test_browser.py' -v
 node --check client.js
 python3 -m py_compile oracle.py server.py
 ```
 
-The tests include known DST transition instants, fractional-hour offsets, UTC/monotonic distinctions, solar/wedge calculations, shell generator guards, malicious operators, and local HTTP requests. Browser screenshots may be produced with fixture-backed HTML if the test runner blocks loopback navigation; that distinction is documented in `evidence/browser.json`.
+The tests include known DST transition instants, fractional-hour offsets, UTC/monotonic distinctions, solar/wedge calculations, shell generator guards, malicious operators, and local HTTP requests. The optional browser harness skips when Playwright is not installed. Browser screenshots may be produced with fixture-backed HTML if the test runner blocks loopback navigation; that distinction is documented in `evidence/browser.json`.
 
 **Deployment status:** GLASS is locally runnable in Termux and source-published to GitHub/main. This task does not claim `glass.com` has been configured, an Oracle VM connected, or this file has been installed on your phone.
