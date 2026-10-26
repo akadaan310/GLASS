@@ -54,3 +54,8 @@ A research extension to the GLASS atlas for event-directed computation and **Fou
 The science distinguishes real-world hardware observation from the **synthetic** oscillator and housing/world models. The browser offers four views (Mechanics / HOMELESS / Terminal / Atlas), but is not the Unity-native HOMELESS product. The finite terminal gate accepts an optional LLM *proposal* as plain text only; no LLM, shell, production agent, or continuous Git publisher has been deployed by this unit.
 
 Main publication occurs through source-linked GitHub commits; research acceptance is not inferred from a source commit.
+
+
+## GLASS UNISON 005 — Swift AST and Market I/O Studio
+
+GLASS now includes a source-grounded six-language AST projection, a portable Swift/Linux event runtime, source-linked Unibet codebook and a **synthetic** market telemetry visual studio. [Run and inspect the app](apps/unison-studio/README.md), [read the complete mathematics and adapter charter](docs/UNISON_UNIFIED_RUNTIME.md), [see exact host verification](apps/unison-studio/evidence/host.json) and [publication receipt](commissions/unison-005/PUBLISH_RECEIPT.json). The GUI is a Swift-served browser application, not an iOS emulator; there is no live market feed or public website deployed by this source work unit.
