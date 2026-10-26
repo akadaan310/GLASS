@@ -1,0 +1,142 @@
+{
+  "schema": "glass.commission.intent.v1",
+  "id": "glass.qitt-001",
+  "title": "QITṬ — Cyclic Arabic Letter-Register Calculus",
+  "opened_utc": "2026-10-26T01:55:00Z",
+  "owner_statement": "Owner’s 2026-10-25 directive in current conversation: formulate Arabic computation as a 28-entry table/register; ṢIFR void/operator/operand holder; ALIF/LIFF and GHAYN return; nine-unit/tens/hundreds registers, cyclic positional reuse beyond 1000; positional Arabic word addressing; 0000→1000→1100→1110→1000; connect GLASS, SURFACE, PolyIA, PURL and Substrate University.",
+  "external_theory_validation": "PROHIBITED by owner: no Google/web searches or external theory-checking.",
+  "action": "Construct an additive formal science dossier, complete 28-entry registry and production grammar with typed operational semantics, proofs/counterexamples and interfaces.",
+  "repo": "akadaan310/GLASS",
+  "branch": "main",
+  "scope_sources": [
+    {
+      "repo": "akadaan310/GLASS",
+      "paths": [
+        "docs/GLASS_COMMISSION.md",
+        "docs/CONTINUE.md",
+        "atlas/language-profiles.json",
+        "atlas/contracts.json",
+        "runtime/glass.hpp"
+      ]
+    },
+    {
+      "repo": "akadaan310/SURFACE",
+      "paths": [
+        "AGENTS.md",
+        "docs/MATHEMATICAL_ATLAS.md",
+        "docs/POLYIA_INTEGRATION.md",
+        "docs/ARCHITECTURE_AND_HARNESSES.md"
+      ]
+    },
+    {
+      "repo": "akadaan310/PolyIA",
+      "pin": "bb6319acb88467b618f5a6f673f1867768223ce6",
+      "paths": [
+        "polyia/forms.py",
+        "polyia/generators.py",
+        "polyia/native.py"
+      ]
+    },
+    {
+      "repo": "akadaan310/purl",
+      "paths": [
+        "SPEC.md",
+        "NOMENCLATURE.md"
+      ]
+    },
+    {
+      "repo": "akadaan310/grammarinnumbers",
+      "paths": [
+        "NUMBER_GRAMMAR.md",
+        "FORMAL_MODELS.md"
+      ]
+    },
+    {
+      "repo": "akadaan310/computationalgrammartheory",
+      "paths": [
+        "DEFINITIONS.md"
+      ]
+    },
+    {
+      "repo": "akadaan310/substrateIO",
+      "paths": [
+        "PROTOCOL.md"
+      ]
+    },
+    {
+      "repo": "akadaan310/snad",
+      "paths": [
+        "README.md"
+      ]
+    },
+    {
+      "repo": "akadaan310/seurl",
+      "paths": [
+        "README.md"
+      ]
+    }
+  ],
+  "regions": {
+    "source-provenance": "inspected",
+    "registry": "planned",
+    "grammar": "planned",
+    "operators": "planned",
+    "topology": "planned",
+    "integration": "planned",
+    "publication": "queued"
+  },
+  "transitions": [
+    {
+      "region": "registry",
+      "event": "inventory-authored",
+      "from": "planned",
+      "to": "specified"
+    },
+    {
+      "region": "grammar",
+      "event": "grammar-authored",
+      "from": "planned",
+      "to": "specified"
+    },
+    {
+      "region": "operators",
+      "event": "semantics-authored",
+      "from": "planned",
+      "to": "specified"
+    },
+    {
+      "region": "topology",
+      "event": "topology-scoped",
+      "from": "planned",
+      "to": "specified"
+    },
+    {
+      "region": "integration",
+      "event": "adapter-contracts-authored",
+      "from": "planned",
+      "to": "specified"
+    },
+    {
+      "region": "publication",
+      "event": "main-commit-observed",
+      "from": "queued",
+      "to": "published"
+    }
+  ],
+  "intended_paths": [
+    "docs/QITT_CYCLIC_ARABIC_REGISTER_CALCULUS.md",
+    "atlas/qitt-register-v0.1.json",
+    "docs/QITT-0.1.ebnf",
+    "commissions/qitt-001/OUTCOME.json"
+  ],
+  "guardrails": [
+    "Do not rewrite SURFACE or PolyIA historical source or resume paused experiments.",
+    "Do not assert external historical validity, linguistic etymology, physical quantum findings or original novelty as proven.",
+    "Keep glyph token, numeric weight, slot index, role, graphemic source and execution semantics separate.",
+    "Describe lexical segmentation and shadda/hamza as versioned profiles.",
+    "No build, scientific experiment or external-theory validation is commissioned for this writing unit.",
+    "Commit only additive public documentation/registry to GLASS main."
+  ],
+  "idempotency_key": "glass.qitt-001.formalization.v0.1",
+  "recovery": "If publication fails, preserve drafted content and a queued receipt; retry after re-reading main and checking path existence."
+}
