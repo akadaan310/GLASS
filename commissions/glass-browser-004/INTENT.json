@@ -1,0 +1,64 @@
+{
+  "schema": "glass.commission.intent.v1",
+  "id": "glass-browser-004",
+  "date": "2026-10-26",
+  "title": "GLASS Native Browser and Terminal Protocol",
+  "owner_statement": "Full-time device-screen continuity in GLASS, C/C++ NDK browser, source-controlled shared-object finite gates, native binary inspection, source-backed OSS discovery, partitioned browser sessions, continuously checked scientific harness.",
+  "admission": "Explicit user consent for each Android MediaProjection session; visible ongoing indicator; no stealth screen capture or bypass of FLAG_SECURE; no remote screen access before a separate paired/authorized endpoint exists.",
+  "source_inventory": [
+    "GLASS/main: AGENTS.md, docs/GLASS_COMMISSION.md, docs/CONTINUE.md, docs/ENCYCLED_CALCULUS.md, docs/QITT_CYCLIC_ARABIC_REGISTER_CALCULUS.md",
+    "Existing local experimental GLASS computational materials, C++/NDK project skeleton",
+    "Android official MediaProjection, foreground-service and NDK docs; Chromium WebView, Mozilla GeckoView/Fennec, LIEF, Wine/Box64 open-source references"
+  ],
+  "target_paths": [
+    "apps/glass-browser/core",
+    "apps/glass-browser/android",
+    "apps/glass-browser/tests",
+    "apps/glass-browser/docs",
+    "apps/glass-browser/tools",
+    ".github/workflows/glass-browser.yml",
+    "commissions/glass-browser-004/OUTCOME.json"
+  ],
+  "constraints": [
+    "All new work published on GLASS/main without force pushing",
+    "No direct claims of unrecoverable or forbidden screen pixels; represent gaps",
+    "Browsing through HTTPS only; glass:// is a local read-only operator overlay",
+    "Versioned C ABI; only packaged allowlisted .so modules; static PE/DLL signature inspection never executes Windows binaries",
+    "Experimental source does not claim built APK without actual Android SDK/NDK build",
+    "Independent scientific, implementation and deployment status fields",
+    "Keep other repositories untouched; old product names not used in new GLASS artifact names"
+  ],
+  "regions": {
+    "science": "scoped",
+    "browser": "planned",
+    "capture": "planned",
+    "ledger": "planned",
+    "gates": "planned",
+    "verification": "planned",
+    "publication": "queued"
+  },
+  "finite_edges": [
+    {
+      "event": "source-published",
+      "to": "source_present"
+    },
+    {
+      "event": "host-tests-pass",
+      "to": "host_verified"
+    },
+    {
+      "event": "android-build",
+      "to": "build_attempted"
+    },
+    {
+      "event": "APK-observed",
+      "to": "APK_verified"
+    },
+    {
+      "event": "git-main-readback",
+      "to": "published"
+    }
+  ],
+  "recovery": "Preserve durable source, actual test output, unsupported checks, and external build-blocker receipts. No automated ownership of the user's entire device, no cookie/session cloning.",
+  "epistemic": "The user-defined calculus is an experimental framework; implementation reuse of established OSS documented, no novelty assertion."
+}
