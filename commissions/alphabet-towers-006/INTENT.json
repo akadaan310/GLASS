@@ -1,0 +1,32 @@
+{
+  "schema": "glass.commission.intent/0.1",
+  "id": "glass.alphabet-towers-006",
+  "owner_origin": "Current conversation and two user-supplied ZIPs; public copied source limited to reviewed implementation and documentation; original archive custody remains in private user delivery",
+  "date": "2026-10-26",
+  "audited_current_repos": [
+    "akadaan310/GLASS/apps/unison-studio",
+    "akadaan310/GLASS/atlas/unison-ast-v0.1.json",
+    "akadaan310/GLASS/docs/ENCYCLED_CALCULUS.md"
+  ],
+  "status": "publication-intent; implementation already constructed and locally evaluated in this conversation",
+  "science": "Unison alphabet of versioned operators, AST-of-AST towers, syntax Merkle hashes, prefix indices, LSH constellations, glyph content handles, bounded LLM navigation",
+  "publication_target": "GLASS/main",
+  "integration_paths": [
+    "apps/alphabet-towers/",
+    "docs/ALPHABET_TOWERS.md",
+    "atlas/alphabet-towers-v0.1.json",
+    "commissions/alphabet-towers-006/OUTCOME.json"
+  ],
+  "runtime_guards": [
+    "preserve source bytes in user's private delivery package",
+    "no original archive ZIP files published by default",
+    "never claim 1B file index benchmark from 10K synthetic benchmark",
+    "no automatic code execution",
+    "no semantic cross-language translation claim",
+    "no hash inversion or lossless AST-only code reconstruction",
+    "no force pushes or destructive updates"
+  ],
+  "tool_boundary": "GitHub connector version-bound additive source publication, exact readback",
+  "evidence_boundary": "20 Python tests, 2932 AST nodes from 12 sample files, 10000-file metadata-only benchmark; actual browser navigation blocked",
+  "recovery": "On publication conflict reread main/inputs, build new parent tree, keep current branches unchanged"
+}
