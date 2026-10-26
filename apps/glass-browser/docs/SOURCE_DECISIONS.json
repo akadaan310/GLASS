@@ -1,0 +1,15 @@
+{
+  "schema":"glass.browser.source-decisions/0.1",
+  "source_lookup_date":"2026-10-26",
+  "research_boundary":"Current open-source implementation research; not an external validation of the user-proposed theory",
+  "decisions":[
+    {"component":"Production browser engine","choice":"Mozilla GeckoView", "status":"selected, not bundled", "basis":"Mozilla open-source Android embeddable full browser engine with contextId/private settings", "source":"https://firefox-source-docs.mozilla.org/mobile/android/geckoview/consumer/geckoview-quick-start.html"},
+    {"component":"First-build browser bootstrap","choice":"Android Chromium WebView", "status":"implemented via platform API", "basis":"Zero extra engine dependency; already available via Android system provider", "source":"https://chromium.googlesource.com/chromium/src/+/main/android_webview/docs/architecture.md"},
+    {"component":"Interim independently installed open-source browser","choice":"Fennec F-Droid", "status":"user can separately install", "source":"https://f-droid.org/packages/org.mozilla.fennec_fdroid/"},
+    {"component":"Whole-screen capture","choice":"Android MediaProjection + foreground service", "status":"Android adapter source implemented; device test outstanding", "source":"https://developer.android.com/media/grow/media-projection"},
+    {"component":"Typed C/C++ shared object","choice":"NDK CMake + versioned C ABI", "status":"host tested", "source":"https://developer.android.com/studio/projects/install-ndk"},
+    {"component":"Executable inspection","choice":"LIEF static format parser", "status":"researched, not imported", "source":"https://github.com/lief-project/LIEF"},
+    {"component":"Windows EXE compatibility","choice":"Wine/Box64 through separate approved app", "status":"researched, not integrated", "source":"https://www.winlator.org/index.php"}
+  ],
+  "nonclaims":["No released APK or automated remote ChatGPT takeover", "No universally continuous OS screen capture", "No arbitrary PE/DLL execution", "No claim of novel or broken cryptography"]
+}
