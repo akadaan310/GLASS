@@ -4,3 +4,7 @@ android { namespace 'dev.glass.browser'; compileSdk 35
  externalNativeBuild { cmake { path 'src/main/cpp/CMakeLists.txt' } }
  compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
 }
+dependencies {
+ if (!project.hasProperty('geckoviewVersion')) throw new GradleException('Pass -PgeckoviewVersion=<published stable GeckoView version>')
+ implementation "org.mozilla.geckoview:geckoview:${project.property('geckoviewVersion')}"
+}
