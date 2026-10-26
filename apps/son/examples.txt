@@ -1,0 +1,4 @@
+"Unison alphabet" site:github.com (compiler OR grammar) filetype:md
+"mechanical computation" (clock OR timing) -advertisement after:2024-01-01
+"ألف لام ميم" (لسان OR نحو) site:edu
+"Maxwell equations" (field OR electromagnetic) filetype:pdf before:2026-01-01
