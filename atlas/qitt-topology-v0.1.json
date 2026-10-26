@@ -1,0 +1,199 @@
+{
+  "schema": "glass.qitt.topology/0.1",
+  "status": "mathematical definitions and finite graph derivations; external theory comparison and experiments not performed",
+  "source": "docs/QITT_CYCLIC_ARABIC_REGISTER_CALCULUS.md",
+  "finite_graphs": [
+    {
+      "id": "registered-ring-C28",
+      "vertices": 28,
+      "edges": 28,
+      "components": 1,
+      "betti_0": 1,
+      "betti_1": 1,
+      "edge_policy": "each native-indexed letter connected to next, plus Ghayn→Alif"
+    },
+    {
+      "id": "post-thousands-phase-C3",
+      "vertices": 3,
+      "edges": 3,
+      "components": 1,
+      "betti_0": 1,
+      "betti_1": 1,
+      "edge_policy": "phase 0→1→2→0 (not numerical value)"
+    },
+    {
+      "id": "control-visible-lollipop",
+      "vertices": 4,
+      "edges": 4,
+      "components": 1,
+      "betti_0": 1,
+      "betti_1": 1,
+      "edge_policy": "0000→1000→1100→1110→1000 with history quotient"
+    },
+    {
+      "id": "bounded-prefix-trie",
+      "vertices": "N finite, variable",
+      "edges": "N-1",
+      "components": 1,
+      "betti_0": 1,
+      "betti_1": 0,
+      "edge_policy": "undirected realization of finite rooted decimal prefix tree"
+    }
+  ],
+  "phase_lift": {
+    "domain": "integer places p>=3",
+    "phase": "p mod 3",
+    "cycle": "floor((p-3)/3)",
+    "boundary_note": "ray p>=3 not a global topological covering; bi-infinite extension needed for universal cover analogy",
+    "complex_chart": "z(p)=(1+floor((p-3)/3))*exp(2*pi*i*((p-3)%3)/3)",
+    "interpretation": "layout-only chart for source/position identities, not physical field or quantum wave"
+  },
+  "topological_subjects": [
+    {
+      "id": "point_set_topology",
+      "status": "applicable",
+      "detail": "State base spaces explicitly; discrete 28-set versus realized graphs are different spaces."
+    },
+    {
+      "id": "open_closed_sets",
+      "status": "applicable_with_declared_topology",
+      "detail": "Choose discrete topology on glyphs or CW realization; cannot infer opens from letter names."
+    },
+    {
+      "id": "connectedness",
+      "status": "derived_for_named_graphs",
+      "detail": "C28, C3 and lollipop graph are connected; isolated registry with no edges has 28 components."
+    },
+    {
+      "id": "compactness",
+      "status": "derived_for_named_finite_realizations",
+      "detail": "Finite graph CW realizations are compact; unbounded address trie not automatically compact."
+    },
+    {
+      "id": "metric_topology",
+      "status": "open",
+      "detail": "Numeric difference, edit distance and layout distance give different metrics."
+    },
+    {
+      "id": "homotopy",
+      "status": "derived_for_named_graphs",
+      "detail": "C28 and C3 have homotopy type S1 as specified 1-dimensional graph realizations."
+    },
+    {
+      "id": "fundamental_group",
+      "status": "derived_for_named_graphs",
+      "detail": "Pi1(C28) and Pi1(C3) are Z; undirected lollipop graph also has Pi1 Z."
+    },
+    {
+      "id": "covering_spaces",
+      "status": "conditional",
+      "detail": "Bi-infinite place-index extension can cover C3; p>=3 ray has boundary and is not a global covering."
+    },
+    {
+      "id": "lifts_deck_transformations",
+      "status": "conditional",
+      "detail": "Absolute place and cycle index lift modulo-three phase; deck transformations require extended regular covering."
+    },
+    {
+      "id": "chain_complexes",
+      "status": "applicable",
+      "detail": "Orient edges and compute cellular chain boundary ∂1 for finite graph."
+    },
+    {
+      "id": "homology",
+      "status": "derived_for_named_graphs",
+      "detail": "beta0=1 beta1=1 for 28-cycle, 3-cycle, and 4v/4e lollipop; beta1=0 for finite tree."
+    },
+    {
+      "id": "cohomology",
+      "status": "open",
+      "detail": "Requires declared coefficients and cochain maps; H1 of cycle could be computed later."
+    },
+    {
+      "id": "relative_homology",
+      "status": "open",
+      "detail": "A future relative pair may anchor boundaries at original Alif/Sifr."
+    },
+    {
+      "id": "simplicial_complexes",
+      "status": "open",
+      "detail": "Graph clique-to-simplex promotion changes H1; requires explicit face contract."
+    },
+    {
+      "id": "cubical_complexes",
+      "status": "open",
+      "detail": "Concurrent region product may admit cubes only with proven commuting squares."
+    },
+    {
+      "id": "persistent_homology",
+      "status": "proposed",
+      "detail": "Finite input filtration and perturbation metric must be specified before measured persistence."
+    },
+    {
+      "id": "quotient_spaces",
+      "status": "applicable",
+      "detail": "Glyph-only quotient identifies many places; decoding fails to descend."
+    },
+    {
+      "id": "fibers_preimages",
+      "status": "derived",
+      "detail": "Forgetting place creates nontrivial/infinite scale classes in unbounded theory."
+    },
+    {
+      "id": "fiber_bundles",
+      "status": "not_yet_applicable",
+      "detail": "Raw preimage sets do not establish locally trivial fiber bundles."
+    },
+    {
+      "id": "product_topology",
+      "status": "proposed",
+      "detail": "Concurrency statechart factors may be given product topology after choosing each factor."
+    },
+    {
+      "id": "order_alexandrov_topology",
+      "status": "proposed",
+      "detail": "Prefix partial order of a trie supports an Alexandrov topology after open-set convention."
+    },
+    {
+      "id": "sheaves",
+      "status": "open",
+      "detail": "Local-to-global grammar/profile records need covers/restriction maps and a gluing law."
+    },
+    {
+      "id": "manifolds_differential_topology",
+      "status": "not_yet_applicable",
+      "detail": "Finite graph with branching is not a smooth manifold by nomenclature alone."
+    },
+    {
+      "id": "topological_dynamics",
+      "status": "applicable",
+      "detail": "Finite return orbit and phase cycle are discrete dynamical systems, not numeric increment."
+    },
+    {
+      "id": "topological_data_analysis",
+      "status": "future_experiment",
+      "detail": "Would require a justified metric, point cloud, filtration, persistence witnesses."
+    },
+    {
+      "id": "category_topology_interface",
+      "status": "applicable",
+      "detail": "Study whether encoding/projection preserve declared morphisms/invariants."
+    },
+    {
+      "id": "complex_plane_charts",
+      "status": "proposed",
+      "detail": "z(p)=(1+floor((p-3)/3)) exp(2πi ((p-3) mod 3)/3) provides injective scale/phase chart for p>=3."
+    },
+    {
+      "id": "quantum_topology",
+      "status": "not_yet_applicable",
+      "detail": "No logical qubit, physical amplitude, quantum channel or measurement has been defined."
+    }
+  ],
+  "nonclaims": [
+    "Alphabet order alone has no inferred topology",
+    "Visual circular layout alone is not a topological proof",
+    "A preimage/fiber is not automatically a smooth bundle",
+    "Quantum amplitudes are not encoded by phase graph alone"
+  ]
+}
