@@ -59,3 +59,8 @@ Main publication occurs through source-linked GitHub commits; research acceptanc
 ## GLASS UNISON 005 — Swift AST and Market I/O Studio
 
 GLASS now includes a source-grounded six-language AST projection, a portable Swift/Linux event runtime, source-linked Unibet codebook and a **synthetic** market telemetry visual studio. [Run and inspect the app](apps/unison-studio/README.md), [read the complete mathematics and adapter charter](docs/UNISON_UNIFIED_RUNTIME.md), [see exact host verification](apps/unison-studio/evidence/host.json) and [publication receipt](commissions/unison-005/PUBLISH_RECEIPT.json). The GUI is a Swift-served browser application, not an iOS emulator; there is no live market feed or public website deployed by this source work unit.
+
+## SON/0.1 — Four-lane programmable Unison addressing
+
+GLASS now has a [typing-only SON terminal](apps/glass-oracle/son.html), connected to the root Oracle through an explicit `?son=s1.<canonical-base64url>` dispatch. It renders 1–4 ordered query programs into reversible source URLs, glyph/operator tapes, deterministic 4×4 binary matrix projections, and consent-free **local** simulations. External Google Search requests happen only when an explicit link is opened, never automatically. The new SON source reference is independently packaged with Python compiler, exact tests and full mathematical protocol. Publication of this web source does not imply `glass.com` is live.
+
