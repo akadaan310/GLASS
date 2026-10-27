@@ -30,7 +30,11 @@ Termux installation: `pkg install clang cmake ninja` and compile inside your Ter
 
 The `android/` project provides a native C++/JNI full-screen scene, keyboard input, and a self-contained POSIX PTY terminal. Type `:shell` to switch into an embedded Android `/system/bin/sh` session; press Back to return. No access to arbitrary private app sessions, rooted features, or system-wide telemetry. The native field is rasterized in `core/pixels.cpp`; Android canvas overlays typed text/glyphs and ShellPane handles a basic ANSI subset; full VT emulation is not yet implemented. This architecture doesn't require browser HTML or WebView.
 
-A GitHub Actions workflow builds an ARM64 debug APK on pushes to `main`. **Only download the APK after the Actions build completes successfully.** Android APK signing in CI uses an automatically generated *debug key*, not a Play Store release key. Packaging is not equivalent to device-level execution testing.
+**No GitHub Actions build.** Use the direct Linux/VM build script:
+```sh
+bash scripts/build-apk-local.sh --bootstrap
+```
+Run on a Linux x86_64 host with JDK 17+ and internet access. It bootstraps pinned Gradle/Android SDK, requests explicit SDK license acceptance when needed, builds the ARM64 debug APK, and writes it to `dist/GLASS-Vitromaton-arm64-debug.apk` with a SHA-256 JSON receipt. With an existing toolchain omit `--bootstrap`. On an attached Android phone add `--install` (requires `adb`). This is a debug-signed build; source publication does not establish successful packaging or phone execution.
 
 [Typed UNISON operator semantics](docs/UNISON_PROTOCOL.md).
 
@@ -60,4 +64,8 @@ Source provenance: https://github.com/termux/termux-app (Terminal emulator and T
 
 ## APK Build v0.2
 
-The unresolved Termux Maven dependency was removed. The APK's local /system/bin/sh is spawned by a C++ PTY bridge on explicit `:shell`; typing uses Android's keyboard, Go sends Enter, Back returns to GLASS. No root or third-party app access. The native PTY implementation was validated on a Linux JNI smoke test, not yet on-device. GitHub Actions artifact is available only after successful Android SDK/NDK build; failed zero-step jobs do not produce APKs.
+The unresolved Termux Maven dependency was removed. The APK's local /system/bin/sh is spawned by a C++ PTY bridge on explicit `:shell`; typing uses Android's keyboard, Go sends Enter, Back returns to GLASS. No root or third-party app access. The native PTY implementation was validated on a Linux JNI smoke test, not yet on-device. An installable APK is produced only by a successful local Android SDK/NDK build; no GitHub Actions, Railway, or GitHub-hosted runners are involved.
+
+## Local build evidence and limitations
+
+The native host CMake test passed in the execution container. The Android APK has **not** been compiled in that environment because the SDK/NDK and Gradle distributions are not installed and external dependency downloads are unavailable. The reproducible Linux x86_64 build entrypoint is `scripts/build-apk-local.sh` (dry-run script syntax verified). The generated APK requires a real Android device install and execution check before it is called operational.
